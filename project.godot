@@ -11,6 +11,7 @@ config_version=3
 [application]
 
 config/name="RayuelaJam"
+run/main_scene="res://mini_columnas/columnas.tscn"
 config/icon="res://icon.png"
 
 [rendering]
