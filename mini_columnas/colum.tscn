@@ -7,23 +7,21 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 12 )
 
-[node name="Node2D" type="Node2D"]
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
+[node name="columna" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 hframes = 3
 frame = 2
 _sections_unfolded = [ "Animation" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
