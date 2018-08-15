@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://vn_engine/visual_novel_parser.gd" type="Script" id=1]
+
+[node name="main" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="sprites" type="Node2D" parent="." index="0"]
+
+[node name="slot1" type="Sprite" parent="sprites" index="0"]
+
+[node name="slot2" type="Sprite" parent="sprites" index="1"]
+
+[node name="slot3" type="Sprite" parent="sprites" index="2"]
+
+[node name="slot4" type="Sprite" parent="sprites" index="3"]
+
+

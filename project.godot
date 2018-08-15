@@ -11,6 +11,7 @@ config_version=3
 [application]
 
 config/name="RayuelaJam"
+run/main_scene="res://vn_engine/main.tscn"
 config/icon="res://icon.png"
 
 [rendering]

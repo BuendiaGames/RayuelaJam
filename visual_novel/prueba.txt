@@ -1,0 +1,3 @@
+#Un comentario interesante
+1;  Aquí habla un personaje.
+2;  Aquí habla otro. 
