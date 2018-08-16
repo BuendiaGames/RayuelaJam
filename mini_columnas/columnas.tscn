@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://mini_columnas/columnas.gd" type="Script" id=1]
 [ext_resource path="res://mini_columnas/dios.png" type="Texture" id=2]
@@ -82,6 +82,11 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 5 ]
 }
 
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
 [node name="Node2D" type="Node2D"]
 
 position = Vector2( 11, 0 )
@@ -93,6 +98,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="0"]
 
@@ -148,5 +154,22 @@ editor_draw_drag_margin = false
 _sections_unfolded = [ "Limit", "Offset", "Smoothing", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 3.95634, 36.6448 )
+scale = Vector2( 14.6493, 2.06993 )
+shape = SubResource( 6 )
 
 
