@@ -1,3 +1,7 @@
 #Un comentario interesante
+load; D_Contento; D_Normal
+show;0;1
+show;1;2
 1;  Aquí habla un personaje.
 2;  Aquí habla otro. 
+
