@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://vn_engine/dialogbox.gd" type="Script" id=1]
+[ext_resource path="res://vn_engine/graphics/dialogboxes.png" type="Texture" id=2]
+[ext_resource path="res://vn_engine/graphics/flecha.png" type="Texture" id=3]
+
+[node name="dialogbox" type="Node2D" index="0"]
+
+position = Vector2( 541.165, 502.112 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="textbox" type="Sprite" parent="." index="0"]
+
+position = Vector2( -26.0731, -2.00427 )
+scale = Vector2( 3.15, 2.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="text" type="RichTextLabel" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -466.0
+margin_top = -73.0
+margin_right = -104.0
+margin_bottom = -15.0
+rect_scale = Vector2( 2.5, 2.5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "Esto es un texto de una linea.
+O dos.
+Tal vez tres.
+¡Quizá sean [color=blue]cuatro[/color]!"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Esto es un texto de una linea.
+O dos.
+Tal vez tres.
+¡Quizá sean cuatro!"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect" ]
+
+[node name="name" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( -350, -120 )
+scale = Vector2( 3, 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="namebox" type="Sprite" parent="name" index="0"]
+
+scale = Vector2( 0.25, 0.3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="name" type="Label" parent="name" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -29.0
+margin_top = -7.0
+margin_right = 39.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Nombre"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="flecha" type="Sprite" parent="." index="3"]
+
+visible = false
+position = Vector2( -485, 60 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+

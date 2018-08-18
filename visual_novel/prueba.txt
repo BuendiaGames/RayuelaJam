@@ -1,7 +1,31 @@
-#Un comentario interesante
+# --------- FICHERO DE PRUEBA ----------------- #
+# ¡Con comentarios!
+
+#Carga texturas
 load; D_Contento; D_Normal
+
+#Muestralas en los slots
 show;0;1
 show;1;2
-1;  Aquí habla un personaje.
-2;  Aquí habla otro. 
+
+#Diálogo insulso
+1;  ¿Hacemos la prueba de decisiones?
+2;  ¡Adelante! \n¿Listo para una pregunta tonta, [color=red]zagal[/color]?
+
+# R A M A S
+do_branch;  2;   ¡Sí!; YES;    ¡No! ;NO;
+
+
+%YES
+2; Pues entonces hemos acabado
+skip; END
+
+
+%NO
+2; ¿Tú estás seguro de lo que has dicho?
+%END
+
+
+2; En fin, vaya cosa. Nos vemos.
+
 
