@@ -3,28 +3,33 @@ extends Node2D
 # Visual novel parser: this script reads text files
 # and makes the dialogues.  
 
+#Constants that store paths to all graphics in game
+#const gpath = "res://vn_engine/graphics/"
+#const DIOS_NORMAL = gpath + "dios_normal.png"
+#const DIOS_CONTENTO = gpath + "dios_contento.png"
+
+const gpath = "res://vn_engine/ginfo"
+const mpath = "res://vn_engine/main"
+
+var paths = {}
+var ch_names = {}
+#Stores all paths and names to load them accordingly
+#const paths = {"D_Contento":DIOS_CONTENTO, "D_Normal":DIOS_NORMAL}
+#const ch_names = {"D_Contento":"Dios", "D_Normal":"Dios"}
+
+
 #Reference to the dialog box:
 var dialogbox_class = preload("res://vn_engine/dialogbox.tscn")
 var dialogbox
 
-#Constants that identify the characters
-const DIOS = 0
-const PADRE = 1
-const HIJE = 2
-
-#Constants that store paths to all graphics in game
-const gpath = "res://vn_engine/graphics/"
-const DIOS_NORMAL = gpath + "dios_normal.png"
-const DIOS_CONTENTO = gpath + "dios_contento.png"
-
-#Stores all paths and names to load them accordingly
-const paths = {"D_Contento":DIOS_CONTENTO, "D_Normal":DIOS_NORMAL}
-const ch_names = {"D_Contento":"Dios", "D_Normal":"Dios"}
 #Shortcut to the sprites of the scene, "slotX"
 var sprites
+var showing = [false, false, false, false]#Array of bools to control show/hide anims
+var hiding = [false, false, false, false]
+var m_speed = 5.0 #Speed of fade
 
 #An array that stores all the currently used...
-var tex_array = [] #...textures
+var tex_array = {}
 var names_array = [] #...names
 
 #cf[j] stores the jth line of the dialogue
@@ -40,6 +45,8 @@ var tag_options #Stores tags of the options
 
 #Set initially only process to input
 func _ready():
+	#Locate graphics
+	set_up_graphics()
 	
 	#Store all sprites
 	sprites = $sprites.get_children()
@@ -52,15 +59,36 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(true)
 	
-	#load_textures([null, null], [ch_names[DIOS], ch_names[HIJE]])
-	start_dialogue("prueba.txt")
+	start_dialogue(mpath)
 	next_step()
 
 
 
 #The process is for doing animations
 func _process(delta):
-	pass
+	
+	#Check each slot
+	for j in range(4):
+		
+		#If it fading in/out, modify modulation
+		if (showing[j]):
+			sprites[j].modulate.a += m_speed * delta
+			
+			#At the end, disable and check if there 
+			#is other slots still working
+			if (sprites[j].modulate.a >= 0.98):
+				sprites[j].modulate.a = 1.0
+				showing[j] = false
+				check_process()
+		
+		elif (hiding[j]):
+			sprites[j].modulate.a -= m_speed * delta
+			
+			if (sprites[j].modulate.a <= 0.02):
+				sprites[j].modulate.a = 0.0
+				hiding[j] = false
+				check_process()
+
 
 #Every time you get a click, advance. Also check options
 func _input(event):
@@ -89,22 +117,56 @@ func _input(event):
 		#Update marker
 		dialogbox.mark_option(selected_index)
 
-
-
+#Load a file that stores all the information of the 
+#graphics and names in a dictionary
+func set_up_graphics():
+	var line
+	var prefix
+	var g = File.new()
+	
+	g.open(gpath, File.READ)
+	
+	#Read first line and ensure format
+	line = g.get_line()
+	line = line.split(";")
+	for j in range(len(line)):
+		line[j] = get_arg(line[j])
+	
+	#Check if it is prefix, in that case save it
+	if (line[0] == "#PREFIX"):
+		prefix = line[1] 
+	else:
+		ch_names[line[0]] = line[1]
+		paths[line[0]] = prefix+line[2]
+	
+	#Read all the file
+	while (not g.eof_reached()):
+		line = g.get_line()
+		line = line.split(";")
+		#Check this is a valid line
+		if (len(line) == 3):
+			for j in range(3):
+				line[j] = get_arg(line[j])
+			
+			ch_names[line[0]] = line[1]
+			paths[line[0]] = prefix+line[2]
+	
+	g.close()
+	
 
 #These two functions load the textures we are going to
 #need, or unload the non-necessary ones. 
 #It is useful to save memory, since textures are large!
 func load_textures(command):
 	
-	tex_array = []
+	tex_array = {}
 	names_array = []
 	
 	var n_char = len(command) - 1
 	
 	for j in range(1, n_char+1):
 		var arg = get_arg(command[j])
-		tex_array.append(load(paths[arg]))
+		tex_array[arg] = load(paths[arg])
 		names_array.append(ch_names[arg])
 
 #Auxiliary function that assign a character texture
@@ -112,25 +174,53 @@ func load_textures(command):
 func draw_character(command):
 	
 	#Get the character and slot where it will be drawn
-	var ch = int(get_arg(command[1]))
+	var ch = get_arg(command[1])
 	#To ensure common notation with dialogues, -1
 	var pos = int(get_arg(command[2]))-1 
 	
-	#Set to sprite
+	#Start transparent and set a texture
+	sprites[pos].modulate=Color(1,1,1,0.0)
 	sprites[pos].texture = tex_array[ch]
+	
+	#Add to the animation procedure
+	showing[pos] = true 
+	
+	set_process(true)
 
-#TODO: add a fade-out
-func hide_character(pos):
-	sprites[pos].texture = null
+#Hides a slot with a fade out
+func hide_character(command):
+	#To ensure common notation with dialogues, -1
+	var pos = int(get_arg(command[1]))-1 
+	
+	#Start the fade out
+	hiding[pos] = true
+	set_process(true)
+
+#Returns false if there is no slot doing fade in/out
+#If nobody is doing it, the process is turned off
+func check_process():
+	var result = false
+	
+	var j = 0
+	
+	while (j < 4 and not result):
+		result = result or showing[j] or hiding[j]
+		j += 1
+	
+	set_process(result)
 
 #Used to parse the arguments given when doing a branch
 #This will store all the information and start the decision dialog
 func parse_options(command):
 	#How many options do we have?
 	n_options = int(get_arg(command[1]))
-	print(n_options)
+	
 	#Restart tag array
 	tag_options = []
+	
+	#Start the file from the beginning!
+	#So tag can be found everywhere
+	linec = 0
 	
 	var options = ""
 	#Auxiliary stuff
@@ -149,7 +239,7 @@ func parse_options(command):
 	
 	#Since initialized options as "", first character is "\n". Get rid of it
 	options = options.substr(1, len(options)-1)
-	print(options)
+	
 	#Put it in decision, and set selected index
 	in_decision = true
 	selected_index = 0
@@ -165,17 +255,19 @@ func jump_to_tag(index, skip=false):
 	var line
 	var c0 
 	
+	#Start the file from the beginning!
+	#So tag can be found everywhere
+	linec = 0
+	
 	#Read next line and get the command
 	line = cf[linec]
 	command = line.split(";")
 	c0 = get_arg(command[0])
-	print(line)
+	
 	#If the command is not %tag, skip lines until desired one
 	if (c0 != tag):
 		while (c0 != tag):
 			line = cf[linec]
-			print(line)
-			print(linec)
 			command = line.split(";")
 			c0 = get_arg(command[0])
 			linec += 1
@@ -192,13 +284,12 @@ func start_dialogue(filename):
 	var file = File.new()
 	
 	#Load the entire file into the cf 
-	file.open("res://visual_novel/" + filename, File.READ)
+	file.open(filename, File.READ)
 	cf = file.get_as_text().split("\n")
 	file.close()
 	
 	linec = 0 #Restart line counter
 
-#Parse the options for making decisions
 
 
 #Parse new lines until text appears
@@ -240,13 +331,12 @@ func parse_line():
 			c1 = get_arg(command[1])
 			
 			dialogbox.set_text(ic0, names_array[ic0-1], c1)
-			#print(names_array[ic0-1]) 
-			#print(c1)
 			next = false
 		else:
 			next = true
 			#Jump and read a different file
 			if (c0 == "jump"):
+				
 				c1 = get_arg(command[1])
 				start_dialogue(c1)
 			#Load textures of characters
@@ -256,9 +346,9 @@ func parse_line():
 			elif (c0 == "show"):
 				draw_character(command)
 			elif (c0 == "hide"):
-				pass
+				hide_character(command)
 			#Skip lines until tag is reached
-			elif (c0 == "skip"):
+			elif (c0 == "goto"):
 				c1 = get_arg(command[1])
 				tag_options = [c1]
 				jump_to_tag(0, true)
@@ -270,9 +360,9 @@ func parse_line():
 				#N_CONDITIONS; COND_1; TAG_1; ... COND_N; TAG_N
 				#JUMP LINES UP TO %TAG_N
 			#Start a minigame
-			elif (c0 == "minigame"):
-				#TODO START MINIGAME
-				pass
+			elif (c0 == "load_scene"):
+				c1 = get_arg(command[1])
+				get_tree().change_scene(c1)
 			else:
 				pass #Raise error maybe
 	

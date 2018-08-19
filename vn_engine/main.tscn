@@ -2,7 +2,7 @@
 
 [ext_resource path="res://vn_engine/visual_novel_parser.gd" type="Script" id=1]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 
 scale = Vector2( 0.2, 0.2 )
 centered = false
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="slot2" type="Sprite" parent="sprites" index="1"]
 
