@@ -4,14 +4,17 @@ extends Area2D
 # var a = 2
 # var b = "textvar"
 
+var anim
+
 var preparado = false
 
 var speed = 50.0
 var vel = Vector2(0.0,0.0)
 
-var dir_arriba = Vector2(-1.0/sqrt(2),-1.0/sqrt(2))
+var alpha = 15*2*PI/360.0
+var dir_arriba = Vector2(-cos(alpha),-sin(alpha))
 var dir_recto = Vector2(-1.0,0)
-var dir_abajo = Vector2(-1.0/sqrt(2),1.0/sqrt(2))
+var dir_abajo = Vector2(-cos(alpha),sin(alpha))
 
 func lanzaronda():
 	var prob = randf()
@@ -21,10 +24,13 @@ func lanzaronda():
 		vel = speed*dir_recto
 	else:
 		vel = speed*dir_abajo
+	$AnimationPlayer.play("avance")
 		
 func darselavuelta():
 	if (preparado):
 		vel.x = -vel.x
+		$Sprite.flip_h = true
+		preparado = false
 	
 
 func _ready():

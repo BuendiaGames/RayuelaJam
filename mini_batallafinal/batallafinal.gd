@@ -7,6 +7,7 @@ extends Node2D
 var ondas_class = preload("res://mini_batallafinal/ondas.tscn")
 
 var vidaperso = 3
+var vidamala = 3
 
 var velperso = Vector2(0.0,0.0)
 var speedperso = 50.0
@@ -39,6 +40,7 @@ func atacar():
 	onda.position.x = $mala.position.x
 	onda.position.y = $mala.position.y
 	add_child(onda)
+	$mala/AnimationPlayer.play("attack")
 
 
 func _ready():
@@ -55,6 +57,8 @@ func _process(delta):
 	if (tiempomala >= 3):
 		atacar()
 		tiempomala = 0
+	if (Input.is_action_just_pressed("ui_accept")):
+		get_tree().call_group("ondas", "darselavuelta")
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
@@ -65,12 +69,20 @@ func _process(delta):
 	
 #area es lo que choca conmigo
 func _on_player_area_entered(area):
-	
-#	mi_onda = area
-	
 	area.queue_free()
 	vidaperso -= 1
 	if (vidaperso == 0):
 		print("muerto")
 		#falta quitar iconitos d ecorazon una vez los tenga
-	pass # replace with function body
+
+
+func _on_Area2D_area_entered(area):
+	area.preparado = true
+
+
+func _on_mala_area_entered(area):
+	if (area.vel.x > 0):
+		area.queue_free()
+		vidamala -= 1
+		if (vidamala == 0):
+			print("ganaste")
