@@ -32,8 +32,11 @@ goto; END
 
 hide;2
 
+fade_out
+fade_in
+
 1; ¿Te has ido?
-show;1;2
+show;D_Normal;2
 2; No, en verdá sigo aquí
 
 goto; END

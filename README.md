@@ -40,21 +40,21 @@ will result in an error from the parser. Commentaries are only one-line commenta
 
 ### Showing characters
 
-The first thing is to load the characters into memory. We allow only to have 4 textures loaded in memory at a time. This is because a visual novel may contain a large amount of decent size textures. The engine have support for only 4 characters in screen, so only 4 textures are allowed. Each texture will have a slot assigned. The syntax is like this:
+The first thing is to load the characters into memory. You can use as many textures as you want, but you need to load them first into memory. This is because a visual novel may contain a large amount of decent size textures. The engine have support for only 4 characters in screen. Each texture will have a slot assigned. The syntax is like this:
 
 ```
-load; metaname1; metaname2; metaname3;
+load; metaname1; metaname2; ...; metanameN;
 ```
 
 As you see, we use the `load` command and then we use the metanames (those we defined in the `ginfo` file) to load the textures. We remark that we can load up to four textures in this way. The slots, however, will be still empty. In order to show the textures, we use the `show` command:
 
 ```
 load; metaname1; metaname2; metaname3;
-show; metaname1; 1
-show; metaname3; 2
+show; metaname1; 1; true
+show; metaname3; 2; true
 ```
 
-This command shows the texture corresponding to the `metaname1` at slot 1, and the one corresponding to `metaname2` to slot 2. The order of slots in screen is like this: `1 3 4 2`.
+This command shows the texture corresponding to the `metaname1` at slot 1, and the one corresponding to `metaname2` to slot 2. The order of slots in screen is like this: `1 3 4 2`. The last argument tells the engine to use a fade-in effect when set to `true`. It is optional and its default value is `false`, so you can change the expression of your characters without any fade.
 We can hide the character of any slot via 
 
 ```
@@ -62,6 +62,25 @@ hide; slot_index
 ```
 
 This will make the texture to fade out.
+
+### Fades and transitions
+
+It is possible to change the background of the scene via
+
+```
+set_bg; bgmetaname
+```
+
+Where the bgmetaname must be previously declared in the `ginfo` file, as the characters. Note that the name for the background textures is completely irrelevant.
+However, this will automatically change the texture. We make do a smoother transition using a fade-out-in transition:
+
+```
+fade_out;
+set_bg; bgmetaname
+fade_in;
+```
+
+The `fade_out` command expects the player to press the button to continue. The transition can be used also with the `load_scene` or `jump`commands to create smoother transitions!
 
 ### Dialogues
 

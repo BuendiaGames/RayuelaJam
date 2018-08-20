@@ -160,14 +160,13 @@ func set_up_graphics():
 func load_textures(command):
 	
 	tex_array = {}
-	names_array = []
+	names_array = ["", "", "", ""] #Init with size 4
 	
 	var n_char = len(command) - 1
 	
 	for j in range(1, n_char+1):
 		var arg = get_arg(command[j])
 		tex_array[arg] = load(paths[arg])
-		names_array.append(ch_names[arg])
 
 #Auxiliary function that assign a character texture
 #to one of the sprites of the scene, or that eliminates it
@@ -177,13 +176,26 @@ func draw_character(command):
 	var ch = get_arg(command[1])
 	#To ensure common notation with dialogues, -1
 	var pos = int(get_arg(command[2]))-1 
+	var fade
 	
-	#Start transparent and set a texture
-	sprites[pos].modulate=Color(1,1,1,0.0)
+	#Third argument is optional and false by default
+	if (len(command) == 4):
+		fade = get_arg(command[3]) == "true"
+	else:
+		fade = false
+	
+	#Set the name corresponding to this character
+	names_array[pos] = ch_names[ch]
+	
+	#Set the texture
 	sprites[pos].texture = tex_array[ch]
 	
-	#Add to the animation procedure
-	showing[pos] = true 
+	if (fade):
+		#Start transparent and set a texture
+		sprites[pos].modulate=Color(1,1,1,0.0)
+		
+		#Add to the animation procedure
+		showing[pos] = true 
 	
 	set_process(true)
 
@@ -195,6 +207,14 @@ func hide_character(command):
 	#Start the fade out
 	hiding[pos] = true
 	set_process(true)
+
+func fade(is_in):
+	if (is_in):
+		$anim.play("screen_fade_in")
+	else:
+		$anim.play("screen_fade_out")
+	
+
 
 #Returns false if there is no slot doing fade in/out
 #If nobody is doing it, the process is turned off
@@ -347,6 +367,15 @@ func parse_line():
 				draw_character(command)
 			elif (c0 == "hide"):
 				hide_character(command)
+			#Set a background
+			elif (c0 == "set_bg"):
+				$bg.texture = get_arg(command)
+			#Fade in/out
+			elif (c0 == "fade_in"):
+				fade(true)
+			elif (c0 == "fade_out"):
+				fade(false)
+				next = false
 			#Skip lines until tag is reached
 			elif (c0 == "goto"):
 				c1 = get_arg(command[1])
