@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cerveza.png-932c8253c05dde8d0b7c5c69b1873df9.stex"
+path="res://.import/dioscerveza4.png-3994df2d03bcc0769517ba73a0335ead.stex"
 
 [deps]
 
-source_file="res://graficos/cerveza.png"
-dest_files=[ "res://.import/cerveza.png-932c8253c05dde8d0b7c5c69b1873df9.stex" ]
+source_file="res://graficos/dioscerveza4.png"
+dest_files=[ "res://.import/dioscerveza4.png-3994df2d03bcc0769517ba73a0335ead.stex" ]
 
 [params]
 
