@@ -1,8 +1,5 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 
 var velsaltoplayer = Vector2(0.0,0.0)
 
