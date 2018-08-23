@@ -140,6 +140,69 @@ do_branch; 2;   Yes, of course; Y;   No, I don't; N
 
 Combinations of the `do_branch`, `goto` and `jump` commands can create rich situations with practically no effort!
 
+### Variables and conditionals
+
+It is possible also two work with **integer** variables. There are two different commands for this: `set` is used to declare a variable and/or sets its value, while `add` modifies it by its value by the specified amount:
+
+```
+set; my_variable; 10
+add; my_variable; 3 
+add; my_variable; -1
+``` 
+
+At the end, `my_variable` has value `12`. It is possible to take decisions depending on the value of the variables, using an `if` command. The syntax is:
+
+```
+if; cond; tag_true; tag_false
+```
+
+In this command, `cond` is something like `my_variable == 2` or `my_variable > -1`. Valid operators for comparisons are `==`, `!=`, `>=`, `>`, `<=` and `<`. If the condition is true, the code jumps to the tag `tag_true`. In other case, jumps to `tag_false`. For example, a simple shop:
+
+
+```
+2; Do you want to buy this?
+if; money > 5; BUY; NO;
+
+%BUY
+2; Thank you very much!
+goto; GOODBYE
+
+%NO
+2; You don't have enough money for this!
+
+%GOODBYE
+2; Thank you very much, goodbye!
+``` 
+
+The variables and the `if` command, combined with `goto` and branches is a powerful way to add interactive behaviour to your novel.
+
+> Moreover, if you are using the engine as a code to tell the story of any game (for example, dialogues in a JRPG), variables can be even more interesting. 
+> You can edit the variables of the metalanguage in your Godot name, simply doing a call to the AutoLoad script `vnglobal`. Take the following example as a reference:
+
+```
+#(...)
+#GDSCRIPT:
+func give_scepter():
+    vnglobal = get_tree().root.get_node("/root/vn_global")
+    vnglobal.set_var("has_scepter", 1)
+
+#(...)
+#VISUAL NOVEL METALANGUAGE
+
+if; has_scepter==1; SCEPTER_SCENE; DEATH_SCENE
+
+%SCEPTER_SCENE
+#(...)
+goto; %DEATH_SCENE
+
+
+%DEATH_SCENE
+#(...)
+
+```
+> With this script, you can change the conversations between characters depending on the result of one of the in-game battles (in Godot). This is very useful in many situations. Take in account that `vnglobal.add_var(name, value)` is also available.
+
+
 ### Some comments
 
 When a file ends, an error raise. It is mandatory to jump to another file, as the last command of a file. In addition to this, it is possible to load another scene of your game, meaning it is the end of your cutscene:

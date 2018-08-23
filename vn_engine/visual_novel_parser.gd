@@ -24,7 +24,7 @@ var dialogbox
 
 #Shortcut to the sprites of the scene, "slotX"
 var sprites
-var showing = [false, false, false, false]#Array of bools to control show/hide anims
+var showing = [false, false, false, false] #Array of bools to control show/hide anims
 var hiding = [false, false, false, false]
 var m_speed = 5.0 #Speed of fade
 
@@ -35,6 +35,9 @@ var names_array = [] #...names
 #cf[j] stores the jth line of the dialogue
 var cf
 var linec #Current line of the dialogue
+
+#In order to work with the variables of the metalanguage
+var vnglobal
 
 #Branching and decision-making
 var in_decision = false #Is the player choosing an option now?
@@ -55,6 +58,10 @@ func _ready():
 	dialogbox = dialogbox_class.instance()
 	add_child(dialogbox)
 	
+	#Start VNGlobal
+	vnglobal = get_tree().root.get_node("/root/vn_global")
+	
+	#Set process
 	set_process(false)
 	set_physics_process(false)
 	set_process_input(true)
@@ -196,8 +203,10 @@ func draw_character(command):
 		
 		#Add to the animation procedure
 		showing[pos] = true 
-	
-	set_process(true)
+		set_process(true)
+	else:
+		#Start with color from the beginning
+		sprites[pos].modulate=Color(1,1,1,1)
 
 #Hides a slot with a fade out
 func hide_character(command):
@@ -208,6 +217,7 @@ func hide_character(command):
 	hiding[pos] = true
 	set_process(true)
 
+#Make a fade in/out
 func fade(is_in):
 	if (is_in):
 		$anim.play("screen_fade_in")
@@ -215,6 +225,11 @@ func fade(is_in):
 		$anim.play("screen_fade_out")
 	
 
+#Set the background
+func set_bg(command):
+	var bgname = get_arg(command[1])
+	
+	$bg.texture = load(paths[bgname])
 
 #Returns false if there is no slot doing fade in/out
 #If nobody is doing it, the process is turned off
@@ -266,6 +281,25 @@ func parse_options(command):
 	
 	dialogbox.set_options(options)
 	dialogbox.mark_option(selected_index)
+
+#Checks the value of a variable and makes a jump 
+#depending on the specified condition
+func meta_if(command):
+	
+	#Parse condition and obtain if it is true/false
+	var condition = vnglobal.if_var(command[1])
+	
+	#Write the options
+	var opt1 = get_arg(command[2])
+	var opt2 = get_arg(command[3])
+	tag_options = [opt1, opt2]
+	
+	
+	#Select correct tag
+	if (condition):
+		jump_to_tag(0,true)
+	else:
+		jump_to_tag(1,true)
 
 #Takes the file and jump lines until we get to the desired point
 #Does effectively the branching when player selects a decision
@@ -369,14 +403,26 @@ func parse_line():
 				hide_character(command)
 			#Set a background
 			elif (c0 == "set_bg"):
-				$bg.texture = get_arg(command)
+				set_bg(command)
 			#Fade in/out
 			elif (c0 == "fade_in"):
 				fade(true)
 			elif (c0 == "fade_out"):
 				fade(false)
 				next = false
-			#Skip lines until tag is reached
+			#Value of variable
+			elif (c0 == "set"):
+				c1 = get_arg(command[1])
+				var c2 = get_arg(command[2])
+				vnglobal.set_var(c1, c2)
+				print(vnglobal.vars)
+			elif (c0 == "add"):
+				c1 = get_arg(command[1])
+				var c2 = get_arg(command[2])
+				vnglobal.add_var(c1, c2)
+			elif (c0 == "if"):
+				meta_if(command)
+			#Find tag
 			elif (c0 == "goto"):
 				c1 = get_arg(command[1])
 				tag_options = [c1]

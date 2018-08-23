@@ -14,6 +14,10 @@ config/name="RayuelaJam"
 run/main_scene="res://vn_engine/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+vn_global="*res://vn_engine/vn_global.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

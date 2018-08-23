@@ -1,6 +1,8 @@
 # --------- FICHERO DE PRUEBA ----------------- #
 # ¡Con comentarios!
 
+set_bg; BG_calle
+
 #Carga texturas
 load; D_Contento; D_Normal
 
@@ -36,7 +38,19 @@ fade_out
 fade_in
 
 1; ¿Te has ido?
+
 show;D_Normal;2
 2; No, en verdá sigo aquí
+
+set; dinero; 6
+add; dinero; -2
+
+if; dinero>5; MONEY; NO_MONEY;
+
+%MONEY
+2; ¡Tienes dinero!
+
+%NO_MONEY
+2; No tienes un duro.
 
 goto; END
