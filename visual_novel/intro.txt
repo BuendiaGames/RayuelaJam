@@ -1,0 +1,28 @@
+# Intro
+
+load; D_Contento; D_Normal; directortesis
+
+show;D_Normal;2
+show;directortesis;1
+hide;1
+
+2; Buenas tardes, director.
+1; ¿Tenía tutoría contigo?
+2; Eh... no.\nPero le mandé unos correos y...
+1; ¿Correos?
+1; No me ha llegado ningún correo.
+2; ¿No? Bueno...
+1; Igualmente, ¿qué necesitabas?
+2; Estoy teniendo ciertos problemas con la tesis.
+1; ...
+2; Sí, bueno, yo, eh...\nQuería saber en qué consistían exactamente mis prácticas.
+1; ¿Tu estabas en...?
+2; Petra, profesor, mis prácticas eran en Petra.\n(Por Dios, vaya director de tesis...)
+1; Ah, sí, claro... ya lo sabía.\nTu trabajo allí consistirá en reducir el número de religiones de la zona y entregar un informe sobre ello.
+2; ¿Un informe?
+1; Sí, una memoria de prácticas que examinará un tribunal y de la cual dependerá toda tu nota.
+2; ¿Toda? ¿Incluso si mis prácticas están bien hechas, si no hago la memoria bien me suspenden?
+1; Sí, exactamente. Hala, buena suerte muchacho.
+fade_out
+
+jump; res://visual_novel/dia1.txt

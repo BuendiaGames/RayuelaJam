@@ -1,0 +1,48 @@
+# Dia 2 Rama A
+
+load; D_Contento; D_Normal; padre_normal; padre_contento; 
+
+set_bg; BG_calle
+
+show;D_Normal;2
+show;padre_normal;1
+
+fade_in
+
+1; Vale, vas a ayudarme a guardar mis cabras en su sitio, ¿sí?
+2; claro.
+1; Genial, pues comienza.
+
+#MINIJUEGO DE LAS CABRAS AQUI
+
+#AQUÍ COMPRUEBAS CUANTAS CABRAS HAS GUARDADO Y DEPENDIENDO DEL NÚMERO TE DICE UNA FRASE U OTRA
+
+show; padre_contento; 1
+
+1; Muchas gracias por la ayuda, muchacho.
+2; Gracias a usted, por pagar mi deuda.\nAhora, debería irme.
+1; Adiós.
+
+hide; 2
+
+fade_out
+
+#AQUI METO FONDO DE TEMPLO
+
+hide; 1
+show_D_Normal;2
+
+fade_in
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+# Dia 1
+
+load; D_Contento; D_Normal; padre_normal; padre_contento; hijo
+
+set_bg; BG_calle
+
+fade_in
+
+show;D_Normal;2
+
+2; ¡AUCH! ¡ME HE CLAVADO ARCILLA EN...!
+show;padre_normal;1
+
+1; ¿Estás bien, muchacho?
+2; Sí, sí... gracias.
+1; Oh... Qué desastre... Has roto todas las vasijas...
+2; ¿Eran suyas?
+
+show;padre_contento;1
+
+1; Oh, no, eran de ese mercader enfadado que está afilando un cuchillo.
+2; ¿!MERCADER ENFADADO AFILANDO UN CUCHILO?!
+1; Sí, ¿no lo ves? Ese que está viniendo hacia aquí...\nHala, sí que es rápido.
+2; Oh dios... Querrá que le pague lo que mi precioso culo ha roto...
+2; ¡Y NI MI PRECIOSO CULO NI YO TENEMOS DINERO!
+
+show;padre_normal;1
+
+1; ¿No tienes dinero, chico?\n¿Ni para pagar unas tinajas de agua?
+2; Ni para eso, soy estudiante.
+1; ¿"Estudiante"? Bueno, da igual, quizá...
+2; ¿Quizá?
+1; Quizá podrías ayudarme a trabajar a cambio del dinero.
+2; ¡Sí, por favor!
+1; Está bien, yo pagaré, mientras espera con mi hijo.
+
+show;hijo;1
+
+1; Hey, veo que estás pelado.
+2; eh...
+do_branch;  2;   ¡Sí!; YES1;    ¡No!; NO1;
+
+%YES1
+1; Pues entonces te toca hacer mi trabajo en la granja.
+goto; SIG1
+
+%NO1
+1; ¿No? No te lo crees ni tú. Vas a hacer mi trabajo en la granja.
+goto; SIG1
+
+%SIG1
+2; Lo sé, le debo dinero a tu padre.
+1; ¿Cómo has roto esas tinajas?
+2; Con... el culo.
+1; ...
+2; ...
+1; No preguntaré más.
+
+show;padre_normal;1
+
+1; Anda, vamos a casa. Puedes dormir ahí, si quieres.
+do_branch; 2; Me vendría genial; YES2; No hace falta; NO2
+
+%YES2
+1; Genial, vamos entonces.
+goto; SIG2
+
+%NO2
+1; No mientas, anda, vamos a casa, te daremos una cena caliente. Siendo "estudiante" seguro que te hace falta, sea lo que sea eso.
+goto; SIG2
+
+%SIG2
+
+fade_out
+
+#jump
+
+
+
+
+
+
+
+
+

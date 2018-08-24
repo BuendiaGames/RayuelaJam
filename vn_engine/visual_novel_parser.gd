@@ -191,6 +191,10 @@ func draw_character(command):
 	else:
 		fade = false
 	
+	print(ch_names)
+	print(ch)
+	print(pos)
+	print(names_array)
 	#Set the name corresponding to this character
 	names_array[pos] = ch_names[ch]
 	
