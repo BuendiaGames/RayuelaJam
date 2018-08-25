@@ -21,6 +21,7 @@ var cervpreparada = false
 var cervcogida = false
 var completado = false
 
+var corazones #Stores the ui container
 
 
 func add_cerveza():
@@ -33,8 +34,7 @@ func add_cerveza():
 	add_child(cerv)
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	corazones = $ui/corazones
 	pass
 
 func _process(delta):
@@ -53,7 +53,7 @@ func _process(delta):
 
 	if (cervpreparada and !cervcogida and tiempocogida >= tiempomaxcoger):
 		vida -= 1
-		print(vida)
+		corazones.eliminar_vida()
 		tiempocogida = 0
 	
 	if (cervcogida):
@@ -63,7 +63,7 @@ func _process(delta):
 			completado = true
 		elif (!completado and tiempobeber >= tiempoentrebeber+margen):
 			vida -= 1
-			print(vida)
+			corazones.eliminar_vida()
 			tiempobeber = 0
 		
 	if (vida == 0):

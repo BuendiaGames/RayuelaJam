@@ -1,40 +1,40 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 
 var ondas_class = preload("res://mini_batallafinal/ondas.tscn")
 
-var vidaperso = 3
+var vidaperso = 5
 var vidamala = 3
 
 var velperso = Vector2(0.0,0.0)
-var speedperso = 50.0
+var speedperso = 80.0
 
 var velmala = Vector2(0.0,80.0)
 var speedmala = 80.0
 var tiempomala = 0
+var timeattack = 0.5 #Time to send waves to player
 
+#Health bar container
+var corazones
+
+#Handle player input
 func moverse ():
 	if (Input.is_action_pressed("ui_up") and $player.position.y > -100):
 		velperso.y = -speedperso
-		#change_anim("right")
 	elif (Input.is_action_pressed("ui_down") and $player.position.y < 100):
 		velperso.y = speedperso
-		#change_anim("left")
 	else :
 		velperso.y = 0
-		#$player/AnimationPlayer.stop(true)
 
+
+#Witch movement
 func mala():
 	if ($mala.position.y < -100):
 		velmala.y = speedmala
 	elif ($mala.position.y > 100):
 		velmala.y = -speedmala
-	#if (abs($mala.position.y) >= 100):
-	#	velmala.y = -velmala.y
-	
+
+#Create a new wave attacking the player
 func atacar():
 	var onda = ondas_class.instance()
 	onda.position.x = $mala.position.x
@@ -44,45 +44,52 @@ func atacar():
 
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	#Store the ui
+	corazones = $ui/corazones
 	pass
 
+
 func _process(delta):
-	moverse()
+	#Player movement
+	moverse() 
 	$player.position += velperso*delta
+	
+	#Witch movement
 	mala()
 	$mala.position += velmala*delta
+	
+	#From time to time, do an attack
 	tiempomala += delta
-	if (tiempomala >= 3):
+	if (tiempomala >= timeattack):
 		atacar()
 		tiempomala = 0
-	if (Input.is_action_just_pressed("ui_accept")):
-		get_tree().call_group("ondas", "darselavuelta")
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
-
-#cuando pulses tecla A:
-#	call_group("ondas", "darse_la_vuelta")
 	
-#area es lo que choca conmigo
+	#Call code to return waves
+	if (Input.is_action_just_pressed("ui_accept")):
+		#Emit particles as an effect
+		$player/reflect.emitting = true
+		get_tree().call_group("ondas", "darselavuelta")
+	
+
+#Hurt the player if wave enters
 func _on_player_area_entered(area):
 	area.queue_free()
 	vidaperso -= 1
+	corazones.eliminar_vida()
+	#TODO perder
 	if (vidaperso == 0):
 		print("muerto")
-		#falta quitar iconitos d ecorazon una vez los tenga
 
-
+#If the wave is inside the sensor area, make ready
+#for reverse
 func _on_Area2D_area_entered(area):
 	area.preparado = true
 
-
+#Deal damage to the witch when wave enter
 func _on_mala_area_entered(area):
 	if (area.vel.x > 0):
 		area.queue_free()
 		vidamala -= 1
 		if (vidamala == 0):
 			print("ganaste")
+			#TODO: victory

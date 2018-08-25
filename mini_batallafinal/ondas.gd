@@ -8,7 +8,7 @@ var anim
 
 var preparado = false
 
-var speed = 50.0
+var speed = 200.0
 var vel = Vector2(0.0,0.0)
 
 var alpha = 15*2*PI/360.0
