@@ -20,6 +20,8 @@ var seccomplete = false
 
 var secu = []
 
+var corazones #To store ui health
+
 func generar_secuencia(num):
 	secu = []
 	secu.append(randi() % 4)
@@ -45,44 +47,55 @@ func playerdancing (tiempo, secuactual, secusig):
 		if (tiempo < cooldown):
 			if (secuactual != 0):
 				vida -= 1
+				corazones.eliminar_vida()
 		elif (tiempo > coolup and secusig == 0):
 			pass
 		else:
 			vida -= 1
+			corazones.eliminar_vida()
 	elif (Input.is_action_just_pressed("ui_down")):
 		cont = 0
 		$player.frame = 2
 		if (tiempo < cooldown):
 			if (secuactual != 1):
 				vida -= 1
+				corazones.eliminar_vida()
 		elif (tiempo > coolup and secusig == 1):
 			pass
 		else:
 			vida -= 1
+			corazones.eliminar_vida()
 	elif (Input.is_action_just_pressed("ui_left")):
 		cont = 0
 		$player.frame = 3
 		if (tiempo < cooldown):
 			if (secuactual != 2):
 				vida -= 1
+				corazones.eliminar_vida()
 		elif (tiempo > coolup and secusig == 2):
 			pass
 		else:
 			vida -= 1
+			corazones.eliminar_vida()
 	elif (Input.is_action_just_pressed("ui_right")):
 		cont = 0
 		$player.frame = 4
 		if (tiempo < cooldown):
 			if (secuactual != 3):
 				vida -= 1
+				corazones.eliminar_vida()
 		elif (tiempo > coolup and secusig == 3):
 			pass
 		else:
 			vida -= 1
-			
+			corazones.eliminar_vida()
 
 func _ready():
 	randomize()
+	
+	#Store health bar
+	corazones = $ui/corazones
+	
 	$jefe.frame = 0
 	for i in $bichos.get_children():
 		i.frame = 0
@@ -125,6 +138,7 @@ func _process(delta):
 	
 	if (cont >= tiempomov+0.1 and $bichos/bicho1.frame != 0 and start):
 		vida -= 1
+		corazones.eliminar_vida()
 		cont = 0
 	
 	
@@ -132,7 +146,7 @@ func _process(delta):
 		generar_secuencia(numsecuencias)
 		iniciar()
 		numsecuencias += 1
-
+	
 	if (vida == 0):
 		print("muerto")
 	

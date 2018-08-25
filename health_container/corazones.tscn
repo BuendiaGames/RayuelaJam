@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://health_container/corazones.gd" type="Script" id=1]
+
+[node name="corazones" type="Node2D"]
+
+position = Vector2( 54.0205, 44.1985 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+maxvida = 3
+
+

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graficos/sheet.png" type="Texture" id=1]
+[ext_resource path="res://graficos/Dung_tileset.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="fence" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 96, 16, 16 )
+region_filter_clip = true
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="grass" type="Sprite" parent="." index="1"]
+
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 80, 16, 16 )
+region_filter_clip = true
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="flower1" type="Sprite" parent="." index="2"]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 80, 16, 16 )
+region_filter_clip = true
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="flower2" type="Sprite" parent="." index="3"]
+
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 112, 96, 16, 16 )
+region_filter_clip = true
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="dungeon" type="Sprite" parent="." index="4"]
+
+position = Vector2( 0, 16 )
+scale = Vector2( 0.3333, 0.3333 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 132, 12, 48, 48 )
+region_filter_clip = true
+_sections_unfolded = [ "Region", "Transform" ]
+
+
