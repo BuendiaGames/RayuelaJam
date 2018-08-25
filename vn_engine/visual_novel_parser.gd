@@ -13,10 +13,14 @@ const mpath = "res://vn_engine/main"
 
 var paths = {}
 var ch_names = {}
+var offset = {}
+var ch_scale = {}
 #Stores all paths and names to load them accordingly
 #const paths = {"D_Contento":DIOS_CONTENTO, "D_Normal":DIOS_NORMAL}
 #const ch_names = {"D_Contento":"Dios", "D_Normal":"Dios"}
 
+#Default position of each slot
+var slot_pos = []
 
 #Reference to the dialog box:
 var dialogbox_class = preload("res://vn_engine/dialogbox.tscn")
@@ -29,8 +33,9 @@ var hiding = [false, false, false, false]
 var m_speed = 5.0 #Speed of fade
 
 #An array that stores all the currently used...
-var tex_array = {}
+var tex_array = {} #...textures
 var names_array = [] #...names
+
 
 #cf[j] stores the jth line of the dialogue
 var cf
@@ -53,6 +58,10 @@ func _ready():
 	
 	#Store all sprites
 	sprites = $sprites.get_children()
+	
+	#Store default positions of slots
+	for s in sprites:
+		slot_pos.append(s.position)
 	
 	#Get the dialogbox
 	dialogbox = dialogbox_class.instance()
@@ -139,24 +148,49 @@ func set_up_graphics():
 	for j in range(len(line)):
 		line[j] = get_arg(line[j])
 	
+	#First line first
 	#Check if it is prefix, in that case save it
 	if (line[0] == "#PREFIX"):
 		prefix = line[1] 
 	else:
+		#Load name and path
 		ch_names[line[0]] = line[1]
 		paths[line[0]] = prefix+line[2]
+		
+		#Offset is an optional parameter
+		if (len(line) > 3):
+			offset[line[0]] = Vector2(float(line[3]), float(line[4]))
+		else:
+			offset[line[0]] = Vector2(0.0, 0.0)
+		if (len(line) == 6):
+			ch_scale[line[0]] = float(line[5])
+		else:
+			ch_scale[line[0]] = 1.0
+	
 	
 	#Read all the file
 	while (not g.eof_reached()):
 		line = g.get_line()
 		line = line.split(";")
+		
 		#Check this is a valid line
-		if (len(line) == 3):
+		if (len(line) >= 3):
 			for j in range(3):
 				line[j] = get_arg(line[j])
 			
 			ch_names[line[0]] = line[1]
 			paths[line[0]] = prefix+line[2]
+			
+			if (len(line) > 3):
+				offset[line[0]] = Vector2(float(line[3]), float(line[4]))
+			else:
+				offset[line[0]] = Vector2(0.0, 0.0)
+			
+			if (len(line) == 6):
+				ch_scale[line[0]] = float(line[5])
+			else:
+				ch_scale[line[0]] = 1.0
+	
 	
 	g.close()
 	
@@ -198,8 +232,11 @@ func draw_character(command):
 	#Set the name corresponding to this character
 	names_array[pos] = ch_names[ch]
 	
-	#Set the texture
+	#Set the texture and the offset
 	sprites[pos].texture = tex_array[ch]
+	sprites[pos].position = slot_pos[pos] + offset[ch]
+	sprites[pos].scale = Vector2(0.2,0.2) * ch_scale[ch]
+	#TODO: AJUSTAR BIEN ESTO CON LOS TAMAÑOS
 	
 	if (fade):
 		#Start transparent and set a texture

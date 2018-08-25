@@ -10,13 +10,23 @@ Open the `vn_engine` folder and open the `ginfo` file. All the paths to the diff
 
 ```
 #PREFIX;/path/to/graphics/folder/
-metaname1; ch_name1; file1.png
-metaname2; ch_name2; this/is/inside/a/folder/file2.png
+metaname1; ch_name1; file1.png; offsetX; offsetY; scale
+metaname2; ch_name2; this/is/inside/a/folder/file2.png; offsetX; offsetY; scale
 ...
-metanameN; ch_nameN; fileN.png;
+metanameN; ch_nameN; fileN.png; offsetX; offsetY; scale
 ```
 
 The first line allows you to declare the root folder where your graphics are located, so you don't have to write for each single file. This line is optional and you can skip it if you want. In the next files, you map a _metaname_ to a character name and a graphic file. The metaname will be the identifier used for the visual novel engine, and the character name the one displayed in the dialogboxes.
+Finally, the `offsetX` and `offsetY` variable allows you to move the position of the slot, in order to correct little problems with your graphics. You also can change the size with the `scale` (1.0 means no resize). These arguments are optional, so the following is valid syntax:
+
+```
+#Assumes offset=(0,0) and scale=1
+metaname1; ch_name1; file1.png
+#Assumes offset=(x,y) and scale=1
+metaname; ch_name1; file1.png; x; y
+```
+
+> Take in account that `metaname; ch_name; file.png; scale` is **not** valid syntax. If you want to specify the scale, `offset` must be provided.
 
 The dialogbox graphic can be edited simply editing the `dialogbox.tscn` scene. Take care of its corresponding script when doing this.
 
@@ -133,6 +143,7 @@ do_branch; 2;   Yes, of course; Y;   No, I don't; N
 
 %Y
 2; Nice! I will see you there
+goto; MEETING
 
 %N
 2; Oh! What a shame!
@@ -193,7 +204,7 @@ if; has_scepter==1; SCEPTER_SCENE; DEATH_SCENE
 
 %SCEPTER_SCENE
 #(...)
-goto; %DEATH_SCENE
+goto; DEATH_SCENE
 
 
 %DEATH_SCENE

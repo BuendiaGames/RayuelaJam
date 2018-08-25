@@ -3,9 +3,9 @@
 D_Contento; Dios; dios_contento.png
 D_Normal; Dios; dios_normal.png
 directortesis; Director; dios_normal.png
-padre_normal; Padre; padre_normal.png
-padre_contento; Padre; padre_contento.png
-hijo; Hijo; hije.png
+padre_normal; Padre; padre_normal.png; 50; 70
+padre_contento; Padre; padre_contento.png; 50; 70
+hijo; Hijo; hije.png; 50; 30; 1.1
 
 BG_calle; noname; bg_street.png
     
