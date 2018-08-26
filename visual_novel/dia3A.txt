@@ -1,15 +1,54 @@
 # Dia 3 Rama A
 
-load; D_Contento; D_Normal; padre_normal; padre_contento; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; encapuchado
+load; D_Contento; D_Normal; hijo; dania_normal; dania_ego; dania_enfadada
 
 set_bg; BG_farm
 
 show;D_Normal;2
-show;padre_normal;1
+show;hijo;1
 
 fade_in
 
-1; Vale, vas a ayudarme a guardar mis cabras en su sitio, ¿sí?
-2; claro.
-1; Genial, pues comienza.
+2; Buenos días...
+1; Madre mía, vaya cara de muerto tienes, ¿anoche saliste no?
+2; Sí... Estoy cansado... Pero conocí a alguien interesante.
+1; ¿Interesante? ¿Has ligado con alguien? ¡¿CON TU CARA?!
+
+show; D_Contento; 2
+
+2; EH, que soy precioso.
+1; No te lo crees ni tú.
+
+show; D_Normal; 2
+
+2; Bueno, el caso es que me gustaría encontrar alguna información sobre él, ¿me ayudas?
+1; Claro, seguro que podemos preguntar y alguien lo conocerá.
+2; Vamos, pues.
+
+fade_out
+
+set_bg; BG_calle
+
+fade_in
+
+2; Llevamos toda la mañana preguntando y nadie sabe nada... ¿Qué probabilidades había?
+1; Bastantes, en realidad, por esta ciudad pasa mucha gente debido a la economía.
+2; ¿Sabes lo que son las preguntas retóricas?
+1; Mientras tú te bajas los humos creo que voy a preguntar a esa vieja cotilla de ahí, siempre ve todo y conoce hasta a las gallinas.
+
+hide;1
+
+2; ¿Y entonces por qué no hemos empezado por ella? Así no avanzamos...
+
+show; hijo; 1
+
+
+
+
+
+
+
+
+
+
 
