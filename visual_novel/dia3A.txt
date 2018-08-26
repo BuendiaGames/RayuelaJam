@@ -1,0 +1,15 @@
+# Dia 3 Rama A
+
+load; D_Contento; D_Normal; padre_normal; padre_contento; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; encapuchado
+
+set_bg; BG_farm
+
+show;D_Normal;2
+show;padre_normal;1
+
+fade_in
+
+1; Vale, vas a ayudarme a guardar mis cabras en su sitio, ¿sí?
+2; claro.
+1; Genial, pues comienza.
+

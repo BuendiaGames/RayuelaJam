@@ -2,6 +2,8 @@
 
 load; D_Contento; D_Normal; directortesis
 
+set_bg;BG_office
+
 show;D_Normal;2
 show;directortesis;1
 hide;1

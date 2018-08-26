@@ -6,6 +6,18 @@ directortesis; Director; dios_normal.png
 padre_normal; Padre; padre_normal.png; 50; 70
 padre_contento; Padre; padre_contento.png; 50; 70
 hijo; Hijo; hije.png; 50; 30; 1.1
+dania_normal; Dania; dania_normal.png; 0; 0; 1
+dania_ego; Dania; dania_ego.png; 0; 0; 1
+dania_enfadada; Dania; dania_enfadada.png; 0; 0; 1
+tania_normal; Tania; tania_normal.png; 0; 0; 1
+tania_enfadada; Tania; tania_enfadada.png; 0; 0; 1
+encapuchado; ???? ; encapuchado.png; 0; 0; 1
+
 
 BG_calle; noname; bg_street.png
+BG_office; noname; bg_office.png
+BG_farm; noname; bg_farm.png
+BG_templeD; noname; bg_temple1.png
+BG_templeT; noname; bg_temple2.png
+
     

@@ -1,8 +1,8 @@
 # Dia 2 Rama A
 
-load; D_Contento; D_Normal; padre_normal; padre_contento; 
+load; D_Contento; D_Normal; padre_normal; padre_contento; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; encapuchado
 
-set_bg; BG_calle
+set_bg; BG_farm
 
 show;D_Normal;2
 show;padre_normal;1
@@ -27,12 +27,221 @@ hide; 2
 
 fade_out
 
-#AQUI METO FONDO DE TEMPLO
+set_bg; BG_templeD
 
 hide; 1
-show_D_Normal;2
+show;D_Normal;2
 
 fade_in
+
+2; Ah, al fin, el templo... Ya podrían haberlo construido en un sitio donde fuera mas fácil acceder...
+
+show;dania_enfadada;1
+
+1; ¿Qué problema tienes con la localización del templo?
+2; Oh... Ninguno, ninguno...
+
+show;dania_ego;1
+
+1; Eso me había parecido oír, sí.
+2; ¿Vienes aquí a rendir culto a algún dios?
+
+show;dania_enfadada;1
+
+1; \n¡¿ALGÚN?!
+
+show;dania_ego;1
+
+1; Soy la sacerdotisa de este templo, aquí rendimos culto al único dios verdadero.
+2; Claro, claro (Está loca de atar).
+1; ¿Y bien? ¿En qué puedo ayudarte?
+2; Sólo quería saber un poco del templo.
+
+show; dania_normal;1
+
+1; Oh, claro, ¿qué quieres saber?
+do_branch; 3; El edificio; EDIFICIO; Tu religión; RELIGION; Tus fieles; FIELES
+
+%EDIFICIO
+1; Este templo está construido desde antes de la llegada de los romanos, por uno de los mejores arquitectos hindús.
+1; Claro que, con los años, he remodelado un poco el interior para que sea agradable a los visitantes.
+goto; SIG3
+
+%RELIGION
+show; dania_ego; 1
+
+1; La religión de este templo es la única moralmente aceptable.
+2; ¿En qué se basa?
+1; Respetamos a los animales, ya que son incluso superiores a los humanos.
+1; Comer animales o cualquier derivado suyo está TERMINANTEMENTE PROHIBIDO.
+1; Y, en el rango más alto de esta religión, no comeremos nada que produzca sombra.
+2; (Esta chica me da miedo...)
+goto; SIG3
+
+%FIELES
+show; dania_ego; 1
+
+1; Mis fieles respetan una dieta libre de animales muertos o derivados de animales.
+1; Además, vienen al templo a denunciar abusos a animales para que yo me ocupe de ello.
+goto; SIG3
+
+%SIG3
+show; dania_normal; 1
+
+2; Ya veo, ¡gracias!
+1; Podrías visitar el templo por dentro, pero antes...
+1; ¿Comes carne o algún derivado de animal?
+do_branch; 2; Sí; YES4; No; NO4
+
+%YES4
+show;dania_enfadada; 1
+
+1; PUES NO OSES ACERCARTE A MI TEMPLO, ¡LÁRGATE!
+goto; SIG4
+
+%NO4
+show;dania_enfadada; 1
+
+1; ¡MENTIROSO! ¡TU AURA APESTA A CULPABILIDAD ANIMAL! ¡LÁRGATE!
+goto; SIG4
+
+%SIG4
+
+hide; 2
+
+fade_out
+
+set_bg; BG_templeT
+
+hide;1
+show; D_Normal; 2
+
+fade_in
+
+2; Vaya, este templo es algo... grande.
+
+show; tania_normal; 1
+
+1; Buenas tardes, soy la sacerdotisa de este templo ¿en qué puedo ayudarle?
+2; Tenía curiosidad por el templo.
+1; Esta es la humilde casa de nuestro señor Pastafari.
+do_branch; 2; ¿Pastafari?; YES5; ¿Es  broma?; NO5
+
+%YES5
+1; Nuestro señor Pastafari es el [color=red]Monstruo Espagueti Volador[/color].
+1; Consideramos los espaguetis el tipo de pasta supremo y, por supuesto, él creó el mundo tras beber demasiado, por eso es imperfecto.
+2; (¿De dónde han salido estas religiones tan disparatadas?)
+goto; SIG5
+
+%NO5
+show; tania_enfadada; 1
+
+1; \n¡¿No crees en el gran Monstruo Espagueti Volador?!
+
+show; tania_normal; 1
+
+1; Bueno... Supongo que hay gente a la que le van más los macarrones con tomatico.
+goto; SIG5
+
+%SIG5
+2; Gracias por la información.
+1; No hay de qué, puedes venir aquí a pedir espaguetis o a buscar consejo.
+2; Lo tendré en cuenta, pero será mejor que me vaya ya, ¡hasta luego!
+hide; 2
+
+#METER ALGO MAS DE RELLENO A ESTE TEMPLO
+
+fade_out
+
+set_bg; BG_calle
+
+hide; 1
+
+show; D_Normal; 2
+
+fade_in
+
+2; (Qué día tan largo...\nHe visitado un par de templos cuando menos... curiosos. Los incluiré en la tesis.)
+2; (Estoy tan cansado de andar... Aunque también lo estará ese encapuchado que lleva detrás mía unas horas)
+2; (Hummm... Voy a decirle algo, lleva un buen rato siguiéndome)
+
+
+show; encapuchado; 1
+
+
+2; Hey.
+1; ALLAHU ACKBAR
+
+hide; 1
+
+2; ¿Qué? ¡Eh, no te vayas! (¿Debería seguirlo?)
+do_branch; 2; Sí.; YES6; No.; NO6
+
+%YES6
+show; encapuchado; 1
+
+2; Eh, ¿me estabas siguiendo?
+1; Eh... No, hombre, ¿cómo te iba a seguir yo? ¿Y por qué?
+2; ¿Entonces?
+1; Iba a la taberna de la esquina, te puedes venir si quieres. ¿Qué dices?
+do_branch; 2; Vale.; YES7; Paso.; NO7
+goto; SIG6
+
+%NO6
+2; Supongo que iré a casa entonces...
+
+goto; SIG8
+
+%SIG6
+
+%YES7
+
+1; ¿Has estado alguna vez en esta taberna?
+2; No, ¿tú vienes mucho?
+1; Sí, bastante, pero entre semana no, porque estoy ocupado.
+2; ¿Ocupado con qué?
+1; Soy aprendiz de [color = red]encapuchado[/color].
+2; ¿Aprendiz?
+1; Sí, estoy estudiando para ser un encapuchado, pero la verdad es que no se me da muy bien.
+2; Bueno, yo también estoy estudiando y la verdad que tampoco lo llevo bien, de hecho estoy intentando salvar mi tesis ahora mismo.
+1; ¿Sí? ¿Y realmente te gusta lo que haces?
+2; Claro, ¿por?
+1; A mí lo que realmente me gusta ahora mismo es salir los fines de semana a beber para olvidarme de los estudios.
+1; ¿Tú bebes?
+do_branch; 2; Claro; YES8; Qué va; NO8
+
+%YES8
+1; Entonces vamos a ver quién bebe más.
+show; D_Contento; 2
+2; Dale.
+
+#MINIJUEGO DE BEBER
+
+2; Eh, eresss un tíiio genial, te acompañoo a casssa.
+1; Buah tío... No hace falta...
+2; Que ssí hombreeee, que para eso estamoossss.
+1; Gracias crack, eres lo mejor de esta vida, te quiero muchísssssssimo.
+2; y yo a tiii...
+goto; SIG8
+
+%NO8
+1; No? Pues vaya rollo, entonces mejor lo dejamos.
+hide; 1
+goto; SIG8
+
+%SIG8
+fade_out
+
+jump; res://visual_novel/dia3A.txt
+
+%NO7
+
+1; Vaya aburrido.
+
+hide; 1;
+goto; SIG8
+
+
 
 
 
