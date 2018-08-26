@@ -12,6 +12,8 @@ dania_enfadada; Dania; dania_enfadada.png; 0; 0; 1
 tania_normal; Tania; tania_normal.png; 0; 0; 1
 tania_enfadada; Tania; tania_enfadada.png; 0; 0; 1
 encapuchado; ???? ; encapuchado.png; 0; 0; 1
+rival_normal; Ric; rival_normal.png; 0; 0; 1
+rival_contento; Ric; rival_contento.png; 0; 0; 1
 
 
 BG_calle; noname; bg_street.png
@@ -19,5 +21,5 @@ BG_office; noname; bg_office.png
 BG_farm; noname; bg_farm.png
 BG_templeD; noname; bg_temple1.png
 BG_templeT; noname; bg_temple2.png
-
+BG_city; noname; bg_city.png
     

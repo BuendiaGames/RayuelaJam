@@ -1,6 +1,6 @@
 # Dia 3 Rama A
 
-load; D_Contento; D_Normal; hijo; dania_normal; dania_ego; dania_enfadada
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; rival_normal; rival_contento
 
 set_bg; BG_farm
 
@@ -41,6 +41,177 @@ hide;1
 2; ¿Y entonces por qué no hemos empezado por ella? Así no avanzamos...
 
 show; hijo; 1
+
+1; Hey, esa señora no sabía mucho, pero quizá nos sea útil lo que ha dicho.
+1; El encapuchado es extranjero, y parece que suele ir por las [color=green]afueras de la ciudad[/color].
+2; Está bien, vayamos allí entonces, si no está al menos debe haber alguien que lo conozca.
+
+fade_out
+
+set_bg; BG_city
+
+fade_in
+
+2; Humm... Por aquí no parece que haya nadie con una capucha.
+1; Tampoco es de extrañar, yo me estoy asando y no llevo un manto negro enorme sobre mi cabeza.
+2; Debería seguir llevándola, esperemos aquí si aparece.
+
+show; rival_normal; 1
+
+1; Hey, parecéis perdidos, ¿necesitáis ayuda?
+2; Oh, no, estamos buscando a alguien.
+1; ¿Aquí? Por esta zona no hay mucha gente aparte de algunas cabras y mercaderes.
+1; Igualmente, quizá pueda ayudaros a encontrar a la persona que buscáis.
+2; Estamos buscando a un encapuchado, nos han dicho que frecuenta esta zona.
+1; Humm... Si va encapuchado y frecuenta esta zona seguramente pertenezca al [color=green]templo de Dania[/color] .
+1; Por lo que he oído, allí suelen hacer sacrificios.
+2; ¡¿SACRIFICIOS?!
+1; Sí, sacrificios. Deberías probar a buscarlo ahí, pero andaos con ojo.
+2; Está bien, será mejor que vayamos. ¡Muchas gracias!
+
+fade_out
+
+set_bg; BG_templeD
+show; hijo; 1 
+
+fade_in
+
+2; Escúchame, es mejor que hable yo, la sacerdotisa no parece muy... estable.
+1; Está bien.
+
+show; dania_normal; 1
+
+1; ¿Qué os trae por aquí?
+2; Nos han dicho que una persona que buscamos suele venir a este templo.
+1; ¿A quién buscáis?
+2; A un encapuchado, supuestamente extranjero.
+
+show; dania_ego; 1
+
+1; ¿Encapuchado extranjero? Aquí no hay nada de eso.
+2; Pero nos han dicho que viene aquí, a tu templo a hacer sacrificios...
+
+show; dania_enfadada; 1
+
+1; ¡¿SACRIFICIOS?! ¡¿EN MI TEMPLO?!
+2; Eh... Bueno... sí... Es lo que nos han dicho...
+1; ¡¡ES EL MAYOR INSULTO QUE NOS HAN HECHO EN LA VIDA!!
+2; (mierda...)
+1; GUARDIAS, APRESADLOS
+
+#AQUÍ VIENE EL MINIJUEGO DE HUIR DE LOS GUARDIAS
+
+fade_out
+
+set_bg; BG_calle
+
+hide; 1
+
+show; D_Normal; 2
+
+fade_in
+
+2; Menos mal que hemos conseguido escapar de los guardias de esa loca...
+2; ...
+2; ¿Verdad?
+2; ¿Hola?
+2; Bueno... Quizá se ha adelantado... probablemente vuelva a casa (Más le vale, si no no sé como voy a explicarle esto a su padre)
+
+fade_out
+
+set_bg; BG_farm
+
+show; padre_normal; 1
+
+fade_in
+
+1; Buenas tardes.
+2; Buenas tardes, ¿ha vuelto su hijo por casualidad a casa?
+1; No, no lo veo desde la mañana, que salió.
+2; Ya veo, gracias.
+1; ¿Ha pasado algo?
+do_branch; 2; Verá...; YES9; No; NO9
+
+%YES9
+1; Estaré pendiente por si lo veo, deberías ir a buscarlo. Tened cuidado, ¿sí?
+2; claro
+goto; SIG9
+
+%NO9
+1; Está bien... Es raro en él que no haya vuelto ya, si lo ves asegúrate de decirle que tenga cuidado, ¿sí?
+2; Claro.
+goto; SIG9
+
+%SIG9
+2; (mierda... se ha debido perder cuando escápabamos de los guardias o le ha debido pasar algo).
+2; (Será mejor que vaya a buscarlo, quizá podría pedir ayuda a...)
+
+fade_out
+
+set_bg; BG_city
+
+hide;1
+
+fade_in
+
+2; Espero que esté dispuesto a ayudarme... A ver donde está...
+
+show; rival_normal; 1
+
+1; Hey.
+2; Hola.
+1; ¿Encontraste a la persona que buscabas?
+2; No, pero eso ahora mismo no importa.
+1; ¿Ya no te hace falta?
+2; No, en realidad ahora me corre más prisa encontrar al chico que vino antes conmigo.
+1; ¿Se ha perdido?
+2; Ha desaparecido, no sé donde puede estar.
+1; Está bien, te ayudaré a encontrarlo.
+2; Vamos, tenemos que empezar ya.
+1; Está bien, ¿por dónde empezamos?
+do_branch; 2; Calle principal; CALLE; Templo de Tania; TEMPLO
+
+%CALLE
+1; Está bien, empecemos por la calle
+goto; SIG10
+
+%TEMPLO
+1; No creo que sea buena idea empezar por el templo, no creo que esté ahí.
+2; Entonces vayamos a la calle.
+goto; SIG10
+
+%SIG10
+fade_out
+
+set_bg; BG_calle
+
+fade_in
+
+2; ¿Por dónde podría estar...? Esta ciudad es enorme...
+1; ¿Suele ir a algún sitio en especial?
+2; No que yo sepa, y aún así, si ubiera vuelto habría ido a casa, creo que le ha pasado algo, que alguien lo ha raptado.
+1; Entonces tendremos que estar atentos y revisar  hasta la última piedra de los muros.
+2; ...
+1; ...
+1; ¡¿CÓMO DEMONIOS HAS HECHO ESO?!
+2; NO SÉ, HE TOCADO UNA PIEDRA Y EL MURO SE HA MOVIDO.
+1; ¿cÓMO SE ENCUENTRAN PASADIZOS SECRETOS POR CASUALIDAD?
+2; Y YO QUÉ SÉ, SON COSAS QUE PASAN.
+1; ESAS COSAS SOLO PASAN EN VIDEOJUEGOS DE SEGUNDA HECHOS POR AFICIONADOS QUE NO TIENEN NI IDEA DE NOVELAS GRÁFICAS.
+2; NO SÉ PORQUÉ PERO ESO ME OFENDE.
+1; QUIZÁ ERES DEMASIADO SENSIBLE.
+2; Entonces mejor dejamos de gritarnos.
+1; Sí... Mejor.
+2; Anda, bajemos a ver qué hay.
+
+fade_out
+
+#AQUÍ SE PONE FONDO DE MAZMORRA
+
+fade_in
+
+2; HOLA
+
 
 
 
