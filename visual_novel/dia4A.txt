@@ -1,0 +1,136 @@
+# Dia 4 Rama A
+
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada rival_normal; rival_contento; encapuchado
+
+set_bg; BG_templeT
+
+show;D_Normal;2
+
+hide;1
+
+fade_in
+
+2; ¿Tania? ¿Estás? Necesitaría tu ayuda.
+
+show;tania_normal;1
+
+1; ¿Ayuda? ¿Ha pasado algo?
+2; Estoy buscando a...
+
+show; tania_enfadada;1
+
+1; ¡No tengo tiempo para ayudarte!
+2; ¿Por qué no?
+1; ¿No lo ves? ¡Mi templo ha sido asaltado!
+2; ¿Qué? ¿Han robado algo?
+
+show; tania_normal; 1
+
+1; Parece que no se han llevado gran cosa...
+2; ¿Entonces?
+1; Esta mañana las puertas del templo estaban forzadas.\nEstamos revisando, pero parece que no se han llevado nada de valor.
+2; ¿Absolutamente nada? Qué raro...
+1; Aún así, debo quedarme para revisar del todo y ver si encontramos al culpable, lo siento.
+2; No te preocupes, gracias igualmente.
+
+hide;2
+
+fade_out
+
+set_bg; BG_templeD
+
+show; D_Normal; 2
+
+fade_in
+
+2; Vale... Tengo que ser encantador para conseguir su ayuda...
+
+show; dania-ego; 1
+
+1; ¿Qué haces tú aquí?
+2; Venía por si podías ayudarme a-
+
+show; dania_enfadada; 1
+
+1; ¿Ayudarte? ¿Yo? ¿Después de decirme que hago sacrificios en MI templo?
+2; Eso fue un malentendido...
+1; ¿Un malentendido? ¿ME VES CARA DE TONTA?
+do_branch; 2; Y de pava; YES12; Qué va, eres preciosa; NO12
+
+%YES12
+1; ¡¿CÓMO QUE DE PAVA?! LÁRGATE AHORA MISMO.
+goto; SIG12
+
+%NO12
+1; PRECIOSA LA TORTA QUE TE VOY A DAR COMO NO TE VAYAS.
+goto; SIG12
+
+%SIG12
+hide; 2
+
+fade_out
+
+hide; 1
+
+show; D_Normal; 2
+
+#AQUÍ PONEMOS EL FONDO DEL MERCADO
+
+fade_in
+
+2; Será mejor que compre algo para comer y ya pensaré algo para encontrar al resto...
+2; Si tan solo tuviera alguna pista...
+
+show; encapuchado; 1
+
+#revisar precio de las túnicas
+1; TÚNICAS DE ENCAPUCHADOS A DIEEEEZ DORAAAADOS
+2; ¿Túnicas?
+1; Sí, túnicas de calidad de la buena, originales de los encapuchados.
+2; ¿Con eso podría entrar en los encapuchados?
+1; Pues claro, son las originales.
+2; Genial, me la llevo.
+1; ¿Quiere por solo cinco dorados más la ropa interior a juego?
+do_branch; 2; Me la llevo; YES13; No, gracias; NO13
+#Aquí se hace la separacion dependiendo del dinero
+
+%YES13
+
+1; Aquí tiene.
+goto; SIG13
+
+%NO13
+#aquí viene un jump
+
+%SIG13
+fade_out
+
+#AQUI SE PONE EL FONDO DE MAZMORRA
+
+hide;1
+
+show; encapuchado;2
+
+fade_in
+
+2; (Vale, estoy dentro, me he cruzado con un par
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

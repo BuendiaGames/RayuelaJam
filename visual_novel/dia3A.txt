@@ -1,6 +1,6 @@
 # Dia 3 Rama A
 
-load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; rival_normal; rival_contento
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; rival_normal; rival_contento; encapuchado
 
 set_bg; BG_farm
 
@@ -210,8 +210,45 @@ fade_out
 
 fade_in
 
-2; HOLA
+2; Hey, eso son... ¿encapuchados?
+1; Eso parece... ¿Qué están haciendo?
+2; Creo que es...
+1; ¿Un sacrificio?
+1; ¿Deberíamos pararlos?
+do_branch; 2; Vamos; YES11; Espera; NO11
 
+%YES11
+2; Sí, vamos, tú por un lado y yo por otro.
+hide; 1
+2; (Voy a tener que ser sigiloso... Muy sigiloso...)
+show; encapuchado; 1
+1; ALERTA, INTRUSOS
+2; (¡Mierda! Nos han descubierto...)
+2; NO, CÓGELOS, QUE NO SE ESCAPEN...
+hide;1
+2; ¡Voy contigo!
+goto; SIG11
+
+%NO11
+2; Es mejor si esperamos a que acaben el...
+1; ¡No! nos han visto... ¡Se escapan! Voy tras ellos.
+hide; 1
+2; ¡Espera!
+goto; SIG11
+
+%SIG11
+
+fade_out
+
+set_bg; BG_calle
+
+fade_in
+
+2; ¿Dónde están todos? Ni siquiera veo a Ric... Será mejor que vaya a casa, mañana me ocuparé de esto.
+
+fade_out
+
+jump; res://visual_novel/dia4A.txt
 
 
 
