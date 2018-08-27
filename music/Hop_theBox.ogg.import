@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hop_theBox.ogg-1f16a82b185bebec47fb653d34f46562.oggstr"
+
+[deps]
+
+source_file="res://music/Hop_theBox.ogg"
+dest_files=[ "res://.import/Hop_theBox.ogg-1f16a82b185bebec47fb653d34f46562.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

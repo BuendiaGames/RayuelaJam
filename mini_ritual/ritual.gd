@@ -1,10 +1,19 @@
 extends Node2D
 
 
+#Music related constants
+const note_time = 3.0 / 4.0 #Time (in seconds) of 1 note
+var intro_counter = 0.0
+var intro_music = note_time * 7 #START INCLUYES SILENCE OF ONE NOTE (TIEMPOMOV)
+
 var tiempo = 0 #time running
-var tiempomov = 1.5 #time between two movements
-var vida = 3 #life of the player
+var tiempomov = note_time #time between two movements
+
+
+var vida = 5 #life of the player
 var numsecuencias = 2 # number of sequences, start at 2 and finish at 5
+var pasos_sec = [3,3,3,3]
+var index_sec
 
 var cont = 0 #auxiliar variable for  controlling no-push keys on dancing
 var contaux = 0 #auxiliar variable for controlling no-push keys while dancing on the last movement
@@ -25,6 +34,9 @@ var bichosdone = false #player and company finished dancing
 var secu = [] #array for saving the current sequence 
 
 var corazones #To store ui health
+
+
+
 
 func generar_secuencia(num): #create a new sequence with num movements
 	secu = []
@@ -111,12 +123,24 @@ func _ready():
 	$jefe.frame = 0
 	for i in $bichos.get_children():
 		i.frame = 0
+	index_sec = 0
+	numsecuencias = pasos_sec[index_sec]
 	generar_secuencia(numsecuencias)
 	iniciar()
-	numsecuencias += 1
-	pass
+	
+	set_physics_process(true)
 
-func _process(delta):
+func _physics_process(delta):
+	
+	#Starts the dance of everybody when music intro has finished
+	if (intro_counter >= intro_music):
+		do_logic(delta)
+	else:
+		print(intro_counter)
+		intro_counter += delta
+
+#Makes all the magic of the process
+func do_logic(delta):
 	tiempo += delta
 	
 	#boss dancing
@@ -127,7 +151,7 @@ func _process(delta):
 		if (movactual == len(secu)):
 			jefedone = true
 			movactual = 0
-			tiempo = -1
+			tiempo = -tiempomov
 			
 	#player and company dancing
 	if (tiempo >= tiempomov and movactual < len(secu) and jefedone):
@@ -139,7 +163,7 @@ func _process(delta):
 		if (movactual == len(secu)):
 			bichosdone = true
 			contaux = 0
-			tiempo = -1
+			tiempo = 0.0
 		#if no key pressed it takes life back
 		if (not teclapulsada and movactual > 1):
 			vida -= 1
@@ -165,18 +189,12 @@ func _process(delta):
 	
 	#after a time it generates another sequence
 	if (bichosdone and tiempo >= tiempomov):
+		index_sec += 1
+		numsecuencias = pasos_sec[index_sec]
 		generar_secuencia(numsecuencias)
 		iniciar()
-		numsecuencias += 1
+		
 
 	#this kills the player if they lose all the life
 	if (vida == 0):
 		print("muerto")
-	
-		
-		
-		
-		
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Pick_the_pint.ogg-a651c0c5e6d8dbe4658dc8904fc685e3.oggstr"
+
+[deps]
+
+source_file="res://music/Pick_the_pint.ogg"
+dest_files=[ "res://.import/Pick_the_pint.ogg-a651c0c5e6d8dbe4658dc8904fc685e3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

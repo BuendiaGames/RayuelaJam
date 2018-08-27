@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://mini_batallafinal/batallafinal.gd" type="Script" id=1]
 [ext_resource path="res://graficos/fondo3.png" type="Texture" id=2]
 [ext_resource path="res://graficos/dios.png" type="Texture" id=3]
 [ext_resource path="res://graficos/mala.png" type="Texture" id=4]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/Wave_the_Witch.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,9 +15,9 @@ extents = Vector2( 10, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 17.4052, 6.12449 )
+extents = Vector2( 17.4052, 12.7509 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=3]
 
 render_priority = 0
 trail_divisor = 1
@@ -55,12 +56,12 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Spread" ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 0.3
 loop = false
@@ -78,7 +79,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 0 ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -92,7 +93,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="player" type="Area2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( -140, 0 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -151,7 +151,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 5 )
+process_material = SubResource( 3 )
 texture = null
 normal_map = null
 h_frames = 1
@@ -174,7 +174,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mala" index="0"]
 
 scale = Vector2( 0.6, 1.2 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="mala" index="1"]
@@ -190,7 +190,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 4 )
+anims/attack = SubResource( 5 )
 blend_times = [  ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
@@ -231,6 +231,15 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 5 )]
 
 maxvida = 5
+
+[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://mini_ritual/ritual.gd" type="Script" id=1]
 [ext_resource path="res://graficos/tuxe_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://graficos/encapuchado.png" type="Texture" id=3]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/Hail_the_Hood.ogg" type="AudioStream" id=5]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -100,5 +101,16 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 4 )]
+
+maxvida = 5
+
+[node name="music" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 

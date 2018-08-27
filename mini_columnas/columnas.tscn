@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://mini_columnas/columnas.gd" type="Script" id=1]
 [ext_resource path="res://graficos/fondo2.png" type="Texture" id=2]
 [ext_resource path="res://mini_columnas/dios.png" type="Texture" id=3]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/Hop_theBox.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -251,6 +252,15 @@ bounce = 0.0
 
 position = Vector2( 205.607, -77.7809 )
 shape = SubResource( 8 )
+
+[node name="music" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="body_entered" from="player/sensor" to="." method="_on_sensor_body_entered"]
 

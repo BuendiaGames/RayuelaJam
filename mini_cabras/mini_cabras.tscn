@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://mini_cabras/mini_cabras.gd" type="Script" id=1]
 [ext_resource path="res://graficos/tuxe_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://graficos/dios.png" type="Texture" id=3]
+[ext_resource path="res://music/Get_a_Goat.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -235,6 +236,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="walls" type="Node2D" parent="." index="5"]
 
+editor/display_folded = true
+
 [node name="wall1" type="StaticBody2D" parent="walls" index="0"]
 
 editor/display_folded = true
@@ -339,6 +342,15 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 222.806, 175.654 )
 shape = SubResource( 9 )
+
+[node name="music" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

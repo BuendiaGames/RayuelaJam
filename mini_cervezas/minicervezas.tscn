@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://mini_cervezas/minicervezas.gd" type="Script" id=1]
 [ext_resource path="res://graficos/fondo4.png" type="Texture" id=2]
 [ext_resource path="res://graficos/dioscerveza4.png" type="Texture" id=3]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/Pick_the_pint.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,7 +21,7 @@ texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="1"]
 
-position = Vector2( 2.67757, -0.429279 )
+position = Vector2( 3, -0.429279 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -75,6 +76,15 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 4 )]
+
+[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 
