@@ -42,6 +42,11 @@ func atacar():
 	add_child(onda)
 	$mala/AnimationPlayer.play("attack")
 
+#Plays the music and shows the UI container
+func resume_pause():
+	if (not $music.playing):
+		$music.playing = true
+		$ui/corazones.show()
 
 func _ready():
 	#Store the ui

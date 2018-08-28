@@ -30,7 +30,13 @@ func saltar(delta):
 	if (Input.is_action_just_pressed("ui_accept")):
 		velsaltoplayer.y = -3.2
 	velsaltoplayer.y += delta*11
-	
+
+#Plays the music and shows the UI container
+func resume_pause():
+	if (not $music.playing):
+		$music.playing = true
+
+
 
 #Make the background scroll
 func bg_scroll(delta):

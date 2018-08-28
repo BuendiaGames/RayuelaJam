@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://mini_cabras/mini_cabras.gd" type="Script" id=1]
 [ext_resource path="res://graficos/tuxe_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://graficos/dios.png" type="Texture" id=3]
 [ext_resource path="res://music/Get_a_Goat.ogg" type="AudioStream" id=4]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -106,7 +107,7 @@ extents = Vector2( 260.236, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 11.6609, 24.0981 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -348,9 +349,15 @@ shape = SubResource( 9 )
 stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="transition" parent="." index="7" instance=ExtResource( 5 )]
+
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Pause", "Transform" ]
+text = "¡Muévete con las [color=red] flechas de control[/color] y encierra a las cabras!"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

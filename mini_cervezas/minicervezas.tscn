@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://mini_cervezas/minicervezas.gd" type="Script" id=1]
 [ext_resource path="res://graficos/fondo4.png" type="Texture" id=2]
 [ext_resource path="res://graficos/dioscerveza4.png" type="Texture" id=3]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=4]
 [ext_resource path="res://music/Pick_the_pint.ogg" type="AudioStream" id=5]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,6 +15,7 @@ extents = Vector2( 10, 10 )
 [node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="bg" type="Sprite" parent="." index="0"]
 
@@ -77,14 +79,24 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 4 )]
 
+visible = false
+
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 
 stream = ExtResource( 5 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="transition" parent="." index="6" instance=ExtResource( 6 )]
+
+position = Vector2( 0, -1.52588e-05 )
+scale = Vector2( 0.4, 0.4 )
+_sections_unfolded = [ "Pause", "Transform" ]
+text = "¡Usa [color=red]espacio[/color] para coger las cervezas que vienen! Pulsa de nuevo para beber.
+Sigue el ritmo de la música, ¡deslizar, [color=red]coger[/color], [color=red]beber[/color]!"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

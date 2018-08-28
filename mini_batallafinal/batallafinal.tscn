@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://mini_batallafinal/batallafinal.gd" type="Script" id=1]
 [ext_resource path="res://graficos/fondo3.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://graficos/mala.png" type="Texture" id=4]
 [ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=5]
 [ext_resource path="res://music/Wave_the_Witch.ogg" type="AudioStream" id=6]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -15,7 +16,7 @@ extents = Vector2( 10, 10 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 17.4052, 12.7509 )
+extents = Vector2( 17.4052, 8.40537 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 
@@ -82,6 +83,7 @@ tracks/0/keys = {
 [node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="bg" type="Node2D" parent="." index="0"]
 
@@ -221,7 +223,6 @@ _sections_unfolded = [ "Limit" ]
 
 [node name="ui" type="CanvasLayer" parent="." index="4"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -230,6 +231,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 5 )]
 
+visible = false
 maxvida = 5
 
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
@@ -237,9 +239,17 @@ maxvida = 5
 stream = ExtResource( 6 )
 volume_db = 0.0
 pitch_scale = 1.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="transition" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( -2.17371, -1.49829 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Pause", "Transform" ]
+text = "¡Devuelve los ataques de la diosa con [color=red]espacio[/color]!
+Esquiva con las [color=red]flechas de control[/color]."
 
 [connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
 

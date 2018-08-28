@@ -64,6 +64,13 @@ func eliminar_cabra (sacrificio): #Sacrificio debe ser una cabra
 		sacrificio.queue_free()
 		cabrasencerradas += 1
 
+
+#Plays the music and shows the UI container
+func resume_pause():
+	if (not $music.playing):
+		$music.playing = true
+
+
 func _ready():
 	randomize()
 	# Called when the node is added to the scene for the first time.

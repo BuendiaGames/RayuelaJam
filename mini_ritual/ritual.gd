@@ -11,9 +11,9 @@ var tiempomov = note_time #time between two movements
 
 
 var vida = 5 #life of the player
-var numsecuencias = 2 # number of sequences, start at 2 and finish at 5
+var numsecuencias# number of sequences, start at 2 and finish at 5
 var pasos_sec = [3,3,3,3]
-var index_sec
+var index_sec = 0
 
 var cont = 0 #auxiliar variable for  controlling no-push keys on dancing
 var contaux = 0 #auxiliar variable for controlling no-push keys while dancing on the last movement
@@ -114,6 +114,12 @@ func playerdancing (tiempo, secuactual, secusig):
 			vida -= 1
 			corazones.eliminar_vida()
 
+#Plays the music and shows the UI container
+func resume_pause():
+	if (not $music.playing):
+		$music.playing = true
+		$ui/corazones.show()
+
 func _ready():
 	randomize()
 	
@@ -155,6 +161,7 @@ func do_logic(delta):
 			
 	#player and company dancing
 	if (tiempo >= tiempomov and movactual < len(secu) and jefedone):
+		$jefe.frame = 0
 		start = true
 		for i in $bichos.get_children():
 			i.frame = secu[movactual] +1
@@ -189,10 +196,18 @@ func do_logic(delta):
 	
 	#after a time it generates another sequence
 	if (bichosdone and tiempo >= tiempomov):
+		for i in $bichos.get_children():
+			i.frame = 0
+		$player.frame = 0
+		
 		index_sec += 1
-		numsecuencias = pasos_sec[index_sec]
-		generar_secuencia(numsecuencias)
-		iniciar()
+		if (index_sec < len(pasos_sec)):
+			numsecuencias = pasos_sec[index_sec]
+			
+			generar_secuencia(numsecuencias)
+			iniciar()
+		else:
+			set_physics_process(false)
 		
 
 	#this kills the player if they lose all the life

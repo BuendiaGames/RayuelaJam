@@ -36,7 +36,11 @@ func add_columna(tipo):
 	add_child(columna)
 	columna.get_node("Sprite").frame = tipo
 
-
+#Plays the music and shows the UI container
+func resume_pause():
+	if (not $music.playing):
+		$music.playing = true
+		$ui/corazones.show()
 
 func _ready():
 	randomize() #Gets a "random" seed
@@ -44,7 +48,6 @@ func _ready():
 
 func _process(delta):
 	moverse() #Process player movement
-	
 	
 	#Throw columns to the player
 	tiempo += delta
