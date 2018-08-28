@@ -6,35 +6,27 @@ const note_tempo = 60.0 / 210.0 #Time of a single note
 var beer_throw = [] #When a beer should be thrown
 var beer_index = 0 #Current beer
 
-#Times
-var tiempo = 0 #Time counter
-var tiempobeber = 0 #Time counter for drinking
+var tiempo = 0.0 #Time counter (music)
+var tiempo_got = 0.0 #Time counter between get and drink
 
-var tiempocogida = 0
-var tiempomaxcoger = 0.3
-var tiempoentrecerv = 4.0 
-var tiempoentrebeber = note_tempo#1.3
-var margen = 0.1
+#Time bounds to get it right
+const margen = 0.15 #Time margin to get it ok
+const timeA = note_tempo - margen
+const timeB = note_tempo + margen
+
+var beer_enter = false #Is beer inside area?
+var beer_got = false #Did player got it?
 
 
 var cerveza_class = preload("res://mini_cervezas/cerveza.tscn")
 
-var vida = 3
-
-
-
-var cervpreparada = false
-var cervcogida = false
-var completado = false
+var vida = 5
 
 var corazones #Stores the ui container
 
 
 #Create a new beer 
 func add_cerveza():
-	
-	cervcogida = false
-	completado = false
 	
 	$player.frame = 0
 	var cerv = cerveza_class.instance()
@@ -67,12 +59,6 @@ func resume_pause():
 		$ui/corazones.show()
 
 func _physics_process(delta):
-	tiempo += delta
-	
-	#Ana's original code
-	#if (tiempo >= tiempoentrecerv):
-	#	add_cerveza()
-	#	tiempo = 0
 	
 	#Check it is time to throw a beer
 	if (beer_index < len(beer_throw)):
@@ -80,42 +66,58 @@ func _physics_process(delta):
 			beer_index += 1 #To next beer
 			add_cerveza()
 	
-	if (cervpreparada):
-		tiempocogida += delta
-		if (Input.is_action_just_pressed("ui_accept")):
-			$player.frame = 1
-			cervcogida = true
-			tiempobeber = 0
-
-	if (cervpreparada and !cervcogida and tiempocogida >= tiempomaxcoger):
-		vida -= 1
-		corazones.eliminar_vida()
-		tiempocogida = 0
+	#Increase time (really don't count unless beer_got = true)
+	tiempo += delta
+	tiempo_got += delta 
 	
-	if (cervcogida):
-		tiempobeber += delta
-		if (Input.is_action_just_pressed("ui_accept") and tiempobeber >= tiempoentrebeber-margen and tiempobeber <= tiempoentrebeber+margen):
-			$player.frame = 2
-			completado = true
-		elif (!completado and tiempobeber >= tiempoentrebeber+margen):
+	if (Input.is_action_just_pressed("ui_accept")):
+		#Beer touched the sensor area
+		if (beer_enter):
+			$player.frame = 1
+			#Reinit
+			beer_enter = false
+			beer_got = true
+			tiempo_got = 0.0
+		#In this case check we do it in correct time
+		elif (beer_got):
+			
+			#Reinit
+			beer_got = false
+			#If got in time, good, if not -hurt
+			if (timeA <= tiempo_got and tiempo_got <= timeB):
+				$player.frame = 2
+			else:
+				$player.frame = 0
+				vida -= 1
+				corazones.eliminar_vida()
+		else: #Press in bad moment
+			$player.frame = 0
 			vida -= 1
 			corazones.eliminar_vida()
-			tiempobeber = 0
-		
-	if (vida == 0):
-		print("muerto")
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+	
+	
+	
+	#If we hold the beer too much without drink, bad
+	if (beer_got and tiempo_got >= timeB):
+		vida -= 1
+		corazones.eliminar_vida()
+		beer_got = false
+		$player.frame = 0
+			
+	
+	
+	
 
-
+#Area that checks beer entering
 func _on_Area2D_area_entered(area):
-	tiempocogida = 0
-	cervpreparada = true
-	pass
+	beer_enter = true
 
 
 func _on_Area2D_area_exited(area):
-	cervpreparada = false
 	area.queue_free()
-	pass # replace with function body
+	beer_enter = false
+	#If we didn't got it, hurt player
+	if (not beer_got):
+		vida -= 1
+		corazones.eliminar_vida()
+

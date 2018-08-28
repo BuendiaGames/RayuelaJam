@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 15.0049, 10 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -35,6 +35,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
+position = Vector2( -2.37827, 0.951305 )
 shape = SubResource( 1 )
 
 [node name="player" type="Sprite" parent="." index="2"]
@@ -80,6 +81,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 4 )]
 
 visible = false
+maxvida = 5
 
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 
