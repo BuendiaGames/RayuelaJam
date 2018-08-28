@@ -75,9 +75,9 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(true)
 	
+	#Open the file and start
 	start_dialogue(mpath)
 	next_step()
-
 
 
 #The process is for doing animations
@@ -472,13 +472,11 @@ func parse_line():
 			elif (c0 == "do_branch"):
 				next = false
 				parse_options(command)
-				#TODO: ADD ARGS:
-				#N_CONDITIONS; COND_1; TAG_1; ... COND_N; TAG_N
-				#JUMP LINES UP TO %TAG_N
 			#Start a minigame
 			elif (c0 == "load_scene"):
+				next = false
 				c1 = get_arg(command[1])
-				get_tree().change_scene(c1)
+				vnglobal.vn_to_scene(self, c1)
 			else:
 				pass #Raise error maybe
 	

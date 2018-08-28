@@ -13,10 +13,9 @@ fade_in
 2; claro.
 1; Genial, pues comienza.
 
-#MINIJUEGO DE LAS CABRAS AQUI
-
-#AQUÍ COMPRUEBAS CUANTAS CABRAS HAS GUARDADO Y DEPENDIENDO DEL NÚMERO TE DICE UNA FRASE U OTRA
-
+fade_out
+load_scene; res://mini_cabras/mini_cabras.tscn
+fade_in
 show; padre_contento; 1
 
 1; Muchas gracias por la ayuda, muchacho.

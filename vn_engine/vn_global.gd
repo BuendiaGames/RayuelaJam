@@ -3,8 +3,21 @@ extends Node
 #This dictionary stores all variables used in metalanguage
 var vars = {}
 
+var vn
+
 func _ready():
 	pass
+
+#Changes from the VN to the selected scene
+func vn_to_scene(the_vn, scene):
+	vn = the_vn #Store for future
+	get_tree().root.remove_child(vn) #Detach from root
+	
+	#Load the scene
+	var sc_res = load(scene)
+	var sc = sc_res.instance()
+	get_tree().root.add_child(sc)
+
 
 #To modify variables
 func set_var(name, value):
@@ -13,6 +26,8 @@ func set_var(name, value):
 func add_var(name, value):
 	vars[name] += int(value)
 
+
+#Parse the conditional
 func if_var(condition):
 	
 	var args

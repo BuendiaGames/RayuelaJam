@@ -39,7 +39,7 @@ func fuerza_repulsiva (delta):
 	velocidad += aceleracion*delta
 
 func _ready():
-	pass
+	add_to_group("rebanio")
 
 func _process(delta):
 	move_and_collide(velocidad)
