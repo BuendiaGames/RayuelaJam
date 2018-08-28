@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hail_the_Hood.ogg-a610dffa1a8836db975b60f3839f3644.oggstr"
+
+[deps]
+
+source_file="res://music/Hail_the_Hood.ogg"
+dest_files=[ "res://.import/Hail_the_Hood.ogg-a610dffa1a8836db975b60f3839f3644.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

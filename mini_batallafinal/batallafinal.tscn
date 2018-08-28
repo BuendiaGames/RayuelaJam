@@ -1,0 +1,260 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://mini_batallafinal/batallafinal.gd" type="Script" id=1]
+[ext_resource path="res://graficos/fondo3.png" type="Texture" id=2]
+[ext_resource path="res://graficos/dios.png" type="Texture" id=3]
+[ext_resource path="res://graficos/mala.png" type="Texture" id=4]
+[ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/Wave_the_Witch.ogg" type="AudioStream" id=6]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17.4052, 8.40537 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 98.0
+initial_velocity_random = 0.5
+angular_velocity = 50.0
+angular_velocity_random = 0.0
+orbit_velocity = 3.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 0.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Spread" ]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="Animation" id=5]
+
+length = 0.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg" type="Node2D" parent="." index="0"]
+
+[node name="bg1" type="Sprite" parent="bg" index="0"]
+
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" type="Area2D" parent="." index="1"]
+
+position = Vector2( -140, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="0"]
+
+scale = Vector2( 0.7, 1.2 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="player" index="1"]
+
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 5
+frame = 17
+_sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
+
+[node name="Area2D" type="Area2D" parent="player" index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D" index="0"]
+
+position = Vector2( 18.4175, 0.284792 )
+scale = Vector2( 0.5, 1.2 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="reflect" type="Particles2D" parent="player" index="3"]
+
+position = Vector2( 17.6571, 0 )
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 3 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Time" ]
+
+[node name="mala" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 140, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mala" index="0"]
+
+scale = Vector2( 0.6, 1.2 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="mala" index="1"]
+
+texture = ExtResource( 4 )
+hframes = 2
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mala" index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/attack = SubResource( 5 )
+blend_times = [  ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit" ]
+
+[node name="ui" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="corazones" parent="ui" index="0" instance=ExtResource( 5 )]
+
+visible = false
+maxvida = 5
+
+[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="transition" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( -2.17371, -1.49829 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Pause", "Transform" ]
+text = "¡Devuelve los ataques de la diosa con [color=red]espacio[/color]!
+Esquiva con las [color=red]flechas de control[/color]."
+
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]
+
+[connection signal="area_entered" from="player/Area2D" to="." method="_on_Area2D_area_entered"]
+
+[connection signal="area_entered" from="mala" to="." method="_on_mala_area_entered"]
+
+

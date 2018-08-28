@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://mini_cervezas/minicervezas.gd" type="Script" id=1]
+[ext_resource path="res://graficos/fondo4.png" type="Texture" id=2]
+[ext_resource path="res://graficos/dioscerveza4.png" type="Texture" id=3]
+[ext_resource path="res://health_container/corazones.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/Pick_the_pint.ogg" type="AudioStream" id=5]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+position = Vector2( 3, -0.429279 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="player" type="Sprite" parent="." index="2"]
+
+position = Vector2( 27.6776, -0.429279 )
+texture = ExtResource( 3 )
+hframes = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.4, 0.4 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="ui" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="corazones" parent="ui" index="0" instance=ExtResource( 4 )]
+
+visible = false
+
+[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="transition" parent="." index="6" instance=ExtResource( 6 )]
+
+position = Vector2( 0, -1.52588e-05 )
+scale = Vector2( 0.4, 0.4 )
+_sections_unfolded = [ "Pause", "Transform" ]
+text = "¡Usa [color=red]espacio[/color] para coger las cervezas que vienen! Pulsa de nuevo para beber.
+Sigue el ritmo de la música, ¡deslizar, [color=red]coger[/color], [color=red]beber[/color]!"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+
+

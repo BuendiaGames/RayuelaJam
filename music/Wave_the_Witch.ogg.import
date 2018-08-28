@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Wave_the_Witch.ogg-dd5817d48e3e30bb012a24f2ca30e2af.oggstr"
+
+[deps]
+
+source_file="res://music/Wave_the_Witch.ogg"
+dest_files=[ "res://.import/Wave_the_Witch.ogg-dd5817d48e3e30bb012a24f2ca30e2af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

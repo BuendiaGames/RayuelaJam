@@ -1,3 +1,19 @@
+# Rayuela Jam
+
+This is our game for Rayuela de Arena Jam, a visual novel featuring some minigames.
+The dialogues are in Spanish, since the jam is focused in Spanish-speaking narrative games.
+
+## Special thanks
+
+We have used freely available graphics from other artists. These are:
+
+- Tuxemon Tilset: by [Buch](http://blog-buch.rhcloud.com)
+- Dungeon Tileset: by [DignifiedRain](https://opengameart.org/content/16bit-dungeon-tiles)
+- Space Background: by [ansimuz](https://opengameart.org/content/space-background-3)
+
+**IMPORTANT: These files have their own licenses. Please read them carefully if you want to reuse them**
+
+
 # Simple Dialogue Metalanguage
 
 This is a simple dialogue metalanguage, developed to be the main engine of our visual novel, presented for the game jam _Rayuela de Arena_, a jam about narrative in Spanish.

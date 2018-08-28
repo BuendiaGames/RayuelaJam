@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://mini_escaparguardias/escguardias.gd" type="Script" id=1]
+[ext_resource path="res://graficos/fondo1.png" type="Texture" id=2]
+[ext_resource path="res://graficos/dios.png" type="Texture" id=3]
+[ext_resource path="res://music/Hop_theBox.ogg" type="AudioStream" id=4]
+[ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "run"
+length = 0.3
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0155107, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 16, 17, 18 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15.0387, 10 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg" type="Node2D" parent="." index="0"]
+
+[node name="bg1" type="Sprite" parent="bg" index="0"]
+
+position = Vector2( -70, -137.921 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bg2" type="Sprite" parent="bg" index="1"]
+
+position = Vector2( 450, -137.921 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="guardias" type="Area2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( -240, 0 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="guardias" index="0"]
+
+scale = Vector2( 1.5, 1 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="guardias" index="1"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="guardias" index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+
+position = Vector2( 0, -137.396 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" type="KinematicBody2D" parent="." index="3"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="0"]
+
+scale = Vector2( 0.7, 1.2 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/run = SubResource( 3 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="Sprite" type="Sprite" parent="player" index="2"]
+
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 5
+frame = 17
+_sections_unfolded = [ "Animation", "Offset" ]
+
+[node name="suelo" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( -0.0200348, 22.4092 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="suelo" index="0"]
+
+position = Vector2( -164.629, 0 )
+scale = Vector2( 13.6638, 1 )
+shape = SubResource( 4 )
+
+[node name="music" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="transition" parent="." index="6" instance=ExtResource( 5 )]
+
+position = Vector2( -2.29874, -138.049 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Pause", "Transform", "Z Index" ]
+text = "¡Pulsa [color=red]espacio[/color] para saltar sobre las cajas!"
+
+[connection signal="body_entered" from="guardias" to="." method="_on_guardias_body_entered"]
+
+
