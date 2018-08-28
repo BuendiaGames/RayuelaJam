@@ -1,0 +1,143 @@
+# Dia 5 Rama A
+
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; rival_normal; rival_contento; encapuchado; encapuchado2; jurado; guardia
+
+set_bg; BG_colisseum
+
+show;jurado;3
+hide;3
+show;encapuchado;1
+show;encapuchado2;2
+
+
+fade_in
+
+1; Bueno... Ya estamos aquí.
+2; Vaya... cuanta gente.
+1; Es un gran evento, es importante, marcará un antes y un después en la historia.
+2; ¿Participan representantes de todas las religiones?
+1; Sí, sería una deshonra no tener a nadie.
+3; [color=blue]Bienvenidos al primer concurso para elegir al definitivo nuevo mesías.[/color]
+3; [color=blue]El concurso comenzará en breves instantes, ¡mientras explicaré en qué consiste este concurso![/color]
+3; [color=blue]Por turnos, se realizarán una serie de preguntas a cada representante, después, el público elegirá al mejor.[/color]
+3; [color=blue]¡ESTE CONCURSO ELEGIRÁ AL MESÍAS Y RELIGIÓN DEFINITIVA![/color]
+3; [color=blue] Por favor, tomen asiento mientras comienza.[/color]
+1; Será mejor que vayamos a sentarnos.
+
+hide; 1
+
+2; Está bien... A ver donde me siento... Hummm...
+2; ¡Un momento! ¿Ese es...?
+hide;2
+
+fade_out
+
+show; rival_normal; 1
+
+fade_in
+
+show; encapuchado2; 2
+
+2; ¡Eh! ¡Pensaba que habías desaparecido!
+1; ¿Pero qué...? ¡Mierda! ¡Eres tú!
+
+hide; 1
+
+2; ¡No! ¡ESPERA!
+2; ¿Por qué ha huido? Voy a seguir-
+
+show; dania_ego; 1
+
+1; ¿Qué haces tú de nuevo aquí? ¡Guardias!
+
+show; guardia; 1
+
+2; Oh, no.
+1; Te vienes conmigo, ven aquí.
+2; Pues... no.
+
+hide; 2
+
+fade_out
+
+show; encapuchado; 1
+
+fade_in
+
+show; encapuchado2; 2
+
+2; Creo que le he dado esquinazo...
+1; Eh, tú por aquí, qué bien me vienes...
+2; ¿Que te vengo bien?
+1; Sí, de perlas.
+2; ¿Por qué?
+1; Nuestro representante se encuentra mal, y nos hace falta sustituto.
+2; ¿Sustituto? ¿Quieres que lo sustituya? ¡Pero si aún soy un novato! (Y ni siquiera real)
+1; Da igual, nos haces falta, así que ahora saldrás ahí y nos harás ganar.
+2; Pero...
+3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡preparaos para las preguntas![/color]
+1; No hay tiempo, ve, ahora te dirán las preguntas.
+do_branch; 2; Voy; YES14; Pero...; NO14
+
+%YES14
+1; Así me gusta, ¡con actitud!
+goto; SIG14
+
+%NO14
+1; ¡Sin peros! ¡Venga!
+goto;SIG14
+
+%SIG14
+fade_out
+hide; 1
+
+fade_in
+
+#aqui van preguntas tontas varias sin repercusion
+#no se hacer el gag15 para que tenga sentido ni en que pregunta deberia basarse.
+
+3; [color=blue]¿Las vacas son negras con manchas blancas o blancas con manchas negras?
+do_branch; 2; Son negras; NEGRAS; Son blancas; BLANCAS
+
+%NEGRAS
+goto; SIGG1
+
+%BLANCAS
+goto;SIGG2
+
+%SIGG1
+3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
+
+fade_out;
+
+fade_in
+
+3; [color=blue]Y el ganador es... ¡El representante del[/color] [color=green]Templo de Dania![/color]
+goto;SIGG
+
+%SIGG2
+3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
+
+fade_out;
+
+fade_in
+
+3; [color=blue]Y el ganador es... ¡El representante de los[/color] [color=green]encapuchados![/color]
+
+show; encapuchado; 1
+1; ¡SÍ! ¡LO HAS CONSEGUIDO! ¡HAS HECHO QUE GANEMOS!
+3; [color=blue]ESPERAD, PARECE QUE HA HABIDO UN ERROR, EL GANADOR NO ES EL REPRESENTANTE DE LOS ENCAPUCHADOS.
+
+goto;SIGG
+
+
+
+
+
+
+
+
+
+
+
+

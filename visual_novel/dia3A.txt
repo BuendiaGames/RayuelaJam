@@ -189,7 +189,7 @@ fade_in
 
 2; ¿Por dónde podría estar...? Esta ciudad es enorme...
 1; ¿Suele ir a algún sitio en especial?
-2; No que yo sepa, y aún así, si ubiera vuelto habría ido a casa, creo que le ha pasado algo, que alguien lo ha raptado.
+2; No que yo sepa, y aún así, si hubiera vuelto habría ido a casa, creo que le ha pasado algo, que alguien lo ha raptado.
 1; Entonces tendremos que estar atentos y revisar  hasta la última piedra de los muros.
 2; ...
 1; ...
@@ -198,7 +198,7 @@ fade_in
 1; ¿CÓMO SE ENCUENTRAN PASADIZOS SECRETOS POR CASUALIDAD?
 2; Y YO QUÉ SÉ, SON COSAS QUE PASAN.
 1; ESAS COSAS SOLO PASAN EN VIDEOJUEGOS DE SEGUNDA HECHOS POR AFICIONADOS QUE NO TIENEN NI IDEA DE NOVELAS GRÁFICAS.
-2; NO SÉ PORQUÉ PERO ESO ME OFENDE.
+2; NO SÉ POR QUÉ, PERO ESO ME OFENDE.
 1; QUIZÁ ERES DEMASIADO SENSIBLE.
 2; Entonces mejor dejamos de gritarnos.
 1; Sí... Mejor.
