@@ -1,6 +1,6 @@
 # Dia 5 Rama A
 
-load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; rival_normal; rival_contento; encapuchado; encapuchado2; jurado; guardia
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; rival_normal; rival_contento; encapuchado; encapuchado2; jurado; guardia; mala_normal; mala_preparada; directortesis
 
 set_bg; BG_colisseum
 
@@ -127,8 +127,126 @@ fade_in
 show; encapuchado; 1
 1; ¡SÍ! ¡LO HAS CONSEGUIDO! ¡HAS HECHO QUE GANEMOS!
 3; [color=blue]ESPERAD, PARECE QUE HA HABIDO UN ERROR, EL GANADOR NO ES EL REPRESENTANTE DE LOS ENCAPUCHADOS.
+1; ¡¿QUÉ?!
+3; [color=blue] El ganador real es... ¡El representante del[/color][color=green]Templo de Dania![/color]
 
 goto;SIGG
+
+%SIGG
+show; dania_ego; 1
+
+1; ¡Genial!
+2; (No me creo que hayan ganado ellos...)
+#si se te ocurre una forma mejor de que se den cuenta de que le hacen algo al ganador, feel free to change the dialogue
+3; [color=blue] ESPERAD, SEÑORES, UNA COLUMNA ACABA DE CAERLE ENCIMA AL GANADOR DEL TEMPLO
+
+show; dania_enfadada; 1
+
+1; ¡¿QUÉ?! NO
+hide; 1
+2; Espera, ¡te ayudaré a sacarlo!
+
+hide; 2
+
+fade_out
+
+show; dania_enfadada; 1
+
+show; tania_enfadada; 2
+
+fade_in
+
+1; ¡HABÉIS SIDO VOSOTROS, HABÉIS INTENTADO MATAR A NUESTRO REPRESENTANTE!
+2; ¡NOSOTROS NO HARÍAMOS NUNCA ESO!
+1; ¡MENTIROSOS! ¡COME ANIMALES EN FORMA DE ALBÓNDIGA!
+2; ESO NO TIENE NADA QUE VER.
+1; HABÉIS INTENTADO MATARNOS, NO DISIMULÉIS.
+
+shoe; D_Normal; 2
+
+2; ¡Cuidado Dania! ¡Va a...! ¡Corre!
+hide; 1
+
+show; rival_normal; 1
+
+1; ¡Mierda!
+2; ¡¿Qué ibas a hacerle?!
+1; Maldición...
+hide;1
+2; ¡NO! ¡VEN AQUÍ!
+2; ¡Ayudadme a encontrarlo! ¡Él es el culpable de todo esto!
+
+hide; 2
+
+fade_out
+
+show; D_Normal; 2
+
+show; hijo; 1
+
+fade_in
+
+2; ¡Hey! ¿Estás bien?
+1; ¡Ayúdam-
+
+show; rival_normal; 1
+
+1; Si te acercas me lo cargo.
+2; ¡Suéltalo!
+1; ¿Y si no?
+do_branch; 2; Me tiro un pedo.; PEDO; Lloro.; LLORO
+
+%PEDO
+1; Por Dios, qué asco, por favor no.
+goto; SIGGG
+
+%LLORO
+1; ¿Qué tienes? ¿8 años?
+2; Puede.
+1; Increíble...
+goto; SIGGG
+
+
+%SIGGG
+1; Si quieres recuperarlo, tendrás que vértelas conmigo.
+2; Adelante.
+1; Permíteme ponerme en una forma más... cómoda...
+
+show; mala_normal; 1
+
+2; ¡NO PUEDE SER!
+1; ¿Me echabas de menos?
+2; ¿Qué haces tú aquí?
+1; He venido a que te [color=red]suspendan[/color].
+2; ¡Pero si somos compañeros de clase! ¡No te he hecho nada!
+1; ¡Cállate!
+
+show; mala_preparada; 1
+
+1; ¡Tendrás que derrotarme para recuperar al chico!
+
+#AQUI VIENE MINIJUEGO DE BATALLA FINAL
+
+#si ganas:
+
+show; hijo; 1
+2; Vete a casa, y gracias por todo.
+1; Gracias por salvarme, hasta la vista.
+hide; 1
+2; Ahora tú te vienes conmigo.
+show; mala_normal; 1
+2; Vamos.
+
+fade_out
+
+show; directortesis; 1
+hide; 1
+
+show; D_Normal; 2
+
+fade_in
+
+
 
 
 

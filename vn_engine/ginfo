@@ -17,6 +17,9 @@ rival_normal; Ric; rival_normal.png; 0; 0; 1
 rival_contento; Ric; rival_contento.png; 0; 0; 1
 jurado; Jurado; encapuchado.png; 0; 0; 1
 guardia; Guardia; guardia.png; 0; 0; 1
+mala_normal; Lázuli; mala_normal.png; 0; 0; 1
+mala_preparada; Lázuli; mala_preparada.png; 0; 0; 1
+
 
 
 BG_calle; noname; bg_street.png
