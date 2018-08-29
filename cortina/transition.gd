@@ -2,7 +2,9 @@ extends Node2D
 
 export(String, MULTILINE) var text = "Descripción"
 
-var vn
+#var vn
+var vnglobal
+
 
 #To avoid double pressing with the change of scene
 var wait = 0.5
@@ -11,6 +13,9 @@ var time = 0.0
 
 func _ready():
 	$description.parse_bbcode(text)
+	
+	vnglobal = get_tree().root.get_node("/root/vn_global")
+	
 	#Pause the game from the beginning
 	get_tree().paused = true
 	set_process(true)
@@ -28,6 +33,7 @@ func _on_anim_animation_finished(anim_name):
 		get_tree().paused = false
 		get_parent().resume_pause() #Start music
 	elif (anim_name == "fade_out"):
-		get_parent().queue_free()
-		get_tree().root.add_child(vn)
-		vn.next_step()
+		vnglobal.scene_to_vn(get_parent())
+		#get_parent().queue_free()
+		#get_tree().root.add_child(vn)
+		#vn.next_step()

@@ -9,18 +9,51 @@ show;padre_normal;1
 
 fade_in
 
-1; Vale, vas a ayudarme a guardar mis cabras en su sitio, ¿sí?
-2; claro.
-1; Genial, pues comienza.
+1; Vale, vas a ayudarme a guardar mis cabras en su sitio, ¿verdad?
+2; ¡Claro!
+1; Las cabras son un poco asustadizas, tendrás que aprovechar eso para [color=red]meterlas en el establo[/color]. ¿Estás listo?
+2; Sí.
+1; Genial, pues vamos allá. 
 
 fade_out
 load_scene; res://mini_cabras/mini_cabras.tscn
 fade_in
 show; padre_contento; 1
 
-1; Muchas gracias por la ayuda, muchacho.
-2; Gracias a usted, por pagar mi deuda.\nAhora, debería irme.
-1; Adiós.
+1; Muchas gracias por la ayuda, muchacho. 
+
+if; dinero > 15; MINI_BIEN; MINI_MAL
+
+%MINI_BIEN
+show;padre_contento;1
+1; ¡Menudo nivel! Creo que nunca había visto tantas cabras juntas en el corral.
+2; (Vaya ganadero está hecho...)
+1; Te has ganado [color=red]20 dorados[/color], para ti.
+goto; END_MINI
+
+%MINI_MAL
+1; Excelente trabajo, muchacho. Te doy [color=red]12 dorados[/color] por ayudarme.
+
+%END_MINI
+2; Gracias a usted, por pagar las tinajas...
+2; Ahora que está todo arreglado debo irme.
+
+show;padre_normal;1
+1; ¿Y esas prisas?
+2; Debo averiguar algo sobre las [color=red]religiones en Petra[/color].
+1; ¡Aaaah! En Petra están todos locos, cada uno tiene una religión distinta.
+2; (Díselo a mi nota de prácticas...)
+show;padre_contento;1
+1; Yo adoro a mis cabras, por ejemplo.
+2; ...
+show;padre_normal;1
+1; Sí que hay dos religiones mayoritarias. De hecho, cada una una tiene un templo dedicado.
+2; ¿No es lo normal?
+1; Si tuviéramos un templo por cada creencia no cabríamos en la ciudad.
+2; (Perfecto...)
+1; De hecho la mayor parte son [color=red]sectas[/color] que se reúnen en catacumbas.
+1; Pero es mejor no meterse en esas tonterías.
+2; De acuerdo, si me puede indicar dónde se encuentran esos templos, será mejor que vaya a visitarlos...
 
 hide; 2
 
@@ -43,7 +76,7 @@ show;dania_enfadada;1
 show;dania_ego;1
 
 1; Eso me había parecido oír, sí.
-2; ¿Vienes aquí a rendir culto a algún dios?
+2; ¿A qué Dios se rinde culto en este templo?
 
 show;dania_enfadada;1
 
@@ -51,7 +84,8 @@ show;dania_enfadada;1
 
 show;dania_ego;1
 
-1; Soy la sacerdotisa de este templo, aquí rendimos culto al único dios verdadero.
+1; Soy [color=green]Dania[/color], la sacerdotisa de este templo. ¿Cómo que "a qué Dios"?
+1; Aquí se le rinde culto al [color=red]único Dios verdadero[/color], por supuesto.
 2; Claro, claro (Está loca de atar).
 1; ¿Y bien? ¿En qué puedo ayudarte?
 2; Sólo quería saber un poco del templo.
@@ -59,38 +93,42 @@ show;dania_ego;1
 show; dania_normal;1
 
 1; Oh, claro, ¿qué quieres saber?
-do_branch; 3; El edificio; EDIFICIO; Tu religión; RELIGION; Tus fieles; FIELES
+do_branch; 3; El edificio.; EDIFICIO; Tu religión.; RELIGION; Tus fieles.; FIELES
 
 %EDIFICIO
-1; Este templo está construido desde antes de la llegada de los romanos, por uno de los mejores arquitectos hindús.
+1; Este templo está construido desde antes de la llegada de los romanos, por uno de los mejores arquitectos hindús, y muchos esclavos.
 1; Claro que, con los años, he remodelado un poco el interior para que sea agradable a los visitantes.
 goto; SIG3
 
 %RELIGION
 show; dania_ego; 1
 
-1; La religión de este templo es la única moralmente aceptable.
-2; ¿En qué se basa?
+1; [color=red]Tofulocón[/color], nuestro Dios, nos ha regalado las únicas normas moralmente aceptables.
+2; ¿Cuáles son?
 1; Respetamos a los animales, ya que son incluso superiores a los humanos.
 1; Comer animales o cualquier derivado suyo está TERMINANTEMENTE PROHIBIDO.
-1; Y, en el rango más alto de esta religión, no comeremos nada que produzca sombra.
-2; (Esta chica me da miedo...)
+1; Y yo, como sacerdotisa de esta religión, no como nada que produzca sombra.
+2; ¿En serio? \nEntonces... ¿qué comes?
+1; Guardo en el sótano unas gallinas que nunca han visto la luz del Sol.
+2; (O sea, no deja comer animales a nadie, pero bien que se zampa ella a las gallinas...)
+2; (Es una religión interesante, pero esta chica me da miedo...)
 goto; SIG3
 
 %FIELES
 show; dania_ego; 1
 
 1; Mis fieles respetan una dieta libre de animales muertos o derivados de animales.
-1; Además, vienen al templo a denunciar abusos a animales para que yo me ocupe de ello.
+1; Además, vienen al templo a denunciar abusos a animales para que yo me ocupe de ello. \n[color=blue]*crujido de nudillos*[/color]
+2; (Será mejor que me ande con cuidado...)
 goto; SIG3
 
 %SIG3
 show; dania_normal; 1
 
 2; Ya veo, ¡gracias!
-1; Podrías visitar el templo por dentro, pero antes...
+1; Por supuesto, puedes visitar el templo por dentro, pero antes...
 1; ¿Comes carne o algún derivado de animal?
-do_branch; 2; Sí; YES4; No; NO4
+do_branch; 2; ¡Viva la hamburguesa!; YES4; ¡Viva el brócoli!; NO4
 
 %YES4
 show;dania_enfadada; 1
@@ -117,18 +155,19 @@ show; D_Normal; 2
 
 fade_in
 
-2; Vaya, este templo es algo... grande.
+2; [color=green]Dania[/color] ha pasado completamente de mí. Que coman lo que quieran, ¡pero yo tengo que aprobar!
+2; Veamos que nos depara el otro templo de la ciudad.
 
 show; tania_normal; 1
 
-1; Buenas tardes, soy la sacerdotisa de este templo ¿en qué puedo ayudarle?
-2; Tenía curiosidad por el templo.
+1; Buenas tardes, soy [color=green]Tania[/color], la sacerdotisa de este templo ¿en qué puedo ayudarle?
+2; Tenía curiosidad por conocer el templo.
 1; Esta es la humilde casa de nuestro señor Pastafari.
-do_branch; 2; ¿Pastafari?; YES5; ¿Es  broma?; NO5
+do_branch; 2; ¿Pastafari?; YES5; ¿Es una broma?; NO5
 
 %YES5
 1; Nuestro señor Pastafari es el [color=red]Monstruo Espagueti Volador[/color].
-1; Consideramos los espaguetis el tipo de pasta supremo y, por supuesto, él creó el mundo tras beber demasiado, por eso es imperfecto.
+1; Consideramos los espaguetis el tipo de pasta supremo. Él creó el mundo tras beber demasiado, por eso es imperfecto.
 2; (¿De dónde han salido estas religiones tan disparatadas?)
 goto; SIG5
 
@@ -140,6 +179,8 @@ show; tania_enfadada; 1
 show; tania_normal; 1
 
 1; Bueno... Supongo que hay gente a la que le van más los macarrones con tomatico.
+1; En ese caso tal vez [color=green]Dania[/color] tenga una dieta más adecuada para ti.
+
 goto; SIG5
 
 %SIG5
@@ -160,7 +201,7 @@ show; D_Normal; 2
 
 fade_in
 
-2; (Qué día tan largo...\nHe visitado un par de templos cuando menos... curiosos. Los incluiré en la tesis.)
+2; (Qué día tan largo...\nHe visitado un par de templos cuando menos... curiosos. Los incluiré en el informe.)
 2; (Estoy tan cansado de andar... Aunque también lo estará ese encapuchado que lleva detrás mía unas horas)
 2; (Hummm... Voy a decirle algo, lleva un buen rato siguiéndome)
 
@@ -169,7 +210,7 @@ show; encapuchado; 1
 
 
 2; Hey.
-1; ALLAHU ACKBAR
+1; ...
 
 hide; 1
 
@@ -180,7 +221,7 @@ do_branch; 2; Sí.; YES6; No.; NO6
 show; encapuchado; 1
 
 2; Eh, ¿me estabas siguiendo?
-1; Eh... No, hombre, ¿cómo te iba a seguir yo? ¿Y por qué?
+1; Eh... No hombre no, ¿cómo te iba a seguir yo? ¿Por qué?
 2; ¿Entonces?
 1; Iba a la taberna de la esquina, te puedes venir si quieres. ¿Qué dices?
 do_branch; 2; Vale.; YES7; Paso.; NO7
@@ -199,10 +240,10 @@ goto; SIG8
 2; No, ¿tú vienes mucho?
 1; Sí, bastante, pero entre semana no, porque estoy ocupado.
 2; ¿Ocupado con qué?
-1; Soy aprendiz de [color = red]encapuchado[/color].
+1; Soy aprendiz de [color = red]encapuchado[/color], una de las sectas mayoritarias de Petra.
 2; ¿Aprendiz?
 1; Sí, estoy estudiando para ser un encapuchado, pero la verdad es que no se me da muy bien.
-2; Bueno, yo también estoy estudiando y la verdad que tampoco lo llevo bien, de hecho estoy intentando salvar mi tesis ahora mismo.
+2; Bueno, yo también estoy estudiando y la verdad que tampoco lo llevo bien, de hecho estoy intentando salvar mis prácticas ahora mismo.
 1; ¿Sí? ¿Y realmente te gusta lo que haces?
 2; Claro, ¿por?
 1; A mí lo que realmente me gusta ahora mismo es salir los fines de semana a beber para olvidarme de los estudios.
@@ -211,28 +252,48 @@ do_branch; 2; Claro; YES8; Qué va; NO8
 
 %YES8
 1; Entonces vamos a ver quién bebe más.
+2; (No he bebido en la vida, igual me afecta... Lo mismo debería andarme con moderación...)
 show; D_Contento; 2
-2; Dale.
+2; ¡Dale!
 
-#MINIJUEGO DE BEBER
+fade_out
+load_scene; res://mini_cervezas/minicervezas.tscn
+fade_in 
 
+if; beber==0; BORRACHO; A_CASA
+
+%BORRACHO
 2; Eh, eresss un tíiio genial, te acompañoo a casssa.
 1; Buah tío... No hace falta...
 2; Que ssí hombreeee, que para eso estamoossss.
 1; Gracias crack, eres lo mejor de esta vida, te quiero muchísssssssimo.
-2; y yo a tiii...
+2; Y yo a tiii...
 goto; SIG8
 
+%A_CASA
+2; (Al final no he bebido nada).
+2; (No se puede puede decir lo mismo del otro...)
+1; Tíiiio, te quieerooooooooooooo.
+2; Ains.
+1; Ojalá un colega como túuuu en los encapuchadossss...
+2; Que sí, que sí... ¿Sabes dónde está tu casa? \nTe puedo acompañar
+1; Gracias tíiiiiooooo...
+2; (Sabiendo donde vive, podré preguntarle más cosas mañana).
+goto; RAMA_B
+
+#Viene de la pregunta de si quiere beber
 %NO8
-1; No? Pues vaya rollo, entonces mejor lo dejamos.
+1; ¿No? Pues vaya rollo, entonces mejor lo dejamos.
 hide; 1
 goto; SIG8
 
+#Continuación RAMA A
 %SIG8
 fade_out
 
 jump; res://visual_novel/dia3A.txt
 
+#Viene de la pregunta de si quiero ir a la taberna
 %NO7
 
 1; Vaya aburrido.
@@ -240,6 +301,10 @@ jump; res://visual_novel/dia3A.txt
 hide; 1;
 goto; SIG8
 
+%RAMA_B
+
+fade_out
+jump res://visual_novel/dia3B.txt
 
 
 

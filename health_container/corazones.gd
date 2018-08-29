@@ -30,3 +30,4 @@ func set_vida(vida):
 #TODO play sound
 func eliminar_vida():
 	get_child(get_child_count()-1).queue_free()
+

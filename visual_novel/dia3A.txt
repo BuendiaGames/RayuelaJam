@@ -10,13 +10,14 @@ show;hijo;1
 fade_in
 
 2; Buenos días...
-1; Madre mía, vaya cara de muerto tienes, ¿anoche saliste no?
+1; Madre mía, vaya cara de muerto tienes. ¿Saliste anoche?
 2; Sí... Estoy cansado... Pero conocí a alguien interesante.
 1; ¿Interesante? ¿Has ligado con alguien? ¡¿CON TU CARA?!
+2; (No sé cómo el padre lo aguanta).
 
 show; D_Contento; 2
 
-2; EH, que soy precioso.
+2; Eh, que soy precioso.
 1; No te lo crees ni tú.
 
 show; D_Normal; 2
@@ -34,7 +35,7 @@ fade_in
 2; Llevamos toda la mañana preguntando y nadie sabe nada... ¿Qué probabilidades había?
 1; Bastantes, en realidad, por esta ciudad pasa mucha gente debido a la economía.
 2; ¿Sabes lo que son las preguntas retóricas?
-1; Mientras tú te bajas los humos creo que voy a preguntar a esa vieja cotilla de ahí, siempre ve todo y conoce hasta a las gallinas.
+1; Creo que voy a preguntar a esa vieja cotilla de ahí, siempre sabe todo y conoce hasta a las cabras de mi padre por su nombre.
 
 hide;1
 
@@ -59,14 +60,18 @@ fade_in
 show; rival_normal; 1
 
 1; Hey, parecéis perdidos, ¿necesitáis ayuda?
-2; Oh, no, estamos buscando a alguien.
+2; Oh, no, estamos buscando a alguien. 
 1; ¿Aquí? Por esta zona no hay mucha gente aparte de algunas cabras y mercaderes.
 1; Igualmente, quizá pueda ayudaros a encontrar a la persona que buscáis.
+2; ¿Quién eres tú?
+1; Mi nombre es [color=green]Ric[/color]. Suelo andar por aquí. Si tu amigo ha pasado por aquí, lo he visto.
 2; Estamos buscando a un encapuchado, nos han dicho que frecuenta esta zona.
-1; Humm... Si va encapuchado y frecuenta esta zona seguramente pertenezca al [color=green]templo de Dania[/color] .
+1; Humm... Si va encapuchado y frecuenta esta zona seguramente pertenezca al [color=green]templo de Dania[/color].
 1; Por lo que he oído, allí suelen hacer sacrificios.
-2; ¡¿SACRIFICIOS?!
-1; Sí, sacrificios. Deberías probar a buscarlo ahí, pero andaos con ojo.
+2; ¡¿SACRIFICIOS?! ¡Pero si precisamente su religión es ser respetuosos con los animales!
+1; Eso es lo que ellos dicen.
+2; (En esta ciudad pasan cosas muy raras. ¿Una secta que pertenece a un templo?)
+1; Deberías probar a buscar a tu amigo ahí, pero andaos con ojo.
 2; Está bien, será mejor que vayamos. ¡Muchas gracias!
 
 fade_out
@@ -76,7 +81,7 @@ show; hijo; 1
 
 fade_in
 
-2; Escúchame, es mejor que hable yo, la sacerdotisa no parece muy... estable.
+2; Escúchame, es mejor que hable yo, la sacerdotisa [color=green]Dania[/color] no parece muy... estable.
 1; Está bien.
 
 show; dania_normal; 1
@@ -89,33 +94,62 @@ show; dania_normal; 1
 show; dania_ego; 1
 
 1; ¿Encapuchado extranjero? Aquí no hay nada de eso.
-2; Pero nos han dicho que viene aquí, a tu templo a hacer sacrificios...
+do_branch; 2; ¿No serás tú, acaso?; DANIA1; He oído rumores de sacrificios...; DANIA2
 
+%DANIA1
+1; ¿Yo? ¿Para qué iba a ponerme yo una capucha?
+2; Los de la secta de los encapuchados la llevan.
 show; dania_enfadada; 1
+1; ¡Esos son unos blasfemos! ¿Sabías que sacrifican animales?
+2; Em, no...
+1; ¿¡HAS INSINUADO ACASO QUE AQUÍ SE OCULTA PARTE DE ESA ORGANIZACIÓN MALVADA!?
+2; No, no...
+goto; DANIA_CONT
 
+
+%DANIA2
+show; dania_enfadada; 1
 1; ¡¿SACRIFICIOS?! ¡¿EN MI TEMPLO?!
 2; Eh... Bueno... sí... Es lo que nos han dicho...
-1; ¡¡ES EL MAYOR INSULTO QUE NOS HAN HECHO EN LA VIDA!!
-2; (mierda...)
-1; GUARDIAS, APRESADLOS
+1; ¡¡COMO TE ATREVES A DECIR TAL BLASFEMIA!!
+2; (Ya la he liado...)
 
-#AQUÍ VIENE EL MINIJUEGO DE HUIR DE LOS GUARDIAS
+%DANIA_CONT
+1; ¡GUARDIAS, APRESADLOS!
 
 fade_out
 
+load_scene; res://mini_escaparguardias/escguardias.tscn
+
+if; escapar == 1; ESCAPE; PERDER
+
+%PERDER
+
+1; ¡Os hemos pillado, blasfemos!
+2; Ay, ay...
+1; ¡Ahora vais a dormir la mona en la cárcel para blasfemos!
+2; ¿En el templo?
+1; Claro que no, la blasfemia es un crimen civil.
+2; ¡Pero si todo el mundo en esta ciudad es un blasfemo, no hay dos que crean la misma cosa!
+1; Eso explica por qué las cárceles están a reventar.
+2; ...
+
+fade_out
+jump; res://visual_novel/perder.txt
+
+
+%ESCAPE
+#Poner todo en orden antes de mostrar la escena
 set_bg; BG_calle
-
 hide; 1
-
 show; D_Normal; 2
-
 fade_in
 
 2; Menos mal que hemos conseguido escapar de los guardias de esa loca...
 2; ...
 2; ¿Verdad?
 2; ¿Hola?
-2; Bueno... Quizá se ha adelantado... probablemente vuelva a casa (Más le vale, si no no sé como voy a explicarle esto a su padre)
+2; Bueno... Quizá se ha adelantado... probablemente el chico ya ha vuelto a casa...
 
 fade_out
 
@@ -130,11 +164,11 @@ fade_in
 1; No, no lo veo desde la mañana, que salió.
 2; Ya veo, gracias.
 1; ¿Ha pasado algo?
-do_branch; 2; Verá...; YES9; No; NO9
+do_branch; 2; Verá...; YES9; Nooooo; NO9
 
 %YES9
 1; Estaré pendiente por si lo veo, deberías ir a buscarlo. Tened cuidado, ¿sí?
-2; claro
+2; Claro.
 goto; SIG9
 
 %NO9
@@ -143,7 +177,7 @@ goto; SIG9
 goto; SIG9
 
 %SIG9
-2; (mierda... se ha debido perder cuando escápabamos de los guardias o le ha debido pasar algo).
+2; (Mierda... se ha debido perder cuando escápabamos de los guardias).
 2; (Será mejor que vaya a buscarlo, quizá podría pedir ayuda a...)
 
 fade_out
@@ -169,7 +203,9 @@ show; rival_normal; 1
 1; Está bien, te ayudaré a encontrarlo.
 2; Vamos, tenemos que empezar ya.
 1; Está bien, ¿por dónde empezamos?
-do_branch; 2; Calle principal; CALLE; Templo de Tania; TEMPLO
+
+
+do_branch; 2; Por la calle principal; CALLE; Por el Templo de Tania; TEMPLO
 
 %CALLE
 1; Está bien, empecemos por la calle
@@ -189,24 +225,24 @@ fade_in
 
 2; ¿Por dónde podría estar...? Esta ciudad es enorme...
 1; ¿Suele ir a algún sitio en especial?
-2; No que yo sepa, y aún así, si hubiera vuelto habría ido a casa, creo que le ha pasado algo, que alguien lo ha raptado.
+2; No que yo sepa, y aún así, si hubiera vuelto habría ido a casa. Creo que le ha pasado algo.
 1; Entonces tendremos que estar atentos y revisar  hasta la última piedra de los muros.
 2; ...
 1; ...
+2; (Veamos, podría utilizar alguno de mis poderes de Dios para encontrar encondites ocultos...)
+2; (A ver si el aprobado en Omnisciencia II sirve para algo...)
 1; ¡¿CÓMO DEMONIOS HAS HECHO ESO?!
 2; NO SÉ, HE TOCADO UNA PIEDRA Y EL MURO SE HA MOVIDO.
 1; ¿CÓMO SE ENCUENTRAN PASADIZOS SECRETOS POR CASUALIDAD?
 2; Y YO QUÉ SÉ, SON COSAS QUE PASAN.
 1; ESAS COSAS SOLO PASAN EN VIDEOJUEGOS DE SEGUNDA HECHOS POR AFICIONADOS QUE NO TIENEN NI IDEA DE NOVELAS GRÁFICAS.
 2; NO SÉ POR QUÉ, PERO ESO ME OFENDE.
-1; QUIZÁ ERES DEMASIADO SENSIBLE.
-2; Entonces mejor dejamos de gritarnos.
-1; Sí... Mejor.
+1; Quizá eres demasiado sensible.
 2; Anda, bajemos a ver qué hay.
 
 fade_out
 
-#AQUÍ SE PONE FONDO DE MAZMORRA
+set_bg; BG_DUNGEON
 
 fade_in
 
@@ -215,15 +251,15 @@ fade_in
 2; Creo que es...
 1; ¿Un sacrificio?
 1; ¿Deberíamos pararlos?
-do_branch; 2; Vamos; YES11; Espera; NO11
+do_branch; 2; ¡Vamos!; YES11; No, espera...; NO11
 
 %YES11
 2; Sí, vamos, tú por un lado y yo por otro.
 hide; 1
 2; (Voy a tener que ser sigiloso... Muy sigiloso...)
 show; encapuchado; 1
-1; ALERTA, INTRUSOS
-2; (¡Mierda! Nos han descubierto...)
+1; ¡ALERTA, INTRUSOS! ¡Escapad!
+2; (¡Mierda! Nos han visto...) 
 2; NO, CÓGELOS, QUE NO SE ESCAPEN...
 hide;1
 2; ¡Voy contigo!
@@ -244,7 +280,8 @@ set_bg; BG_calle
 
 fade_in
 
-2; ¿Dónde están todos? Ni siquiera veo a Ric... Será mejor que vaya a casa, mañana me ocuparé de esto.
+2; ¿Dónde están todos? Ni siquiera veo a [color=green]Ric[/color]... Será mejor que vaya a casa, mañana me ocuparé de esto.
+2; Vamos de mal en peor...
 
 fade_out
 

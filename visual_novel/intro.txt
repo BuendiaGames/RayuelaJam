@@ -15,15 +15,18 @@ hide;1
 1; No me ha llegado ningún correo.
 2; ¿No? Bueno...
 1; Igualmente, ¿qué necesitabas?
-2; Estoy teniendo ciertos problemas con la tesis.
+2; Estoy teniendo ciertos problemas con las prácticas de la asignatura [color=blue]Creación de Mundos I[/color].
 1; ...
-2; Sí, bueno, yo, eh...\nQuería saber en qué consistían exactamente mis prácticas.
 1; ¿Tu estabas en...?
-2; Petra, profesor, mis prácticas eran en Petra.\n(Por Dios, vaya director de tesis...)
-1; Ah, sí, claro... ya lo sabía.\nTu trabajo allí consistirá en reducir el número de religiones de la zona y entregar un informe sobre ello.
-2; ¿Un informe?
+2; Petra, profesor, mis prácticas eran en Petra.
+1; Ah, sí, claro... \nVamos a ver...
+1; Estas prácticas están fatal. ¿No has atendido nada en clase? \n¡Hay un montón de [color=red]religiones diferentes[/color]!
+2; ¿Y eso es... malo?
+1; ¡Es malísimo! Como presentes esto estás suspenso. \nLa gente del planeta debe [color=red]adorarte a ti como Dios único y verdadero.[/color]
+1; Bueno, bueno, arregla ese estropicio y preséntame tu informe.
+2; ¿...Informe?
 1; Sí, una memoria de prácticas que examinará un tribunal y de la cual dependerá toda tu nota.
-2; ¿Toda? ¿Incluso si mis prácticas están bien hechas, si no hago la memoria bien me suspenden?
+2; ¿Toda? ¿Incluso si arreglo todos los problemas de las prácticas, si no hago la memoria bien ¿suspendo?
 1; Sí, exactamente. Hala, buena suerte muchacho.
 fade_out
 

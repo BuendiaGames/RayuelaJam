@@ -3,6 +3,9 @@ extends Node2D
 
 var velsaltoplayer = Vector2(0.0,0.0)
 
+var vnglobal
+var caught = false
+
 var tiempojuego = 60
 
 var tiempo = 0 #Timecounter
@@ -48,9 +51,24 @@ func bg_scroll(delta):
 			bg.position.x = 1024/2
 
 
+#Finish the minigame
+func finish():
+	
+	#Set the variable
+	if (not caught):
+		vnglobal.set_var("escapar", 1)
+	else:
+		vnglobal.set_var("escapar", 0)
+	
+	#Stop the music
+	$music.stop()
+	
+	#Make the fade out and assign the VN to the transition
+	$transition/anim.play("fade_out")
 
 func _ready():
 	randomize()
+	vnglobal = get_tree().root.get_node("/root/vn_global")
 	pass
 
 func _process(delta):
@@ -84,13 +102,13 @@ func _process(delta):
 	
 	tiempojuego -= delta
 	if (tiempojuego <= 0):
-		print("ganaste")
+		finish()
 
 #Check if we got the guards
 func _on_guardias_body_entered(body):
 	if (body.name == "player"):
-		print("muerto")
-	pass # replace with function body
+		caught = true
+		finish()
 
 #Change animation
 func change_anim(new_anim):

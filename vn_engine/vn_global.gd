@@ -18,6 +18,10 @@ func vn_to_scene(the_vn, scene):
 	var sc = sc_res.instance()
 	get_tree().root.add_child(sc)
 
+func scene_to_vn(the_scene):
+	the_scene.queue_free()
+	get_tree().root.add_child(vn)
+	vn.next_step()
 
 #To modify variables
 func set_var(name, value):

@@ -6,6 +6,8 @@ const note_tempo = 60.0 / 210.0 #Time of a single note
 var beer_throw = [] #When a beer should be thrown
 var beer_index = 0 #Current beer
 
+var vnglobal #To communicate with visual novel
+
 var tiempo = 0.0 #Time counter (music)
 var tiempo_got = 0.0 #Time counter between get and drink
 
@@ -46,6 +48,9 @@ func _ready():
 	for j in range(len(beer_throw)):
 		beer_throw[j] *= note_tempo
 	
+	vnglobal = get_tree().root.get_node("/root/vn_global")
+	
+	
 	print(beer_throw)
 	
 	
@@ -57,18 +62,40 @@ func resume_pause():
 	if (not $music.playing):
 		$music.playing = true
 		$ui/corazones.show()
+		
+
+#Finish the minigame
+func finish():
+	
+	#Set the variable
+	if (vida > 0):
+		vnglobal.set_var("beber", 1)
+	else:
+		vnglobal.set_var("beber", 0)
+	
+	#Stop the music
+	$music.stop()
+	
+	#Make the fade out and assign the VN to the transition
+	$transition/anim.play("fade_out")
+
 
 func _physics_process(delta):
+	
+	#Increase time (really don't count unless beer_got = true)
+	tiempo += delta
+	tiempo_got += delta 
 	
 	#Check it is time to throw a beer
 	if (beer_index < len(beer_throw)):
 		if (tiempo >= beer_throw[beer_index]):
 			beer_index += 1 #To next beer
 			add_cerveza()
+	else:
+		#Let a bit of time, then finish
+		if (tiempo > 199*note_tempo):
+			finish()
 	
-	#Increase time (really don't count unless beer_got = true)
-	tiempo += delta
-	tiempo_got += delta 
 	
 	if (Input.is_action_just_pressed("ui_accept")):
 		#Beer touched the sensor area
@@ -103,9 +130,11 @@ func _physics_process(delta):
 		corazones.eliminar_vida()
 		beer_got = false
 		$player.frame = 0
-			
+		
 	
-	
+	if (vida == 0):
+		set_physics_process(false)
+		finish()
 	
 
 #Area that checks beer entering

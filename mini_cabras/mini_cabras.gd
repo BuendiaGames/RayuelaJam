@@ -3,7 +3,7 @@ extends Node2D
 #Goat class
 var rebaniocabras = preload("res://mini_cabras/cabra.tscn")
 var vnglobal #To communicate with visual novel
-var vn #Current scene of the visual novel
+
 
 #Movement of player
 var speed = 3
@@ -102,7 +102,7 @@ func finish():
 	
 	#Make the fade out and assign the VN to the transition
 	$transition/anim.play("fade_out")
-	$transition.vn = vnglobal.vn
+	#$transition.vn = vnglobal.vn
 
 
 func _ready():
