@@ -1,0 +1,26 @@
+#Este archivo sale siempre que pierdes
+
+load; D_Contento; D_Normal; directortesis
+
+set_bg;BG_office
+
+show;D_Normal;2
+show;directortesis;1
+hide;1
+
+fade_in
+1; Bueno, a ver ese informe...
+2; Pues, bueno, verá...
+1; ¿Cuántas religiones dices que hay al final en Petra?
+2; Dos religiones mayoritarias.
+1; ¿Alguna de ellas te adora a ti?
+2; No, a menos que sea una planta o un monstruo de espaguetis.
+1; ¿¡De veras la gente prefiere creer en esas cosas antes que en ti!?
+1; ¿Y las religiones minoritarias?
+2 Hay decenas de ellas. Sectas de encapuchados... y hasta un señor que cree en sus cabras.
+1; ...
+2; ...
+1; Esto es totalmente inaudito. El peor informe de prácticas que he visto jamás.
+1; Estás \n[color=red]SUSPENSO[/color]
+
+fade_out

@@ -1,5 +1,6 @@
 extends Node2D
 
+var vnglobal
 
 var ondas_class = preload("res://mini_batallafinal/ondas.tscn")
 
@@ -16,6 +17,20 @@ var timeattack = 0.5 #Time to send waves to player
 
 #Health bar container
 var corazones
+
+#Finish the minigame
+func finish():
+	#Set the variable
+	if (vidaperso > 0):
+		vnglobal.set_var("ganar", 1)
+	else:
+		vnglobal.set_var("ganar", 0)
+	
+	#Stop the music
+	$music.stop()
+	
+	#Make the fade out and assign the VN to the transition
+	$transition/anim.play("fade_out")
 
 #Handle player input
 func moverse ():
@@ -51,6 +66,7 @@ func resume_pause():
 func _ready():
 	#Store the ui
 	corazones = $ui/corazones
+	vnglobal = get_tree().root.get_node("/root/vn_global")
 	pass
 
 
@@ -83,7 +99,7 @@ func _on_player_area_entered(area):
 	corazones.eliminar_vida()
 	#TODO perder
 	if (vidaperso == 0):
-		print("muerto")
+		finish()
 
 #If the wave is inside the sensor area, make ready
 #for reverse
@@ -96,5 +112,4 @@ func _on_mala_area_entered(area):
 		area.queue_free()
 		vidamala -= 1
 		if (vidamala == 0):
-			print("ganaste")
-			#TODO: victory
+			finish()

@@ -18,8 +18,8 @@ fade_in
 2; ¿Participan representantes de todas las religiones?
 1; Sí, sería una deshonra no tener a nadie.
 3; [color=blue]Bienvenidos al primer concurso para elegir al definitivo nuevo mesías.[/color]
-3; [color=blue]El concurso comenzará en breves instantes, ¡mientras explicaré en qué consiste este concurso![/color]
-3; [color=blue]Por turnos, se realizarán una serie de preguntas a cada representante, después, el público elegirá al mejor.[/color]
+3; [color=blue]El concurso comenzará en breves instantes. ¡Mientras, explicaré en qué consiste![/color]
+3; [color=blue]Por turnos, se realizarán una serie de preguntas a cada representante. Después, el público elegirá al mejor.[/color]
 3; [color=blue]¡ESTE CONCURSO ELEGIRÁ AL MESÍAS Y RELIGIÓN DEFINITIVA![/color]
 3; [color=blue] Por favor, tomen asiento mientras comienza.[/color]
 1; Será mejor que vayamos a sentarnos.
@@ -40,23 +40,33 @@ show; encapuchado2; 2
 
 2; ¡Eh! ¡Pensaba que habías desaparecido!
 1; ¿Pero qué...? ¡Mierda! ¡Eres tú!
+1; ¡Me largo de aquí!
 
 hide; 1
 
 2; ¡No! ¡ESPERA!
-2; ¿Por qué ha huido? Voy a seguir-
+2; ¿Por qué ha huido? Voy a seguirlo...
 
 show; dania_ego; 1
 
+2; (Oh, no, es [color=green]Dania[/green]
+1; ...
+2; Hey.
+1; Me suena tu voz.
+2; ¿Yo? Si yo soy un triste encapuchado.
+1; ¡Qué va! ¡Tú eres el blasfemo que dijo que hacíamos sacrificios!
+1; Sabía que te traías algo entre manos, ¡eres un encapuchado!
 1; ¿Qué haces tú de nuevo aquí? ¡Guardias!
 
 show; guardia; 1
 
 2; Oh, no.
 1; Te vienes conmigo, ven aquí.
-2; Pues... no.
+2; Pues... ¡no! ¡me largo!
 
 hide; 2
+
+1; ¡Maldita sea, se ha escapado!
 
 fade_out
 
@@ -66,7 +76,7 @@ fade_in
 
 show; encapuchado2; 2
 
-2; Creo que le he dado esquinazo...
+2; Creo que le he dado esquinazo... Aquí hay mucho encapuchado...
 1; Eh, tú por aquí, qué bien me vienes...
 2; ¿Que te vengo bien?
 1; Sí, de perlas.
@@ -77,7 +87,10 @@ show; encapuchado2; 2
 2; Pero...
 3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡preparaos para las preguntas![/color]
 1; No hay tiempo, ve, ahora te dirán las preguntas.
-do_branch; 2; Voy; YES14; Pero...; NO14
+2; (Tengo que pensármelo bien. Si voy ahí, me pueden descubrir los encapuchados, o [color=green]Ric[/color], o [color=green]Dania[/color]...)
+2; (¡Pero puede ser mi oportunidad para transformarme en el Mesías, utilizar lo que aprendí en la asignatura de Milagros...!)
+2; (¡...y convertirme en el [color=red]Dios único y verdadero[/color]!)
+do_branch; 2; ¡Voy!; YES14; Pero...; NO14
 
 %YES14
 1; Así me gusta, ¡con actitud!
@@ -122,13 +135,13 @@ fade_out;
 
 fade_in
 
-3; [color=blue]Y el ganador es... ¡El representante de los[/color] [color=green]encapuchados![/color]
+3; [color=blue]Y el ganador es... ¡El representante de los[/color] [color=green]encapuchados![/color].
 
 show; encapuchado; 1
-1; ¡SÍ! ¡LO HAS CONSEGUIDO! ¡HAS HECHO QUE GANEMOS!
+1; ¡SÍ! ¡LO HAS CONSEGUIDO! ¡HEMOS GANADO!
 3; [color=blue]ESPERAD, PARECE QUE HA HABIDO UN ERROR, EL GANADOR NO ES EL REPRESENTANTE DE LOS ENCAPUCHADOS.
 1; ¡¿QUÉ?!
-3; [color=blue] El ganador real es... ¡El representante del[/color][color=green]Templo de Dania![/color]
+3; [color=blue] El ganador real es... ¡El representante del[/color] [color=green]Templo de Dania![/color]
 
 goto;SIGG
 
@@ -137,14 +150,14 @@ show; dania_ego; 1
 
 1; ¡Genial!
 2; (No me creo que hayan ganado ellos...)
-#si se te ocurre una forma mejor de que se den cuenta de que le hacen algo al ganador, feel free to change the dialogue
-3; [color=blue] ESPERAD, SEÑORES, UNA COLUMNA ACABA DE CAERLE ENCIMA AL GANADOR DEL TEMPLO
+3; [color=blue] ANUNCIO DE ÚLTIMA HORA:  UNA COLUMNA ACABA DE CAERLE ENCIMA AL GANADOR. Creemos que puede haber sido intencionado.
 
 show; dania_enfadada; 1
 
-1; ¡¿QUÉ?! NO
+1; ¡¿QUÉ?! ¡NOOO! ¡Esto solo pueden haber los imbéciles del [color=green]Templo de Tania[/color]!
 hide; 1
-2; Espera, ¡te ayudaré a sacarlo!
+
+2; Creo que se va a liar una buena... Es el momento te aprovechar, ¡aún debo encontrar a [color=green]Ric[/color]!
 
 hide; 2
 
@@ -158,7 +171,7 @@ fade_in
 
 1; ¡HABÉIS SIDO VOSOTROS, HABÉIS INTENTADO MATAR A NUESTRO REPRESENTANTE!
 2; ¡NOSOTROS NO HARÍAMOS NUNCA ESO!
-1; ¡MENTIROSOS! ¡COME ANIMALES EN FORMA DE ALBÓNDIGA!
+1; ¡MENTIROSOS! ¡COMÉIS ANIMALES EN FORMA DE ALBÓNDIGA!
 2; ESO NO TIENE NADA QUE VER.
 1; HABÉIS INTENTADO MATARNOS, NO DISIMULÉIS.
 
@@ -168,15 +181,21 @@ shoe; D_Normal; 2
 hide; 1
 
 show; rival_normal; 1
-
+1; (Solo un poco más y podré cargarme a esta también...)
+2; ¡Eh, tú!
 1; ¡Mierda!
 2; ¡¿Qué ibas a hacerle?!
 1; Maldición...
+
 hide;1
 2; ¡NO! ¡VEN AQUÍ!
 2; ¡Ayudadme a encontrarlo! ¡Él es el culpable de todo esto!
 
-hide; 2
+show; dania_normal; 1
+
+1; Gracias por la ayuda. Ha estado muy cerca.
+2; ¡Ese tipo tan sospechoso es el culpable de todo esto!
+1; ¡Guardiaaaaaaaaas! ¡Guardiaaaaaaaaaas!
 
 fade_out
 
@@ -186,18 +205,20 @@ show; hijo; 1
 
 fade_in
 
-2; ¡Hey! ¿Estás bien?
-1; ¡Ayúdam-
+2; ¡Por fin te encuentro! ¿Qué haces aquí? 
+1; ¡El tipo de las afueras, [color=green]Ric[/color]! ¡Quiere crear el caos en el concurso! ¡Nos raptó a mí, y a un encapuchado!
+2; Y por lo que veo se está saliendo con la suya.
+1; ¡Rápido, desátame antes de que vuelv...!
 
 show; rival_normal; 1
 
 1; Si te acercas me lo cargo.
 2; ¡Suéltalo!
-1; ¿Y si no?
-do_branch; 2; Me tiro un pedo.; PEDO; Lloro.; LLORO
+1; ¿Y si no, qué piensas hacer?
+do_branch; 2; ¡Voy a matarte!; MUERTE; Lloro.; LLORO
 
 %PEDO
-1; Por Dios, qué asco, por favor no.
+1; ¿En serio? Más te vale no moverte si no quieres que me cargue a tu amigo.
 goto; SIGGG
 
 %LLORO
@@ -210,7 +231,10 @@ goto; SIGGG
 %SIGGG
 1; Si quieres recuperarlo, tendrás que vértelas conmigo.
 2; Adelante.
-1; Permíteme ponerme en una forma más... cómoda...
+2; (No tiene ninguna posibilidad, puedo usar mis poderes de Dios cuando quiera...)
+1; Crees que tus poderes te servirán de algo, pero conmigo serán inútiles.
+2; ¿Cómo sabes eso? ¿Quién demonios eres tú?
+1; Permíteme que me quite este burdo disfraz...
 
 show; mala_normal; 1
 
@@ -225,15 +249,21 @@ show; mala_preparada; 1
 
 1; ¡Tendrás que derrotarme para recuperar al chico!
 
-#AQUI VIENE MINIJUEGO DE BATALLA FINAL
+fade_out
+load_scene; res://mini_batallafinal/batallafinal.tscn
 
-#si ganas:
+if; ganar==1; GANAS; PIERDES
 
+%GANAS
+fade_in
 show; hijo; 1
-2; Vete a casa, y gracias por todo.
-1; Gracias por salvarme, hasta la vista.
+2; ¡Já! Le he dado una buena tunda. 
+2; Menos mal que he podido salvarte. Esto se estaba poniendo muy feo.
+2; (Ya me veía suspenso...)
+1; Gracias por salvarme. Será mejor que me vaya con mi padre.
+2; Ve. ¡Hasta la vista!
 hide; 1
-2; Ahora tú te vienes conmigo.
+2; Ahora tú te vas a venir conmigo.
 show; mala_normal; 1
 2; Vamos.
 
@@ -251,16 +281,13 @@ fade_in
 
 2; ¿Director?
 3; ¿Tenía tutoría contigo?
-2; No, pero tenía que hablar con usted.
-3; ¿De qué?
-2; Esta es mi compañera de clase.
-3; Sí, la conozco, ¿qué pasa con ella?
-2; Ha estado saboteando mis prácticas.
-3; ¿Saboteando?
-2; Sí, ha estado causando problemas durante mi estancia allí.
-1; Se merece suspender, nunca llegará a ser un buen Dios, no sirve ni de becario.
-3; Humm... ya veo.
-3; Hablaré con el departamento entonces para suspenderlo.
+2; No, pero tenía que hablar con usted. ¿Tiene un minuto?
+3; Solo un minuto.
+2; Como podrá comprobar en mi informe, mi compañera de clase ha saboteado mis prácticas.
+3; ¿De veras?
+2; Sí, ha estado causando problemas durante mi estancia allí. Ella sembró la discordia y creó un montón de religiones.
+3; Entonces tendremos que hablar con el rectorado de la Universidad. Esto son palabras mayores.
+3; Hablaré con el departamento entonces para suspenderla.
 1; ¡¿SUSPENDERME?!
 2; Genial, gracias.
 1; ESPERAD, MIS PRÁCTICAS ESTÁN HECHAS, BIEN HECHAS, NO PODÉIS SUSPENDERME.
@@ -268,12 +295,28 @@ fade_in
 1; ¡ESPERAD! ¡N-
 hide;1
 2; Respecto a mis prácticas... Con este percance...
-3; Céntrate en escribir lo mejor que puedas la memoria, no te preocupes.
+3; Céntrate en escribir lo mejor que puedas la memoria. 
 2; ¡Gracias!
 
 fade_out
+#FIN ~~~~~
 
-#FIN
+%PIERDES
+show; mala_normal; 1
+show; D_Normal; 2
+
+1; Menuda paliza que te has llevado. ¡Jo, jo, jo!
+2; Ay...
+1; Bueno, yo me largo. Recuerda que el plazo para arreglar tus prácticas se acaba mañana.
+2; Ay...
+1; Buena suerte arreglando todo este desastre que había preparado para el casting de mesías. Nos vemos, ¡pringao!
+2; ...
+2; No me lo puedo creer... Voy a tener que cursar la asignatura el año que viene...
+
+#TODO jump perder
+
+
+
 
 
 
