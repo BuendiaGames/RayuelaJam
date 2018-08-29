@@ -22,6 +22,7 @@ func scene_to_vn(the_scene):
 	the_scene.queue_free()
 	get_tree().root.add_child(vn)
 	vn.next_step()
+	print("HAY")
 
 #To modify variables
 func set_var(name, value):

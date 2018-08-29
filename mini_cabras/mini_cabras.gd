@@ -14,16 +14,13 @@ var tiempo = 0
 var tiempocabra = 3
 
 var counter = 0.0
-var fin = 30.0
+var fin = 3.0
 
 #Animation controller
 var anim
 
 #Number of goats
 var cabrasencerradas = 0
-
-func get_vn(_vn):
-	vn = _vn
 
 #Change anim
 func change_anim(new_anim):
@@ -102,7 +99,7 @@ func finish():
 	
 	#Make the fade out and assign the VN to the transition
 	$transition/anim.play("fade_out")
-	#$transition.vn = vnglobal.vn
+
 
 
 func _ready():

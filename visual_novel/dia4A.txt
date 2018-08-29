@@ -11,16 +11,15 @@ hide;1
 
 fade_in
 
-2; ¿Tania? ¿Estás? Necesitaría tu ayuda.
+2; [color=green]¿Tania?[/color] ¿Estás? Necesitaría tu ayuda.
 
 show;tania_normal;1
 
-1; ¿Ayuda? ¿Ha pasado algo?
+1; ¡No tengo tiempo para ayudarte!
 2; Estoy buscando a...
 
 show; tania_enfadada;1
 
-1; ¡No tengo tiempo para ayudarte!
 2; ¿Por qué no?
 1; ¿No lo ves? ¡Mi templo ha sido asaltado!
 2; ¿Qué? ¿Han robado algo?
@@ -55,17 +54,20 @@ show; dania_ego; 1
 
 show; dania_enfadada; 1
 
-1; ¿Ayudarte? ¿Yo? ¿Después de decirme que hago sacrificios en MI templo?
+1; ¿Ayudarte? ¿Yo? ¿Después de insinuar que hago sacrificios en MI templo?
 2; Eso fue un malentendido...
 1; ¿Un malentendido? ¿ME VES CARA DE TONTA?
-do_branch; 2; Y de pava; YES12; Qué va, eres preciosa; NO12
+do_branch; 2; Un poco sí; YES12; No, no, qué va; NO12
 
 %YES12
-1; ¡¿CÓMO QUE DE PAVA?! LÁRGATE AHORA MISMO.
+1; ¿Pero de qué crees vas?
+1; ¡Vete ahora mismo de mi templo!
 goto; SIG12
 
 %NO12
-1; PRECIOSA LA TORTA QUE TE VOY A DAR COMO NO TE VAYAS.
+1; ...
+2; ¿Y bien?
+1; No te voy a ayudar, suficiente he tenido ya contigo.
 goto; SIG12
 
 %SIG12
@@ -89,20 +91,33 @@ show; encapuchado; 1
 #revisar precio de las túnicas
 1; TÚNICAS DE ENCAPUCHADOS A DIEEEEZ DORAAAADOS
 2; ¿Túnicas?
-1; Sí, túnicas de calidad de la buena, originales de los encapuchados.
+1; Sí, túnicas de calidad de la buena, de la secta de los encapuchados.
 2; ¿Con eso podría entrar en los encapuchados?
 1; Pues claro, son las originales.
 2; Genial, me la llevo.
 1; ¿Quiere por solo cinco dorados más la ropa interior a juego?
+
+
 do_branch; 2; Me la llevo; YES13; No, gracias; NO13
-#Aquí se hace la separacion dependiendo del dinero
+
 
 %YES13
+set; dinero; 20
+if; dinero >= 15; COMPRADA; SIN_DINERO
 
+%COMPRADA
+set; calzones; 1
 1; Aquí tiene.
 goto; SIG13
 
+%SIN_DINERO
+1; No tienes suficiente dinero para comprar la ropa interior...
+2; ¡Ups, perdón!
+goto; NO13
+
+#Si no hay dinero o no quieres los calzones vienes aqui
 %NO13
+set; calzones; 0
 #aquí viene un jump
 
 %SIG13
@@ -112,7 +127,7 @@ set_bg; BG_dungeon
 
 hide;1
 
-show; encapuchado2;2
+show;encapuchado2;2
 
 fade_in
 
@@ -126,8 +141,13 @@ show; encapuchado; 1
 2; Oh, eh... claro, venía al ritual, por supuesto.
 1; Genial, pues ayúdanos con los cánticos y pasos.
 
-#AQUÍ VA EL MINIJUEGO DEL RITUAL
+fade_out
+load_scene; res://mini_ritual/ritual.tscn
+fade_in
 
+if; baile==1; SUPERADO; NO_SUPERADO
+
+%SUPERADO
 1; Hey, no lo has hecho tan mal para ser un novato.
 2; Gracias... (tengo que salir de aquí antes de que me descubran)
 1; Ah, ¿te comunicaron la misión de hoy para los novatos?
@@ -145,7 +165,7 @@ goto; SIG14
 %SIG14
 1; Debes repartir los folletos que tenemos a la salida para el [color=red]casting de mesías[/color].
 2; ¿Qué es eso?
-1; ¿No te llegó el correo?
+1; ¿Es que no te ha avisado nadie?
 1; Es un concurso que se celebrará mañana en el teatro con el propósito de elegir al siguiente mesías.
 2; ¿Elegir... al mesías?
 1; Sí, habrá representantes de todas las religiones, y debes repartir los folletos para que haya público.
@@ -163,11 +183,16 @@ show; encapuchado2; 2
 
 fade_in
 
-2; EL MEJOR CONCURSO DEL AÑO, ACCESO GRATUITO, PARA TODOS LOS PÚBLICOS.
+2; EL MEJOR CONCURSO DE LA HISTORIA, ACCESO GRATUITO, PARA TODOS LOS PÚBLICOS.
 2; ELIJAN AL PRÓXIMO MESÍAS, EL RESULTADO DEPENDE DE USTED, VOTE POR SU MESÍAS FAVORITO.
-2; HAGA SU RELIGIÓN LA GANADORA (Por favor, esto es patético).
+2; ¡HAGA SU RELIGIÓN LA GANADORA! 
+2; (Por favor, que YO tenga que hacer esto es realmente patético).
 2; VAMOS, QUE ME QUITAN LOS FOLLETOS DE LAS MANOS NIÑOOOS.
-#Meter mas rollo de reparto de folletos
+2; ...
+2; ...
+2; Parece que he conseguido repartir unos pocos folletos. 
+2; ¿Un [color=red]casting de mesías[/color]? Es realmente el colmo.
+2; ¡Debo encontrar cuál es la causa de que la gente tenga tantas creencias distintas! ¡O me voy a comer un suspenso enorme!
 
 fade_out
 
@@ -181,17 +206,17 @@ show; encapuchado; 1
 
 1; ¿Ah sí? ¿Tan pronto?
 2; Sí, señor.
-1; Estupendo, novatillo, entonces lava las túnicas y bajos, anda.
+1; Estupendo, novatillo. Ahora, lava las túnicas. ¡Incluida la tuya!
 2; ¿Que haga la colada?
-1; Pues claro, adelante, novato.
+1; Eso es lo que he dicho. ¿Es que no escuchas? Los novatos de hoy día no son lo que eran...
 
 #aquí depende de si tienes ropa interior o no se hace division. SI no tienes ropa interior, salto a rama C, en caso de que si sigue por aqui.
+if; calzones==1; BIEN; MAL 
 
+%BIEN
 2; Ya he lavado la ropa, señor (y vaya cantidad de ropa...)
 1; ¿Toda? Muy bien, puedes irte a casa por hoy, estarás afligido como todos.
 2; ¿Afligido?
-1; Claro, ¿no te has enterado?
-2; ¿De qué?
 1; Han raptado a uno de los nuestros, aunque esperamos encontrarlo pronto.
 2; Ya veo... Buena suerte en la búsqueda.\n(Qué raro... Está desapareciendo mucha gente...)
 1; Gracias.
@@ -202,8 +227,15 @@ fade_out
 
 jump; res://visual_novel/dia5A.txt
 
+%MAL
 
+fade_out
+jump; res://visual_novel/dia5B.txt
 
+%NO_SUPERADO
+
+1; Prueba
+2; Prueba
 
 
 

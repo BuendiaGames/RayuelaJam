@@ -48,9 +48,7 @@ show; hijo; 1
 2; Está bien, vayamos allí entonces, si no está al menos debe haber alguien que lo conozca.
 
 fade_out
-
 set_bg; BG_city
-
 fade_in
 
 2; Humm... Por aquí no parece que haya nadie con una capucha.
@@ -124,7 +122,7 @@ load_scene; res://mini_escaparguardias/escguardias.tscn
 if; escapar == 1; ESCAPE; PERDER
 
 %PERDER
-
+fade_in
 1; ¡Os hemos pillado, blasfemos!
 2; Ay, ay...
 1; ¡Ahora vais a dormir la mona en la cárcel para blasfemos!
@@ -242,7 +240,7 @@ fade_in
 
 fade_out
 
-set_bg; BG_DUNGEON
+set_bg; BG_dungeon
 
 fade_in
 

@@ -51,9 +51,6 @@ func _ready():
 	vnglobal = get_tree().root.get_node("/root/vn_global")
 	
 	
-	print(beer_throw)
-	
-	
 	corazones = $ui/corazones
 	set_physics_process(true)
 
@@ -66,7 +63,6 @@ func resume_pause():
 
 #Finish the minigame
 func finish():
-	
 	#Set the variable
 	if (vida > 0):
 		vnglobal.set_var("beber", 1)
@@ -93,8 +89,9 @@ func _physics_process(delta):
 			add_cerveza()
 	else:
 		#Let a bit of time, then finish
-		if (tiempo > 199*note_tempo):
+		if (tiempo > 205*note_tempo):
 			finish()
+			set_physics_process(false)
 	
 	
 	if (Input.is_action_just_pressed("ui_accept")):
@@ -114,12 +111,16 @@ func _physics_process(delta):
 			if (timeA <= tiempo_got and tiempo_got <= timeB):
 				$player.frame = 2
 			else:
+				print("1")
 				$player.frame = 0
 				vida -= 1
+				print(vida)
 				corazones.eliminar_vida()
 		else: #Press in bad moment
 			$player.frame = 0
 			vida -= 1
+			print("2") 
+			print(vida)
 			corazones.eliminar_vida()
 	
 	
@@ -127,6 +128,8 @@ func _physics_process(delta):
 	#If we hold the beer too much without drink, bad
 	if (beer_got and tiempo_got >= timeB):
 		vida -= 1
+		print("3")
+		print(vida)
 		corazones.eliminar_vida()
 		beer_got = false
 		$player.frame = 0
@@ -145,8 +148,5 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	area.queue_free()
 	beer_enter = false
-	#If we didn't got it, hurt player
-	if (not beer_got):
-		vida -= 1
-		corazones.eliminar_vida()
+
 

@@ -7,7 +7,7 @@
 [ext_resource path="res://music/Hail_the_Hood.ogg" type="AudioStream" id=5]
 [ext_resource path="res://cortina/transition.tscn" type="PackedScene" id=6]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 

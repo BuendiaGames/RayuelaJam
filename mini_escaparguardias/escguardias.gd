@@ -6,7 +6,7 @@ var velsaltoplayer = Vector2(0.0,0.0)
 var vnglobal
 var caught = false
 
-var tiempojuego = 60
+var tiempojuego = 30.0
 
 var tiempo = 0 #Timecounter
 var tiempo_obs = 2.0 #Time at which obstacles are placed
@@ -103,12 +103,14 @@ func _process(delta):
 	tiempojuego -= delta
 	if (tiempojuego <= 0):
 		finish()
+		set_process(false)
 
 #Check if we got the guards
 func _on_guardias_body_entered(body):
 	if (body.name == "player"):
 		caught = true
 		finish()
+		set_process(false)
 
 #Change animation
 func change_anim(new_anim):

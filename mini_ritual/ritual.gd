@@ -1,5 +1,10 @@
 extends Node2D
 
+var vnglobal
+
+var end = false
+var time_end = 3.0
+var time_end_counter = 0.0
 
 #Music related constants
 const note_time = 3.0 / 4.0 #Time (in seconds) of 1 note
@@ -35,6 +40,19 @@ var secu = [] #array for saving the current sequence
 
 var corazones #To store ui health
 
+#Finish the minigame
+func finish():
+	#Set the variable
+	if (vida > 0):
+		vnglobal.set_var("baile", 1)
+	else:
+		vnglobal.set_var("baile", 0)
+	
+	#Stop the music
+	$music.stop()
+	
+	#Make the fade out and assign the VN to the transition
+	$transition/anim.play("fade_out")
 
 
 
@@ -126,6 +144,8 @@ func _ready():
 	#Store health bar
 	corazones = $ui/corazones
 	
+	vnglobal = get_tree().root.get_node("/root/vn_global")
+	
 	$jefe.frame = 0
 	for i in $bichos.get_children():
 		i.frame = 0
@@ -207,9 +227,17 @@ func do_logic(delta):
 			generar_secuencia(numsecuencias)
 			iniciar()
 		else:
-			set_physics_process(false)
+			end = true
 		
-
+	
+	#Check finish after completion
+	if (end):
+		time_end_counter += delta
+		if (time_end_counter >= time_end):
+			finish()
+			set_physics_process(false) 
+	
 	#this kills the player if they lose all the life
 	if (vida == 0):
-		print("muerto")
+		finish()
+		set_physics_process(false)

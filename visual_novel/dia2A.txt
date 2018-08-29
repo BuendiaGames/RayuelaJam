@@ -76,15 +76,8 @@ show;dania_enfadada;1
 show;dania_ego;1
 
 1; Eso me había parecido oír, sí.
-2; ¿A qué Dios se rinde culto en este templo?
-
-show;dania_enfadada;1
-
-1; \n¡¿ALGÚN?!
-
-show;dania_ego;1
-
 1; Soy [color=green]Dania[/color], la sacerdotisa de este templo. ¿Cómo que "a qué Dios"?
+2; ¿A qué Dios se rinde culto en este templo?
 1; Aquí se le rinde culto al [color=red]único Dios verdadero[/color], por supuesto.
 2; Claro, claro (Está loca de atar).
 1; ¿Y bien? ¿En qué puedo ayudarte?
@@ -240,7 +233,7 @@ goto; SIG8
 2; No, ¿tú vienes mucho?
 1; Sí, bastante, pero entre semana no, porque estoy ocupado.
 2; ¿Ocupado con qué?
-1; Soy aprendiz de [color = red]encapuchado[/color], una de las sectas mayoritarias de Petra.
+1; Soy aprendiz de [color=red]encapuchado[/color], una de las sectas mayoritarias de Petra.
 2; ¿Aprendiz?
 1; Sí, estoy estudiando para ser un encapuchado, pero la verdad es que no se me da muy bien.
 2; Bueno, yo también estoy estudiando y la verdad que tampoco lo llevo bien, de hecho estoy intentando salvar mis prácticas ahora mismo.
@@ -258,11 +251,12 @@ show; D_Contento; 2
 
 fade_out
 load_scene; res://mini_cervezas/minicervezas.tscn
-fade_in 
 
-if; beber==0; BORRACHO; A_CASA
+
+if; beber==1; BORRACHO; A_CASA
 
 %BORRACHO
+fade_in;
 2; Eh, eresss un tíiio genial, te acompañoo a casssa.
 1; Buah tío... No hace falta...
 2; Que ssí hombreeee, que para eso estamoossss.
@@ -271,6 +265,7 @@ if; beber==0; BORRACHO; A_CASA
 goto; SIG8
 
 %A_CASA
+fade_in;
 2; (Al final no he bebido nada).
 2; (No se puede puede decir lo mismo del otro...)
 1; Tíiiio, te quieerooooooooooooo.
