@@ -239,12 +239,41 @@ show; mala_normal; 1
 
 fade_out
 
-show; directortesis; 1
-hide; 1
+show; directortesis; 3
+hide; 3
 
 show; D_Normal; 2
+show; mala_normal; 1
+
+set_bg; BG_office
 
 fade_in
+
+2; ¿Director?
+3; ¿Tenía tutoría contigo?
+2; No, pero tenía que hablar con usted.
+3; ¿De qué?
+2; Esta es mi compañera de clase.
+3; Sí, la conozco, ¿qué pasa con ella?
+2; Ha estado saboteando mis prácticas.
+3; ¿Saboteando?
+2; Sí, ha estado causando problemas durante mi estancia allí.
+1; Se merece suspender, nunca llegará a ser un buen Dios, no sirve ni de becario.
+3; Humm... ya veo.
+3; Hablaré con el departamento entonces para suspenderlo.
+1; ¡¿SUSPENDERME?!
+2; Genial, gracias.
+1; ESPERAD, MIS PRÁCTICAS ESTÁN HECHAS, BIEN HECHAS, NO PODÉIS SUSPENDERME.
+3; Ya puede irse. No la dejaremos acercarse más a tus trabajos.
+1; ¡ESPERAD! ¡N-
+hide;1
+2; Respecto a mis prácticas... Con este percance...
+3; Céntrate en escribir lo mejor que puedas la memoria, no te preocupes.
+2; ¡Gracias!
+
+fade_out
+
+#FIN
 
 
 
