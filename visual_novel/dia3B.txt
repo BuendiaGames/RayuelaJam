@@ -1,0 +1,202 @@
+# Dia 3 Rama B
+
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; rival_normal; rival_contento; encapuchado; guardia
+
+#Vale 1 se hemos pasado por la rama B
+set;ramaB;1
+
+set_bg; BG_farm
+
+show;D_Normal;2
+show;hijo;1
+
+fade_in
+
+2; Buenos días...
+1; Madre mía, vaya cara de muerto tienes. ¿Saliste anoche?
+2; Sí... Estoy cansado... Pero conocí a alguien interesante.
+1; ¿Interesante? ¿Has ligado con alguien? ¡¿CON TU CARA?!
+2; (No sé cómo el padre lo aguanta).
+2; No, es un miembro de la [color=red]secta de los encapuchados[/color].
+2; Me gustaría aprender más sobre ellos.
+1; Ten mucho cuidado. Muchas cosas se rumorean por ahí...
+
+fade_out
+show;D_Normal;2
+set_bg; BG_street
+fade_in
+
+
+2; Será mejor que vaya a casa del encapuchado.
+2; Menos mal que no bebí nada ayer... Recuerdo perfectamente donde estaba;
+2; Toc, toc...
+show;encapuchado;1
+1; ¿Síii?
+2; ¡Hey! ¡Soy yo! Lo pasamos bien ayer, ¿recuerdas?
+1; No me acuerdo de la mitad. Menudo resacón. No sé ni cómo llegué a casa.
+2; Te traje yo...
+1; Ah.
+2; ...
+1; Bueno, ¿qué te trae por aquí? ¿Querías hablar de algo?
+
+do_branch;3; La religión de la secta; SECTA; La vida de los encapuchados; ENCAPUCHADOS; Tus estudios; ESTUDIOS
+
+%SECTA
+1; Bueno, yo soy aprendiz de [color=red]encapuchado[/color].
+1; Los encapuchados no creemos en ningún Dios.
+2; (Eso me va a quitar nota...)
+1; Sin embargo, sí pensamos que la Humanidad puede avanzar gracias al conocimiento y el poder del amor.
+2; (Suspenso del todo).
+2; ¿Y qué estudian los encapuchados? ¿Geometría? ¿Metafísica? ¿Música?
+1; Ah no, eso es para el resto de sectas humanistas repletas de filósofos repipis.
+1; Para nosotros todo se transmite con la Ciencia del Bailoteo. Es la forma de adorar el conocimiento.
+2; ¿Adoráis el conocimiento pero no estudiáis nada?
+1; Exacto, eso que lo estudien otros.
+1; Bastante duro bailotear ya, ¿sabes? Yo el otro día me doblé un tobillo.
+goto; CONT1
+
+%ENCAPUCHADOS
+1; Los encapuchados son gente sencilla que vive por y para ayudar a los demás.
+2; ¿Y las capuchas?
+1; Eso es para evitar que la gente sepa quiénes practicamos esta religión.
+1; Si supieran lo que hacemos, no les gustaría nada.
+2; ¿Hacéis sacrificios?
+1; ¿Qué dices? No, no. Nosotros bailoteamos en las catacumbas. Pero nos da verguenza que nos vean, ¿sabes?
+2; Ya.
+1; Con las capuchas nuestra identidad está a salvo.
+goto; CONT1
+
+%ESTUDIOS
+1; Pues ahora mismo estoy estudiando para que me dejen participar en los rituales más importantes.
+1; Lo más importante para los encapuchados es bailotear correctamente, de eso van los rituales.
+1; Pero mis habilidades en el baile no avanzan nada. El otro día tropecé, caí en una hoguera y salí ardiendo.
+2; ...
+1; Así que la verdad es que no sé si llegaré lejos dentro de los encapuchados.
+2; Ya veo.
+
+
+
+%CONT1
+1; Me alegro de que te interese nuestra humilde religión.
+2; La verdad es que es todo bastante sorprendente.
+2; (¿Hay alguna creencia normal en esta ciudad?)
+1; Mira, si bajas la calle y tocas el ladrillo descolocado de la pared, se abre un túnel secreto.
+1; Nos reunimos allí todas las tardes.
+2; ¿Puedo ir a echar un ojo?
+1; Claro, siempre y cuando consigas una [color=red]túnica de encapuchado[/color.
+1; Ahora, escúchame bien: cualquier encapuchado que se precie lleva [color=red]calzones de encapuchado a juego[/color].
+2; ¿En serio?
+1; ¡Claro! Asegúrate de comprarlos junto con la túnica, [color=red]o no te dejarán entrar[/color].
+1; Mira, aquí tienes [color=red]cinco dorados[/color] para que los puedas comprar sin problema.
+add;dinero;5
+2; ¡Uala! ¡Muchísimas gracias! ¡Compraré una túnica e iré a veros!
+1; ¡Nos vemos!
+2; ¡Adios!
+
+hide;1
+hide;2
+
+fade_out
+show;rival_normal;1
+hide;1
+show;D_Normal;2
+fade_in
+
+2; Ha sido una visita provechosa. A ver si encuentro una capa...
+1; Te digo que esos hacen [color=red]sacrificios[/color].
+2; (¿Quién ha dicho eso?)
+2; (Voy a pegar la oreja, a ver...)
+
+hide;2
+
+show;rival_normal;1
+show;dania_enfadada;2
+
+2; ¿Sacrificios? ¿De ANIMALES?
+1; Que sí que sí, yo los he visto
+2; No me lo puedo creer. ¿Y cómo te colaste?
+1; ¡Colarse en los [color=red]encapuchados[/color] está tirado! ¡Solo hay que comprarle una capa a ese tipo de ahí!
+2; Por Tofulocón, ¡qué blasfemos! ¡es horrible!
+1; Tienen su escondite en ese ladrillo nada disimulado del abajo de la calle.
+2; ¡Llamará a los guardias! Vamos a hacer una redada como Tofulocón manda. ¡No podemos permitir esta blasfemia!
+show;dania_normal;2
+2; Gracias por avisarme de esto, [color=green]Ric[/color].
+1; No hay de qué, [color=green]Dania[/color]. Estamos siempre para ayudar al templo.
+
+hide;1
+hide;2
+show;D_Normal;2
+
+2; (¡Oh, no! ¡Van a ir a por los encapuchados!)
+2; (Será mejor que vaya rápidamente a avisarles.)
+
+fade_out
+set_bg;BG_dungeon
+show;encapuchado;1
+show;guardia;3
+hide;3
+fade_in
+
+1; Punta, punta, tacón, punta...
+2; ...
+1; ¡Yyyyyyyyy vuelta!
+2; ...
+1; ¡Ah, eres tú!
+1; ¡Has encontrado la entrada a nuestro escondrijo!
+1; ¿¡Pero qué haces sin capa!?
+2; Eso ahora da igual, escúchame. Van a venir un montón de guardias a por vosotros.
+1; ¿Guardias? Normalmente encuentra la puerta algún intruso, pero eso parece peligroso...
+1; ¿Por qué iban a venir guardias?
+2; Piensan que vais a hacer sacrificios.
+1; ...
+1; Nosotros que solo nos dedicamos a bailotear...
+1; ¿Qué es es ese ruido?
+3; ¡BLASFEMOS! ¡ESTÁIS DETENIDOS!
+2; ¡Corred! ¡Yo os cubro!
+hide;1
+show;guardia;1
+1; ¿Dónde están los encapuchados?
+
+do_branch; 3; ¿Encapuqué?; NO_SE; Se han ido; FUERA; ¡No hacen sacrificios!; NO
+
+%NO_SE
+1; Pues si estabas aquí los tendrás que haber visto.
+1; ¿No serás uno de ellos, no?
+2; ¡No, no! Yo solo pasaba por aquí cuando me he tropezado con este pasadizo secreto.
+1; ...
+2; En serio, esas cosas pasan.
+goto; CONT2
+
+%FUERA
+1; Aaaagh, se nos han escapado por poco. 
+1; Quién iba a pensar que tenían salida de emergencias...
+2; Hombre, todo edificio debería tener una...
+goto; CONT2
+
+%NO
+1; ¿No? ¿Y entonces por qué van encapuchados y danzan alrededor de una hoguera adornada con símbolos malvados?
+2; Tal vez solo bailotean...
+1; ¡JA! Vaya crédulo. Eso es lo que dicen, ¡pero yo no me creo nada!
+
+%CONT2
+1; Bueno, tenemos que seguir buscando a esa gentuza.\nNos vemos.
+2; ¡Vale, adiós!
+2; (Uf, han estado cerca...)
+2; (¿Por qué querría ese tal [color=green]Ric[color] liar esto con los encapuchados?)
+2; (Si es cierto que se ha infiltrado, habrá visto que no hacen sacrificios...)
+2; (¿O es que acaso me ha mentido mi colega?)
+
+fade_out
+jump; res://visual_novel/dia4A.txt
+
+
+
+
+
+
+
+
+
+
+
+

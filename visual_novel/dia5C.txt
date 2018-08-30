@@ -1,0 +1,234 @@
+# Dia 5 Rama A
+
+load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; rival_normal; rival_contento; encapuchado; encapuchado2; jurado; guardia; mala_normal; mala_preparada; directortesis
+
+set_bg; BG_colisseum
+
+show;jurado;3
+hide;3
+show;encapuchado;1
+show;encapuchado2;2
+
+
+fade_in
+2; (Bueno, ya estamos infiltrados de nuevo...)
+2; (Nadie me va a mirar los calzones delante de todo el mundo. Espero que no me descubran...)
+
+1; Bueno... Ya estamos aquí.
+2; Vaya... cuanta gente.
+1; Es un gran evento, es importante, marcará un antes y un después en la historia.
+2; ¿Participan representantes de todas las religiones?
+1; Sí, sería una deshonra no tener a nadie.
+3; [color=blue]Bienvenidos al primer concurso para elegir al definitivo nuevo mesías.[/color]
+3; [color=blue]El concurso comenzará en breves instantes. ¡Mientras, explicaré en qué consiste![/color]
+3; [color=blue]Por turnos, se realizarán una serie de preguntas a cada representante. Después, el público elegirá al mejor.[/color]
+3; [color=blue]¡ESTE CONCURSO ELEGIRÁ AL MESÍAS Y RELIGIÓN DEFINITIVA![/color]
+3; [color=blue] Por favor, tomen asiento mientras comienza.[/color]
+1; Será mejor que vayamos a sentarnos.
+
+hide; 1
+
+2; Está bien... A ver donde me siento... Hummm...
+2; ¡Un momento! ¿Ese es...?
+hide;2
+
+fade_out
+
+show; rival_normal; 1
+
+fade_in
+
+show; encapuchado2; 2
+
+2; ¡Eh! ¡Pensaba que habías desaparecido!
+1; ¿Pero qué...? ¡Mierda! ¡Eres tú!
+1; ¡Me largo de aquí!
+
+hide; 1
+
+2; ¡No! ¡ESPERA!
+2; ¿Por qué ha huido? Voy a seguirlo...
+
+show; dania_ego; 1
+
+2; (Oh, no, es [color=green]Dania[/green]
+1; ...
+2; Hey.
+1; Me suena tu voz.
+2; ¿Yo? Si yo soy un triste encapuchado.
+
+#Cambia este diálogo según la rama para que sea coherente
+if;ramaB==0; NO_RAMA_B; RAMA_B
+%NO_RAMA_B
+1; ¡Qué va! ¡Tú eres el blasfemo que dijo que hacíamos sacrificios!
+1; Sabía que te traías algo entre manos, ¡eres un encapuchado!
+1; ¿Qué haces tú de nuevo aquí? ¡Guardias!
+goto; CONT101
+
+%RAMA_B
+1; ¡Ese es el problema! ¡Eres uno de esos que hacen sacrificios!
+2; Que no señora, que nosotros solo bailoteamos.
+2; Mire mire, tacón, tacón, punta...
+1; ¡Si no lo haces nada bien! ¡Eso es mentira! ¡GUARDIAAAAAAAAAS!
+2; (Ay señor, vaya carácter...)
+show; guardia; 1
+
+2; Oh, no.
+1; Te vienes conmigo, ven aquí.
+2; Pues... ¡no! ¡me largo!
+
+hide; 2
+
+1; ¡Maldita sea, se ha escapado!
+
+fade_out
+
+show; encapuchado; 1
+
+fade_in
+
+show; encapuchado2; 2
+
+2; Creo que le he dado esquinazo... Aquí hay mucho encapuchado...
+1; Eh, tú por aquí, qué bien me vienes...
+2; ¿Que te vengo bien?
+1; Sí, de perlas.
+2; ¿Por qué?
+1; Nuestro representante se encuentra mal, y nos hace falta sustituto.
+2; ¿Sustituto? ¿Quieres que lo sustituya? ¡Pero si aún soy un novato! (Y ni siquiera real...)
+1; Da igual, nos haces falta, así que ahora saldrás ahí y nos harás ganar.
+2; Pero...
+3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡preparaos para las preguntas![/color]
+1; No hay tiempo, ve, ahora te dirán las preguntas.
+2; (Tengo que pensármelo bien. Si voy ahí, me pueden descubrir los encapuchados, o [color=green]Ric[/color], o [color=green]Dania[/color]...)
+2; (¡Pero puede ser mi oportunidad para transformarme en el Mesías, utilizar lo que aprendí en la asignatura de Milagros...!)
+2; (¡...y convertirme en el [color=red]Dios único y verdadero[/color]!)
+do_branch; 2; ¡Voy!; YES14; Pero...; NO14
+
+%YES14
+1; Así me gusta, ¡con actitud!
+goto; SIG14
+
+%NO14
+1; ¡Sin peros! ¡Venga!
+goto;SIG14
+
+%SIG14
+fade_out
+hide; 1
+
+fade_in
+set; correctas; 0
+#aqui van preguntas tontas varias sin repercusion
+#no se hacer el gag15 para que tenga sentido ni en que pregunta deberia basarse.
+
+3; [color=blue]¿Las vacas son negras con manchas blancas o blancas con manchas negras?
+do_branch; 2; Son negras; NEGRAS; Son blancas; BLANCAS
+
+%NEGRAS
+add; correctas; 1
+goto; Q2
+
+%BLANCAS
+goto;Q2
+
+
+%Q2
+#TODO RELLENAR
+goto; RESULTADO
+
+%RESULTADO
+3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
+
+fade_out;
+
+if; correctas >= 3; GANAR; PERDER
+
+%GANAR
+show;D_Contento;2
+fade_in
+3; [color=blue]¡Y el ganador es el representante de los encapuchados![/color]
+2; Jejejeje, ¡Y mirad lo que puedo hacer! ¡Soy [color=red]SAGRADO[/color]
+3; [color=blue]¡Miren como levanta esas enormes piedras! ¡LA DEMOCRACIA LE HA DADO PODERES![/color]
+2; ...
+2; Bueno, me vale.
+
+show;rival_normal;1
+1; ¡Maldición! ¡Está a punto de conseguir su aprobado!
+2; Un momento, ¿qué?
+1; ¡Columnas, a mí!
+2; ¡Este tío está destrozando el teatro! ¡Deja las columnas tranq...! Oye, ¿¡Vienen a por mí!?
+
+fade_out
+load_scene; res://mini_columnas/columnas.tscn
+
+if; columna==1; SOBREVIVE; CAE;
+
+%SOBREVIVE
+fade_in
+2; ¡Ja! ¡Creías que iba a caer en un truco tan burdo!
+1; No ha estado mal.
+2; Ahora debes decirme quién eres.
+1; ...
+2; No tienes nada que hacer, estás acabado.
+hide;1
+show;mala_normal;1
+1; ¡Soy [color=green]Lázuli[/color], tu compañera de clase!
+2; No me lo puedo creer. ¿Por qué todo esto?
+1; Estoy harta de que saques siempre las matrículas. Ni una me va a quedar para mí.
+1; Así luego no hay quien pille curro en un Universo de prestigio, macho.
+2; ¿¡Y por eso tienes que venir a sabotear mis prácticas!?
+1; No tenía otra opción.
+2; ¿...Qué tal estudiar más?
+1; ¡Ni pensarlo! ¡Eso es de empollones!
+2; ...
+1; De todas formas, mi trabajo aquí ha acabado. 
+2; ¡Eso es lo que a ti te gustaría!
+2; ¡Ahora soy el [color=red]Mesías[/color]! ¡Todo el mundo me adorará!
+1; ¿Eso es lo que crees? ¿Después de destruir el teatro y matar a media ciudad?
+2; ¡Pero si eso has sido tú!
+1; ¿Y quién sabe eso? Que yo sepa el señor [color=red]Mesías[/color] ha hecho gala de unos poderes sobrenaturales...
+1; ...Y de repente se desmorona todo el templo. ¿Quién habrá sido?
+2; Ups.
+1; La has liado, sí. De verdad no sé cómo haces para sacar esas notas...
+1; Bueno, ¡nos vemos! ¡disfruta de la convocatoria de Septiembre!
+2; ...
+2; No me lo puedo creer... Me ha ganado... 
+2; He caído en todas sus trampas... Ella hizo que todo el mundo se peleara...
+2; En fin... Lo mejor será hacer como que he desaparecido de la faz de la Tierra e intentar hacer un buen informe...
+
+fade_out
+jump; res://visual_novel/perder.txt
+
+
+%CAE
+fade_in
+2; Ay, ay... Menos mal que no puedo morir, porque si no.
+1; Al menos no vas a aprobar. Has estado cerca... 
+2; ¿¡Quién demonios eres tú!? ¿¡Cómo sabes quién soy!?
+1; ¡Que disfrutes estudiando en verano! ¡Nos vemos!
+
+hide;1
+
+2; (Maldición... Tengo la sensación de que no me he enterado de nada de lo que pasa aquí...)
+2; (Tiene razón... Estoy acabado...)
+
+fade_out
+jump; res://visual_novel/perder.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

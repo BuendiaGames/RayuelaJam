@@ -2,8 +2,10 @@
 
 load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; rival_normal; rival_contento; encapuchado
 
-set_bg; BG_farm
+#Vale 1 se hemos pasado por la rama B
+set;ramaB;0
 
+set_bg; BG_farm
 show;D_Normal;2
 show;hijo;1
 
@@ -255,12 +257,17 @@ do_branch; 2; ¡Vamos!; YES11; No, espera...; NO11
 2; Sí, vamos, tú por un lado y yo por otro.
 hide; 1
 2; (Voy a tener que ser sigiloso... Muy sigiloso...)
+2; A ver qué hacen...
 show; encapuchado; 1
+1; Punta, punta, tacón, punta...
+2; Un momento, ¿solo están BAILOTEANDO? ¿No hay sacrificios?
+1; ¡Yyyyyyyyy vuelta!
+2; Vaya ridículo más espantoso.
+1; ?
 1; ¡ALERTA, INTRUSOS! ¡Escapad!
 2; (¡Mierda! Nos han visto...) 
 2; NO, CÓGELOS, QUE NO SE ESCAPEN...
 hide;1
-2; ¡Voy contigo!
 goto; SIG11
 
 %NO11

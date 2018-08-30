@@ -75,7 +75,7 @@ goto; SIG2
 
 fade_out
 
-jump; res://visual_novel/dia2A.txt
+jump; res://visual_novel/dia2.txt
 
 
 

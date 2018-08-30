@@ -92,7 +92,7 @@ show; encapuchado; 1
 1; TÚNICAS DE ENCAPUCHADOS A DIEEEEZ DORAAAADOS
 2; ¿Túnicas?
 1; Sí, túnicas de calidad de la buena, de la secta de los encapuchados.
-2; ¿Con eso podría entrar en los encapuchados?
+2; ¿Con eso podría entrar en la secta de los encapuchados?
 1; Pues claro, son las originales.
 2; Genial, me la llevo.
 1; ¿Quiere por solo cinco dorados más la ropa interior a juego?
@@ -118,7 +118,6 @@ goto; NO13
 #Si no hay dinero o no quieres los calzones vienes aqui
 %NO13
 set; calzones; 0
-#aquí viene un jump
 
 %SIG13
 fade_out
@@ -149,7 +148,18 @@ if; baile==1; SUPERADO; NO_SUPERADO
 
 %SUPERADO
 1; Hey, no lo has hecho tan mal para ser un novato.
-2; Gracias... (tengo que salir de aquí antes de que me descubran)
+1; Te ha faltado un poco te tacón, punta, pero irás mejorando.
+2; Gracias... 
+goto; CONT100
+
+%NO_SUPERADO
+1; Menuda forma de bailar. He visto patos cojos con más ritmo.
+1; ¿Quién es tu instructor?
+2; Eh, bueno, estoooooooo....
+1; Da igual. Será mejor que cojas horas de baile extra, nos estás deshonrando.
+2; (Tengo que salir de aquí antes de que me descubran...)
+
+%CONT100
 1; Ah, ¿te comunicaron la misión de hoy para los novatos?
 do_branch; 2; Claro; YES14; No la recuerdo; NO14
 
@@ -206,18 +216,19 @@ show; encapuchado; 1
 
 1; ¿Ah sí? ¿Tan pronto?
 2; Sí, señor.
-1; Estupendo, novatillo. Ahora, lava las túnicas. ¡Incluida la tuya!
+1; Estupendo, novatillo. Una última tarea. Por favor, lava las túnicas. ¡Incluida la tuya!
 2; ¿Que haga la colada?
 1; Eso es lo que he dicho. ¿Es que no escuchas? Los novatos de hoy día no son lo que eran...
 
-#aquí depende de si tienes ropa interior o no se hace division. SI no tienes ropa interior, salto a rama C, en caso de que si sigue por aqui.
 if; calzones==1; BIEN; MAL 
 
 %BIEN
 2; Ya he lavado la ropa, señor (y vaya cantidad de ropa...)
-1; ¿Toda? Muy bien, puedes irte a casa por hoy, estarás afligido como todos.
-2; ¿Afligido?
-1; Han raptado a uno de los nuestros, aunque esperamos encontrarlo pronto.
+1; Bonitos calzones, novato.
+2; Gracias.
+1; Será mejor que vayas a casa por hoy. Hemos suspendido el bailoteo del día.
+2; ¿Por qué motivo?
+1; Mientras estabas po ahí han raptado a uno de los nuestros, aunque esperamos encontrarlo pronto.
 2; Ya veo... Buena suerte en la búsqueda.\n(Qué raro... Está desapareciendo mucha gente...)
 1; Gracias.
 
@@ -228,14 +239,36 @@ fade_out
 jump; res://visual_novel/dia5A.txt
 
 %MAL
+2; Ya he lavado la ropa, señor (y vaya cantidad de ropa...)
+1; Un momento. ¿Qué son esos calzones blancos?
+2; Pues mis calzones, qué van a ser.
+1; ¡No llevas la túnica oficial!
+2; ¿Cómo que no... No ves que la llevo puesta?
+1; ¡Solo los verdaderos encapuchados llevan [color=red]calzones a juego[/color]!
+2; (Ups...)
+1; ¡Eres un infiltrado farsante!
+2; (Uuuuuuuups...)
+2; Bueno, queee... Me voy yendo...
+1; ...
+1; ¡Y no vuelvas!
 
 fade_out
-jump; res://visual_novel/dia5B.txt
+hide;1
+set_bg; BG_street
+fade_in
 
-%NO_SUPERADO
+2; (Pues me han pillado...)
+2; (¿Cómo voy a convencer a la gente de que me adore?)
+2; (Ni [color=green]Dania[/color] ni [color=green]Tania[/color] me hacen ni caso... y me han echado hasta de los encapuchados...)
+2; (¡Un momento! ¡Aún tengo una oportunidad!)
+2; (¡El [color=red]concurso de mesías[/color]! ¡Con los poderes que he aprendido en clase puede dejarlos a todos con la boca abierta!)
+show;D_Contento;2
+2; (Y una vez sea el mesías, será facilísimo convertirlos a todos a una única religión... ¡la mía!)
 
-1; Prueba
-2; Prueba
+fade_out
+jump; res://visual_novel/dia5C.txt
+
+
 
 
 

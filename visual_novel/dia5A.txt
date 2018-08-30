@@ -54,10 +54,24 @@ show; dania_ego; 1
 2; Hey.
 1; Me suena tu voz.
 2; ¿Yo? Si yo soy un triste encapuchado.
+
+#Cambia este diálogo según la rama para que sea coherente
+if;ramaB==0; NO_RAMA_B; RAMA_B
+%NO_RAMA_B
 1; ¡Qué va! ¡Tú eres el blasfemo que dijo que hacíamos sacrificios!
 1; Sabía que te traías algo entre manos, ¡eres un encapuchado!
 1; ¿Qué haces tú de nuevo aquí? ¡Guardias!
+goto; CONT101
 
+%RAMA_B
+1; ¡Ese es el problema! ¡Eres uno de esos que hacen sacrificios!
+2; Que no señora, que nosotros solo bailoteamos.
+2; Mire mire, tacón, tacón, punta...
+1; ¡Si no lo haces nada bien! ¡Eso es mentira! ¡GUARDIAAAAAAAAAS!
+2; (Ay señor, vaya carácter...)
+
+
+%CONT101
 show; guardia; 1
 
 2; Oh, no.
@@ -313,7 +327,7 @@ show; D_Normal; 2
 2; ...
 2; No me lo puedo creer... Voy a tener que cursar la asignatura el año que viene...
 
-#TODO jump perder
+jump; res://visual_novel/perder.txt
 
 
 
