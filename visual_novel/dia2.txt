@@ -229,6 +229,9 @@ goto; SIG8
 %SIG6
 
 %YES7
+fade_out
+
+set_bg; BG_bar
 
 1; ¿Has estado alguna vez en esta taberna?
 2; No, ¿tú vienes mucho?
@@ -257,6 +260,7 @@ load_scene; res://mini_cervezas/minicervezas.tscn
 if; beber==1; BORRACHO; A_CASA
 
 %BORRACHO
+set_bg; BG_calle
 show; D_Normal; 2
 fade_in;
 2; Eh, eresss un tíiio genial, te acompañoo a casssa.
@@ -267,6 +271,7 @@ fade_in;
 goto; SIG8
 
 %A_CASA
+set_bg; BG_calle
 show; D_Normal; 2
 fade_in;
 2; (Al final no he bebido nada).
