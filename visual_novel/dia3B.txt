@@ -22,8 +22,10 @@ fade_in
 1; Ten mucho cuidado. Muchas cosas se rumorean por ahí...
 
 fade_out
+
 show;D_Normal;2
-set_bg; BG_street
+set_bg; BG_calle
+
 fade_in
 
 
@@ -52,7 +54,7 @@ do_branch;3; La religión de la secta; SECTA; La vida de los encapuchados; ENCAP
 1; Para nosotros todo se transmite con la Ciencia del Bailoteo. Es la forma de adorar el conocimiento.
 2; ¿Adoráis el conocimiento pero no estudiáis nada?
 1; Exacto, eso que lo estudien otros.
-1; Bastante duro bailotear ya, ¿sabes? Yo el otro día me doblé un tobillo.
+1; Bastante duro es bailotear ya, ¿sabes? Yo el otro día me torcí un tobillo.
 goto; CONT1
 
 %ENCAPUCHADOS
@@ -61,7 +63,7 @@ goto; CONT1
 1; Eso es para evitar que la gente sepa quiénes practicamos esta religión.
 1; Si supieran lo que hacemos, no les gustaría nada.
 2; ¿Hacéis sacrificios?
-1; ¿Qué dices? No, no. Nosotros bailoteamos en las catacumbas. Pero nos da verguenza que nos vean, ¿sabes?
+1; ¿Qué dices? No, no. Nosotros bailoteamos en las catacumbas. Pero nos da vergüenza que nos vean, ¿sabes?
 2; Ya.
 1; Con las capuchas nuestra identidad está a salvo.
 goto; CONT1
@@ -73,6 +75,7 @@ goto; CONT1
 2; ...
 1; Así que la verdad es que no sé si llegaré lejos dentro de los encapuchados.
 2; Ya veo.
+goto; CONT1
 
 
 
@@ -83,15 +86,17 @@ goto; CONT1
 1; Mira, si bajas la calle y tocas el ladrillo descolocado de la pared, se abre un túnel secreto.
 1; Nos reunimos allí todas las tardes.
 2; ¿Puedo ir a echar un ojo?
-1; Claro, siempre y cuando consigas una [color=red]túnica de encapuchado[/color.
+1; Claro, siempre y cuando consigas una [color=red]túnica de encapuchado[/color].
 1; Ahora, escúchame bien: cualquier encapuchado que se precie lleva [color=red]calzones de encapuchado a juego[/color].
 2; ¿En serio?
 1; ¡Claro! Asegúrate de comprarlos junto con la túnica, [color=red]o no te dejarán entrar[/color].
 1; Mira, aquí tienes [color=red]cinco dorados[/color] para que los puedas comprar sin problema.
+#######QUITAR ESTE SET DINERO QUE ME QUEDO SIN DINERO NINIO
+set; dinero; 0
 add;dinero;5
-2; ¡Uala! ¡Muchísimas gracias! ¡Compraré una túnica e iré a veros!
+2; ¡Vaya! ¡Muchísimas gracias! ¡Compraré una túnica e iré a veros!
 1; ¡Nos vemos!
-2; ¡Adios!
+2; ¡Adiós!
 
 hide;1
 hide;2
@@ -99,6 +104,7 @@ hide;2
 fade_out
 show;rival_normal;1
 hide;1
+
 show;D_Normal;2
 fade_in
 
@@ -106,8 +112,6 @@ fade_in
 1; Te digo que esos hacen [color=red]sacrificios[/color].
 2; (¿Quién ha dicho eso?)
 2; (Voy a pegar la oreja, a ver...)
-
-hide;2
 
 show;rival_normal;1
 show;dania_enfadada;2
@@ -117,14 +121,14 @@ show;dania_enfadada;2
 2; No me lo puedo creer. ¿Y cómo te colaste?
 1; ¡Colarse en los [color=red]encapuchados[/color] está tirado! ¡Solo hay que comprarle una capa a ese tipo de ahí!
 2; Por Tofulocón, ¡qué blasfemos! ¡es horrible!
-1; Tienen su escondite en ese ladrillo nada disimulado del abajo de la calle.
-2; ¡Llamará a los guardias! Vamos a hacer una redada como Tofulocón manda. ¡No podemos permitir esta blasfemia!
+1; Tienen su escondite en ese ladrillo nada disimulado de abajo de la calle.
+2; ¡Llamaré a los guardias! Vamos a hacer una redada como Tofulocón manda. ¡No podemos permitir esta blasfemia!
 show;dania_normal;2
 2; Gracias por avisarme de esto, [color=green]Ric[/color].
 1; No hay de qué, [color=green]Dania[/color]. Estamos siempre para ayudar al templo.
 
 hide;1
-hide;2
+
 show;D_Normal;2
 
 2; (¡Oh, no! ¡Van a ir a por los encapuchados!)
@@ -153,14 +157,14 @@ fade_in
 1; ¿Qué es es ese ruido?
 3; ¡BLASFEMOS! ¡ESTÁIS DETENIDOS!
 2; ¡Corred! ¡Yo os cubro!
-hide;1
+
 show;guardia;1
 1; ¿Dónde están los encapuchados?
 
 do_branch; 3; ¿Encapuqué?; NO_SE; Se han ido; FUERA; ¡No hacen sacrificios!; NO
 
 %NO_SE
-1; Pues si estabas aquí los tendrás que haber visto.
+1; Pues si estabas aquí los tendrías que haber visto.
 1; ¿No serás uno de ellos, no?
 2; ¡No, no! Yo solo pasaba por aquí cuando me he tropezado con este pasadizo secreto.
 1; ...
@@ -177,12 +181,14 @@ goto; CONT2
 1; ¿No? ¿Y entonces por qué van encapuchados y danzan alrededor de una hoguera adornada con símbolos malvados?
 2; Tal vez solo bailotean...
 1; ¡JA! Vaya crédulo. Eso es lo que dicen, ¡pero yo no me creo nada!
+goto; CONT2
 
 %CONT2
 1; Bueno, tenemos que seguir buscando a esa gentuza.\nNos vemos.
 2; ¡Vale, adiós!
+hide; 1
 2; (Uf, han estado cerca...)
-2; (¿Por qué querría ese tal [color=green]Ric[color] liar esto con los encapuchados?)
+2; (¿Por qué querría ese tal [color=green]Ric[/color] liar esto con los encapuchados?)
 2; (Si es cierto que se ha infiltrado, habrá visto que no hacen sacrificios...)
 2; (¿O es que acaso me ha mentido mi colega?)
 

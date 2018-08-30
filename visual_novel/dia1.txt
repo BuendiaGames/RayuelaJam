@@ -19,7 +19,7 @@ show;padre_normal;1
 show;padre_contento;1
 
 1; Oh, no, eran de ese mercader enfadado que está afilando un cuchillo.
-2; ¿!QUÉ?!
+2; ¡¿QUÉ?!
 1; Sí, ¿no lo ves? Ese que está viniendo hacia aquí...\nHala, sí que es rápido.
 2; Oh dios... Querrá que le pague lo que he roto... 
 2; ¡Y no tengo ni un duro!

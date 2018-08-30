@@ -47,7 +47,7 @@ show;padre_contento;1
 1; Yo adoro a mis cabras, por ejemplo.
 2; ...
 show;padre_normal;1
-1; Sí que hay dos religiones mayoritarias. De hecho, cada una una tiene un templo dedicado.
+1; Sí que hay dos religiones mayoritarias. De hecho, cada una tiene un templo dedicado.
 2; ¿No es lo normal?
 1; Si tuviéramos un templo por cada creencia no cabríamos en la ciudad.
 2; (Perfecto...)
@@ -76,8 +76,9 @@ show;dania_enfadada;1
 show;dania_ego;1
 
 1; Eso me había parecido oír, sí.
-1; Soy [color=green]Dania[/color], la sacerdotisa de este templo. ¿Cómo que "a qué Dios"?
+1; Soy [color=green]Dania[/color], la sacerdotisa de este templo.
 2; ¿A qué Dios se rinde culto en este templo?
+1; ¿Cómo que "a qué Dios"?
 1; Aquí se le rinde culto al [color=red]único Dios verdadero[/color], por supuesto.
 2; Claro, claro (Está loca de atar).
 1; ¿Y bien? ¿En qué puedo ayudarte?
@@ -256,6 +257,7 @@ load_scene; res://mini_cervezas/minicervezas.tscn
 if; beber==1; BORRACHO; A_CASA
 
 %BORRACHO
+show; D_Normal; 2
 fade_in;
 2; Eh, eresss un tíiio genial, te acompañoo a casssa.
 1; Buah tío... No hace falta...
@@ -265,6 +267,7 @@ fade_in;
 goto; SIG8
 
 %A_CASA
+show; D_Normal; 2
 fade_in;
 2; (Al final no he bebido nada).
 2; (No se puede puede decir lo mismo del otro...)
@@ -299,7 +302,8 @@ goto; SIG8
 %RAMA_B
 
 fade_out
-jump res://visual_novel/dia3B.txt
+
+jump; res://visual_novel/dia3B.txt
 
 
 
