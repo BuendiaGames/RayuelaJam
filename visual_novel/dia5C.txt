@@ -1,4 +1,4 @@
-# Dia 5 Rama A
+# Dia 5 Rama C
 
 load; D_Contento; D_Normal; padre_normal; hijo; dania_normal; dania_ego; dania_enfadada; tania_normal; tania_enfadada; rival_normal; rival_contento; encapuchado; encapuchado2; jurado; guardia; mala_normal; mala_preparada; directortesis
 
@@ -58,6 +58,8 @@ show; dania_ego; 1
 2; ¿Yo? Si yo soy un triste encapuchado.
 
 #Cambia este diálogo según la rama para que sea coherente
+
+
 if;ramaB==0; NO_RAMA_B; RAMA_B
 %NO_RAMA_B
 1; ¡Qué va! ¡Tú eres el blasfemo que dijo que hacíamos sacrificios!
@@ -125,19 +127,72 @@ set; correctas; 0
 #aqui van preguntas tontas varias sin repercusion
 #no se hacer el gag15 para que tenga sentido ni en que pregunta deberia basarse.
 
-3; [color=blue]¿Las vacas son negras con manchas blancas o blancas con manchas negras?
+
+
+#PREGUNTA 1 --------------------------------------------------------------
+3; [color=blue]¿Las cebras son negras con manchas blancas o blancas con manchas negras?[/color]
 do_branch; 2; Son negras; NEGRAS; Son blancas; BLANCAS
 
 %NEGRAS
-add; correctas; 1
 goto; Q2
 
 %BLANCAS
+add; correctas; 1
 goto;Q2
 
 
+#PREGUNTA 2 --------------------------------------------------------------
 %Q2
+3; [color=blue]¿Espaguetis o macarrones?[/color]
+do_branch; 2; ¡Espaguetis!; ESPA; ¡Macarrones!; MACA
+
+%ESPA
+goto; Q3
+
+%MACA
+add; correctas; 1
+goto;Q3
+
+#PREGUNTA 3 --------------------------------------------------------------
+%Q3
+3; [color=blue]¿Dania o Tania?[/color]
+do_branch; 2; Dania; DANIA; Tania; TANIA
+
+%DANIA
+add; correctas; 1
+goto; Q4
+
+%TANIA
+goto; Q4
+
+
+#PREGUNTA 4 --------------------------------------------------------------
+%Q4
+3; [color=blue]Si nosotros no vemos el aire, ¿los peces no ven el agua del mar?[/color]
+do_branch; 2; Claro que la ven; VISIBLE; Es invisible para ellos; INVISIBLE
+
+%VISIBLE
+add; correctas; 1
+goto; Q5
+
+%INVISIBLE
+goto;Q5
+
+
+#PREGUNTA 5 --------------------------------------------------------------
+%Q5
+3; [color=blue]¿Cuál es el sentido de la vida, el universo y todo lo demás?[/color]
+do_branch; 2; 42; GALAXIA; 28; PERFECTO
+#Para gente no tan nerd como nosotros: 28 es el primer número par que a la vez es perfecto,triangular y feliz
+
+%GALAXIA
+add; correctas; 1
 goto; RESULTADO
+
+%PERFECTO
+goto; RESULTADO
+
+
 
 %RESULTADO
 3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
@@ -150,7 +205,7 @@ if; correctas >= 3; GANAR; PERDER
 show;D_Contento;2
 fade_in
 3; [color=blue]¡Y el ganador es el representante de los encapuchados![/color]
-2; Jejejeje, ¡Y mirad lo que puedo hacer! ¡Soy [color=red]SAGRADO[/color]
+2; Jejejeje, ¡Y mirad lo que puedo hacer! ¡Soy [color=red]SAGRADO[/color]!
 3; [color=blue]¡Miren como levanta esas enormes piedras! ¡LA DEMOCRACIA LE HA DADO PODERES![/color]
 2; ...
 2; Bueno, me vale.
@@ -173,7 +228,6 @@ fade_in
 2; Ahora debes decirme quién eres.
 1; ...
 2; No tienes nada que hacer, estás acabado.
-hide;1
 show;mala_normal;1
 1; ¡Soy [color=green]Lázuli[/color], tu compañera de clase!
 2; No me lo puedo creer. ¿Por qué todo esto?

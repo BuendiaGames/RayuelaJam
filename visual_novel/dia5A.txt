@@ -120,35 +120,86 @@ hide; 1
 
 fade_in
 
-#aqui van preguntas tontas varias sin repercusion
-#no se hacer el gag15 para que tenga sentido ni en que pregunta deberia basarse.
+set; correctas; 0
 
-3; [color=blue]¿Las vacas son negras con manchas blancas o blancas con manchas negras?
+#PREGUNTA 1 --------------------------------------------------------------
+3; [color=blue]¿Las cebras son negras con manchas blancas o blancas con manchas negras?[/color]
 do_branch; 2; Son negras; NEGRAS; Son blancas; BLANCAS
 
 %NEGRAS
-goto; SIGG1
+goto; Q2
 
 %BLANCAS
-goto;SIGG2
+add; correctas; 1
+goto;Q2
 
-%SIGG1
+
+#PREGUNTA 2 --------------------------------------------------------------
+%Q2
+3; [color=blue]¿Espaguetis o macarrones?[/color]
+do_branch; 2; ¡Espaguetis!; ESPA; ¡Macarrones!; MACA
+
+%ESPA
+goto; Q3
+
+%MACA
+add; correctas; 1
+goto;Q3
+
+#PREGUNTA 3 --------------------------------------------------------------
+%Q3
+3; [color=blue]¿Dania o Tania?[/color]
+do_branch; 2; Dania; DANIA; Tania; TANIA
+
+%DANIA
+add; correctas; 1
+goto; Q4
+
+%TANIA
+goto; Q4
+
+
+#PREGUNTA 4 --------------------------------------------------------------
+%Q4
+3; [color=blue]Si nosotros no vemos el aire, ¿los peces no ven el agua del mar?[/color]
+do_branch; 2; Claro que la ven; VISIBLE; Es invisible para ellos; INVISIBLE
+
+%VISIBLE
+add; correctas; 1
+goto; Q5
+
+%INVISIBLE
+goto;Q5
+
+
+#PREGUNTA 5 --------------------------------------------------------------
+%Q5
+3; [color=blue]¿Cuál es el sentido de la vida, el universo y todo lo demás?[/color]
+do_branch; 2; 42; GALAXIA; 28; PERFECTO
+#Para gente no tan nerd como nosotros: 28 es el primer número par que a la vez es perfecto,triangular y feliz
+
+%GALAXIA
+add; correctas; 1
+goto; RESULTADO
+
+%PERFECTO
+goto; RESULTADO
+
+
+%RESULTADO
 3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
 
 fade_out;
 
-fade_in
+if; correctas >= 3; GANAR; PERDER
 
+%PERDER
+fade_in
 3; [color=blue]Y el ganador es... ¡El representante del[/color] [color=green]Templo de Dania![/color]
 goto;SIGG
 
-%SIGG2
-3; [color=blue] Ahora el jurado se reunirá para dar puntos y obtener la decisión del público.[/color]
-
-fade_out;
-
+%GANAR
 fade_in
-
 3; [color=blue]Y el ganador es... ¡El representante de los[/color] [color=green]encapuchados![/color].
 
 show; encapuchado; 1

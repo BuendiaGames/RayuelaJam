@@ -91,8 +91,6 @@ goto; CONT1
 2; ¿En serio?
 1; ¡Claro! Asegúrate de comprarlos junto con la túnica, [color=red]o no te dejarán entrar[/color].
 1; Mira, aquí tienes [color=red]cinco dorados[/color] para que los puedas comprar sin problema.
-#######QUITAR ESTE SET DINERO QUE ME QUEDO SIN DINERO NINIO
-set; dinero; 0
 add;dinero;5
 2; ¡Vaya! ¡Muchísimas gracias! ¡Compraré una túnica e iré a veros!
 1; ¡Nos vemos!

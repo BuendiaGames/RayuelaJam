@@ -3,9 +3,13 @@ extends Node2D
 var vel = Vector2(0.0,0.0)
 var speed = 2.0 #Player movement speed
 
+var vnglobal
+
 var anim #Animation state
 
 var tiempo = 0 #Time counter
+var counter = 0.0 #Total time counter
+var time_end = 30.0 #To finish game
 
 var vida = 3 #Number of hits
 var vulnerable = true #If true, columns can hurt him
@@ -42,15 +46,33 @@ func resume_pause():
 		$music.playing = true
 		$ui/corazones.show()
 
+#Finish the minigame
+func finish():
+	#Set the variable
+	if (vida > 0):
+		vnglobal.set_var("columna", 1)
+	else:
+		vnglobal.set_var("columna", 0)
+	
+	#Stop the music
+	$music.stop()
+	
+	#Make the fade out and assign the VN to the transition
+	$transition/anim.play("fade_out")
+
+
 func _ready():
 	randomize() #Gets a "random" seed
 	corazones = $ui/corazones #Store ui container
+	vnglobal = get_tree().root.get_node("/root/vn_global")
 
 func _process(delta):
 	moverse() #Process player movement
 	
 	#Throw columns to the player
 	tiempo += delta
+	counter += delta
+	
 	if (tiempo > 1):
 		#Select type randomly
 		if (randf()>= 0.6):
@@ -60,6 +82,11 @@ func _process(delta):
 		tiempo = 0
 		
 	$player.move_and_collide(vel)
+	
+	if (counter >= time_end):
+		finish()
+		set_process(false) 
+	
 
 
 #Changes animation of the animation player
@@ -77,7 +104,7 @@ func _on_sensor_body_entered(body):
 		corazones.eliminar_vida()
 		#TODO: add death condition
 		if (vida == 0):
-			pass
+			finish()
 
 #After a crash with a column, vulnerable again
 #when the column dissapears (or when you move away)
