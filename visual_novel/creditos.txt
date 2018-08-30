@@ -1,23 +1,20 @@
-#Este archivo sale siempre que pierdes
+#Este archivo sale siempre al final
 
-load; D_Contento; D_Normal; 
+load; D_Contento; D_Normal
 
-set_bg;BG_office
+set_bg; BG_office
 
 show;D_Normal;2
-show;directortesis;1
-hide;1
 
 fade_in
 2; Bueno, bueno, ¡gracias por jugar a [color=red]rayuela[/color]!
 2; Este juego tiene varios posibles finales, así que puedes rejugarlo si quieres.
 2; El juego ha sido desarrollado por [color=red]Buendia Games[/color], un par de hermanos que se dedican a hacer bazofia aleatoria en su tiempo libre.
-2; Victor ha programado el motor y el arte de la novela visual, así como la música. Ana ha hecho el pixel art y ha programado los minijuegos. 
+2; Victor ha programado el motor de la novela visual, así como sus dibujos, y la música. Ana ha hecho el pixel art y ha programado los minijuegos. 
 2; La mayor parte de la historia la ha escrito Ana, y la idea es conjunta.
 2; El plan era hacer un juego de novela visual con minijuegos, que fuera un poco diferente a las entradas más "serias" de la jam Rayuela de Arena. 
 2; Espero que te hayas divertido. 
-2; ¡No te olvides de dejar tu feedback aquí en el twitter @BuendiaGames!
+2; ¡No te olvides de dejar tu feedback aquí en el twitter [color=green]@BuendiaGames[/color]!
 2; Yo me voy, ¡que tengo aún muchas asignaturas que sacar! El juego se cerrará ahora. ¡Chao!
 
-fade_out
 end

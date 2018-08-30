@@ -14,7 +14,7 @@ fade_in
 
 1; Bueno... Ya estamos aquí.
 2; Vaya... cuanta gente.
-1; Es un gran evento, es importante, marcará un antes y un después en la historia.
+1; Es un gran evento. Marcará un antes y un después en la historia.
 2; ¿Participan representantes de todas las religiones?
 1; Sí, sería una deshonra no tener a nadie.
 3; [color=blue]Bienvenidos al primer concurso para elegir al definitivo nuevo mesías.[/color]
@@ -49,7 +49,7 @@ hide; 1
 
 show; dania_ego; 1
 
-2; (Oh, no, es [color=green]Dania[/green]
+2; (Oh, no, es [color=green]Dania[/color])
 1; ...
 2; Hey.
 1; Me suena tu voz.
@@ -69,7 +69,7 @@ goto; CONT101
 2; Mire mire, tacón, tacón, punta...
 1; ¡Si no lo haces nada bien! ¡Eso es mentira! ¡GUARDIAAAAAAAAAS!
 2; (Ay señor, vaya carácter...)
-
+goto; CONT101
 
 %CONT101
 show; guardia; 1
@@ -95,14 +95,14 @@ show; encapuchado2; 2
 2; ¿Que te vengo bien?
 1; Sí, de perlas.
 2; ¿Por qué?
-1; Nuestro representante se encuentra mal, y nos hace falta sustituto.
+1; Nuestro representante se encuentra mal. Nos hace falta sustituto.
 2; ¿Sustituto? ¿Quieres que lo sustituya? ¡Pero si aún soy un novato! (Y ni siquiera real)
 1; Da igual, nos haces falta, así que ahora saldrás ahí y nos harás ganar.
 2; Pero...
-3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡preparaos para las preguntas![/color]
-1; No hay tiempo, ve, ahora te dirán las preguntas.
+3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡prepárense![/color]
+1; No hay tiempo. Ve, ahora te dirán las preguntas.
 2; (Tengo que pensármelo bien. Si voy ahí, me pueden descubrir los encapuchados, o [color=green]Ric[/color], o [color=green]Dania[/color]...)
-2; (¡Pero puede ser mi oportunidad para transformarme en el Mesías, utilizar lo que aprendí en la asignatura de Milagros...!)
+2; (¡Pero puede ser mi oportunidad para transformarme en el Mesías! ¡Podría usar lo que aprendí en la asignatura de Milagros...!)
 2; (¡...y convertirme en el [color=red]Dios único y verdadero[/color]!)
 do_branch; 2; ¡Voy!; YES14; Pero...; NO14
 
@@ -189,13 +189,14 @@ fade_in
 2; ESO NO TIENE NADA QUE VER.
 1; HABÉIS INTENTADO MATARNOS, NO DISIMULÉIS.
 
-shoe; D_Normal; 2
+show; rival_normal; 3;
+hide;3 
 
-2; ¡Cuidado Dania! ¡Va a...! ¡Corre!
-hide; 1
+3; (Solo un poco más y podré cargarme a esta también...)
+2; ¡Cuidado Dania! ¡APÁRTATE!
 
 show; rival_normal; 1
-1; (Solo un poco más y podré cargarme a esta también...)
+
 2; ¡Eh, tú!
 1; ¡Mierda!
 2; ¡¿Qué ibas a hacerle?!
@@ -231,7 +232,7 @@ show; rival_normal; 1
 1; ¿Y si no, qué piensas hacer?
 do_branch; 2; ¡Voy a matarte!; MUERTE; Lloro.; LLORO
 
-%PEDO
+%MUERTE
 1; ¿En serio? Más te vale no moverte si no quieres que me cargue a tu amigo.
 goto; SIGGG
 
@@ -319,6 +320,7 @@ fade_out
 show; mala_normal; 1
 show; D_Normal; 2
 
+fade_in
 1; Menuda paliza que te has llevado. ¡Jo, jo, jo!
 2; Ay...
 1; Bueno, yo me largo. Recuerda que el plazo para arreglar tus prácticas se acaba mañana.
@@ -327,9 +329,10 @@ show; D_Normal; 2
 2; ...
 2; No me lo puedo creer... Voy a tener que cursar la asignatura el año que viene...
 
+fade_out
 jump; res://visual_novel/perder.txt
 
-
+#FIN ~~~~~
 
 
 

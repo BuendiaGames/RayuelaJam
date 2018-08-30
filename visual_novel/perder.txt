@@ -17,10 +17,11 @@ fade_in
 2; No, a menos que sea una planta o un monstruo de espaguetis.
 1; ¿¡De veras la gente prefiere creer en esas cosas antes que en ti!?
 1; ¿Y las religiones minoritarias?
-2 Hay decenas de ellas. Sectas de encapuchados... y hasta un señor que cree en sus cabras.
+2; Hay decenas de ellas. Sectas de encapuchados... y hasta un señor que cree en sus cabras.
 1; ...
 2; ...
 1; Esto es totalmente inaudito. El peor informe de prácticas que he visto jamás.
 1; Estás \n[color=red]SUSPENSO[/color]
 
 fade_out
+jump; res://visual_novel/creditos.txt

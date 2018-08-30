@@ -51,7 +51,7 @@ hide; 1
 
 show; dania_ego; 1
 
-2; (Oh, no, es [color=green]Dania[/green]
+2; (Oh, no, es [color=green]Dania[/color]).
 1; ...
 2; Hey.
 1; Me suena tu voz.
@@ -71,6 +71,9 @@ goto; CONT101
 2; Mire mire, tacón, tacón, punta...
 1; ¡Si no lo haces nada bien! ¡Eso es mentira! ¡GUARDIAAAAAAAAAS!
 2; (Ay señor, vaya carácter...)
+goto; CONT101
+
+%CONT101
 show; guardia; 1
 
 2; Oh, no.
@@ -134,7 +137,6 @@ goto;Q2
 
 
 %Q2
-#TODO RELLENAR
 goto; RESULTADO
 
 %RESULTADO
@@ -216,8 +218,26 @@ hide;1
 fade_out
 jump; res://visual_novel/perder.txt
 
+#Rama de lo que pasa si no superas el concurso de Mesías
+%PERDER
+fade_in
 
+3; ¡...Y el ganador es el representante del [color=green]Templo de Dania[/color]!
+2; No me lo puedo creer. ¿Con esa chusma de preguntas eligen al mesías?
 
+2; La parte buena es que ahora que hay un mesías oficial, la gente debería seguirlo...
+2; Eso eliminará el problema de mis prácticas.
+show;encapuchado;1
+1; ¡Qué desastre! ¡No es nuestro representante!
+2; Bueno, pero al menos ya tenemos mesías. 
+1; ¡Los encapuchados nunca aceptaremos a ese mesías! Es totalmente falso.
+2; (Uh oh...)
+1;  Nadie lo aceptará, de hecho. Nosotros no tenemos por qué. Nos vamos.
+2; (Y esto, en realidad, lo que significa es...)
+2; (Un suspenso...)
+
+fade_out
+jump; res://visual_novel/perder.txt
 
 
 

@@ -102,7 +102,6 @@ do_branch; 2; Me la llevo; YES13; No, gracias; NO13
 
 
 %YES13
-set; dinero; 20
 if; dinero >= 15; COMPRADA; SIN_DINERO
 
 %COMPRADA

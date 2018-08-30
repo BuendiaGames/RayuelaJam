@@ -431,7 +431,6 @@ func parse_line():
 			next = true
 			#Jump and read a different file
 			if (c0 == "jump"):
-				
 				c1 = get_arg(command[1])
 				start_dialogue(c1)
 			#Load textures of characters
@@ -477,6 +476,9 @@ func parse_line():
 				next = false
 				c1 = get_arg(command[1])
 				vnglobal.vn_to_scene(self, c1)
+			#Finish app
+			elif (c0 == "end"):
+				get_tree().quit()
 			else:
 				pass #Raise error maybe
 	
