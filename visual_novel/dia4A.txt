@@ -219,6 +219,10 @@ show; encapuchado; 1
 2; ¿Que haga la colada?
 1; Eso es lo que he dicho. ¿Es que no escuchas? Los novatos de hoy día no son lo que eran...
 
+fade_out
+
+fade_in
+
 if; calzones==1; BIEN; MAL 
 
 %BIEN
@@ -227,7 +231,7 @@ if; calzones==1; BIEN; MAL
 2; Gracias.
 1; Será mejor que vayas a casa por hoy. Hemos suspendido el bailoteo del día.
 2; ¿Por qué motivo?
-1; Mientras estabas po ahí han raptado a uno de los nuestros, aunque esperamos encontrarlo pronto.
+1; Mientras estabas por ahí han raptado a uno de los nuestros, aunque esperamos encontrarlo pronto.
 2; Ya veo... Buena suerte en la búsqueda.\n(Qué raro... Está desapareciendo mucha gente...)
 1; Gracias.
 
@@ -237,6 +241,7 @@ fade_out
 
 jump; res://visual_novel/dia5A.txt
 
+#Dia 4 si vamos por la rama C
 %MAL
 2; Ya he lavado la ropa, señor (y vaya cantidad de ropa...)
 1; Un momento. ¿Qué son esos calzones blancos?
