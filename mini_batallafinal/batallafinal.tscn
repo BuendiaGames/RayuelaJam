@@ -80,7 +80,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 0 ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -232,7 +232,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="corazones" parent="ui" index="0" instance=ExtResource( 5 )]
 
 visible = false
-maxvida = 5
+maxvida = 6
 
 [node name="music" type="AudioStreamPlayer" parent="." index="5"]
 

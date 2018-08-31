@@ -31,7 +31,7 @@ show;padre_normal;1
 1; ¿Estudiante? Bueno, da igual, quizá...
 2; ¿Quizá?
 1; Yo podría pagar las tinajas. \nLuego podrías ayudarme a trabajar a cambio.
-2; (Se supone que debo averiguar con las religiones aquí... \nPero nada más llegar y ya estoy en un lío)
+2; (Se supone que debo averiguar sobre las religiones aquí... \nPero nada más llegar y ya estoy en un lío)
 2; ¡De acuerdo, trato hecho!
 1; Está bien, yo pagaré. Mientras, espera con mi hijo.
 

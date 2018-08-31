@@ -4,8 +4,8 @@ var vnglobal
 
 var ondas_class = preload("res://mini_batallafinal/ondas.tscn")
 
-var vidaperso = 5
-var vidamala = 3
+var vidaperso = 6
+var vidamala = 2
 
 var velperso = Vector2(0.0,0.0)
 var speedperso = 80.0

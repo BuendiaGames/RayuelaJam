@@ -365,6 +365,7 @@ hide;1
 2; ¡Gracias!
 
 fade_out
+jump; res://visual_novel/creditos.txt
 #FIN ~~~~~
 
 %PIERDES

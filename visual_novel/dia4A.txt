@@ -242,6 +242,7 @@ fade_out
 jump; res://visual_novel/dia5A.txt
 
 #Dia 4 si vamos por la rama C
+
 %MAL
 2; Ya he lavado la ropa, señor (y vaya cantidad de ropa...)
 1; Un momento. ¿Qué son esos calzones blancos?
@@ -255,10 +256,13 @@ jump; res://visual_novel/dia5A.txt
 2; Bueno, queee... Me voy yendo...
 1; ...
 1; ¡Y no vuelvas!
-
 fade_out
+goto; SIGDEF
+
+%SIGDEF
+
 hide;1
-set_bg; BG_street
+set_bg; BG_calle
 fade_in
 
 2; (Pues me han pillado...)
