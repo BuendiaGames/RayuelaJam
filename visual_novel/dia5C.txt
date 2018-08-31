@@ -104,7 +104,7 @@ show; encapuchado2; 2
 1; Da igual, nos haces falta, así que ahora saldrás ahí y nos harás ganar.
 2; Pero...
 3; [color=blue]Y ahora comienza la ronda de preguntas... Representantes, ¡preparaos para las preguntas![/color]
-1; No hay tiempo, ve, ahora te dirán las preguntas.
+1; No hay tiempo, ve. Ahora te dirán las preguntas.
 2; (Tengo que pensármelo bien. Si voy ahí, me pueden descubrir los encapuchados, o [color=green]Ric[/color], o [color=green]Dania[/color]...)
 2; (¡Pero puede ser mi oportunidad para transformarme en el Mesías, utilizar lo que aprendí en la asignatura de Milagros...!)
 2; (¡...y convertirme en el [color=red]Dios único y verdadero[/color]!)
@@ -225,9 +225,11 @@ if; columna==1; SOBREVIVE; CAE;
 fade_in
 2; ¡Ja! ¡Creías que iba a caer en un truco tan burdo!
 1; No ha estado mal.
+show;D_Normal;2
 2; Ahora debes decirme quién eres.
 1; ...
 2; No tienes nada que hacer, estás acabado.
+1; En tal caso, me quitaré el disfraz...
 show;mala_normal;1
 1; ¡Soy [color=green]Lázuli[/color], tu compañera de clase!
 2; No me lo puedo creer. ¿Por qué todo esto?
