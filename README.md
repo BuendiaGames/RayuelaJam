@@ -7,9 +7,12 @@ The dialogues are in Spanish, since the jam is focused in Spanish-speaking narra
 
 We have used freely available graphics from other artists. These are:
 
+- Dialogboxes: by [CharlesGabriel](https://opengameart.org/content/10-basic-message-boxes)
 - Tuxemon Tilset: by [Buch](http://blog-buch.rhcloud.com)
 - Dungeon Tileset: by [DignifiedRain](https://opengameart.org/content/16bit-dungeon-tiles)
 - Space Background: by [ansimuz](https://opengameart.org/content/space-background-3)
+- Backgrounds: CC0 edited images, some of them with no specified artist.
+
 
 **IMPORTANT: These files have their own licenses. Please read them carefully if you want to reuse them**
 
