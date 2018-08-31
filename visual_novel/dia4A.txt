@@ -177,9 +177,9 @@ goto; SIG14
 1; ¿Es que no te ha avisado nadie?
 1; Es un concurso que se celebrará mañana en el teatro con el propósito de elegir al siguiente mesías.
 2; ¿Elegir... al mesías?
-1; Sí, habrá representantes de todas las religiones, y debes repartir los folletos para que haya público.
+1; Sí, habrá representantes de todas las religiones. Debes repartir los folletos para que haya público.
 2; De acuerdo.
-1; Venga, ve, no pierdas el tiempo, y recuerda que vas a comisión de cuantos entregues, jeje.
+1; Venga, ve, no pierdas el tiempo. Recuerda que vas a comisión de cuántos entregues, jeje.
 
 hide;2
 

@@ -14,7 +14,7 @@ var tiempo = 0
 var tiempocabra = 3
 
 var counter = 0.0
-var fin = 3.0
+var fin = 30.0
 
 #Animation controller
 var anim

@@ -13,7 +13,7 @@ fade_in
 
 2; Buenos días...
 1; Madre mía, vaya cara de muerto tienes. ¿Saliste anoche?
-2; Sí... Estoy cansado... Pero conocí a alguien interesante.
+2; Sí... Estoy cansado... Pero conocí a un [color=red]encapuchado[/color] interesante.
 1; ¿Interesante? ¿Has ligado con alguien? ¡¿CON TU CARA?!
 2; (No sé cómo el padre lo aguanta).
 
@@ -35,9 +35,9 @@ set_bg; BG_calle
 fade_in
 
 2; Llevamos toda la mañana preguntando y nadie sabe nada... ¿Qué probabilidades había?
-1; Bastantes, en realidad, por esta ciudad pasa mucha gente debido a la economía.
+1; Bastantes, en realidad. Por esta ciudad pasa mucha gente debido a la economía.
 2; ¿Sabes lo que son las preguntas retóricas?
-1; Creo que voy a preguntar a esa vieja cotilla de ahí, siempre sabe todo y conoce hasta a las cabras de mi padre por su nombre.
+1; Creo que voy a preguntar a esa vieja cotilla de ahí, siempre lo sabe todo. Conoce hasta a las cabras de mi padre por su nombre.
 
 hide;1
 
@@ -47,7 +47,7 @@ show; hijo; 1
 
 1; Hey, esa señora no sabía mucho, pero quizá nos sea útil lo que ha dicho.
 1; El encapuchado es extranjero, y parece que suele ir por las [color=green]afueras de la ciudad[/color].
-2; Está bien, vayamos allí entonces, si no está al menos debe haber alguien que lo conozca.
+2; Está bien, vayamos allí entonces. Si no está al menos debe haber alguien que lo conozca.
 
 fade_out
 set_bg; BG_city
@@ -55,7 +55,7 @@ fade_in
 
 2; Humm... Por aquí no parece que haya nadie con una capucha.
 1; Tampoco es de extrañar, yo me estoy asando y no llevo un manto negro enorme sobre mi cabeza.
-2; Debería seguir llevándola, esperemos aquí si aparece.
+2; Supongo que la sigue llevando. Esperemos aquí por si aparece.
 
 show; rival_normal; 1
 
@@ -149,7 +149,7 @@ fade_in
 2; ...
 2; ¿Verdad?
 2; ¿Hola?
-2; Bueno... Quizá se ha adelantado... probablemente el chico ya ha vuelto a casa...
+2; Bueno... Quizá el chaval se ha adelantado... probablemente el chico ya ha vuelto a casa...
 
 fade_out
 

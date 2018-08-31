@@ -3,13 +3,8 @@ extends Node2D
 # Visual novel parser: this script reads text files
 # and makes the dialogues.  
 
-#Constants that store paths to all graphics in game
-#const gpath = "res://vn_engine/graphics/"
-#const DIOS_NORMAL = gpath + "dios_normal.png"
-#const DIOS_CONTENTO = gpath + "dios_contento.png"
-
-const gpath = "res://vn_engine/ginfo"
-const mpath = "res://vn_engine/main"
+const gpath = "res://vn_engine/ginfo.txt"
+const mpath = "res://vn_engine/main.txt"
 
 var paths = {}
 var ch_names = {}
@@ -478,6 +473,7 @@ func parse_line():
 				vnglobal.vn_to_scene(self, c1)
 			#Finish app
 			elif (c0 == "end"):
+				next = false
 				get_tree().quit()
 			else:
 				pass #Raise error maybe

@@ -230,8 +230,9 @@ goto; SIG8
 
 %YES7
 fade_out
-
 set_bg; BG_bar
+fade_in
+
 
 1; ¿Has estado alguna vez en esta taberna?
 2; No, ¿tú vienes mucho?

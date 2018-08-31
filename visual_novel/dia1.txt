@@ -33,12 +33,12 @@ show;padre_normal;1
 1; Yo podría pagar las tinajas. \nLuego podrías ayudarme a trabajar a cambio.
 2; (Se supone que debo averiguar con las religiones aquí... \nPero nada más llegar y ya estoy en un lío)
 2; ¡De acuerdo, trato hecho!
-1; Está bien, yo pagaré, mientras espera con mi hijo.
+1; Está bien, yo pagaré. Mientras, espera con mi hijo.
 
 show;hijo;1
 
 1; Hey, se ve que estás realmente mal...
-2; eh...
+2; Eh...
 do_branch;  2;   Bueno, sí...; YES1;    ¡Noooo!; NO1;
 
 %YES1
@@ -46,7 +46,7 @@ do_branch;  2;   Bueno, sí...; YES1;    ¡Noooo!; NO1;
 goto; SIG1
 
 %NO1
-1; ¿Que No? No te lo crees ni tú. Vas a hacer mi trabajo en la granja.
+1; ¿Que no? No te lo crees ni tú. Vas a hacer mi trabajo en la granja.
 goto; SIG1
 
 

@@ -1,24 +1,24 @@
 #PREFIX;res://vn_engine/graphics/
 
-D_Contento; Dios; dios_contento.png
+D_Contento; Dios; dios_contento.png; -160; 0; 1.0
 D_Normal; Dios; dios_normal.png
 directortesis; Director; dios_normal.png
 padre_normal; Padre; padre_normal.png; 50; 70
 padre_contento; Padre; padre_contento.png; 50; 70
 hijo; Hijo; hije.png; 50; 30; 1.1
-dania_normal; Dania; dania_normal.png; 0; 0; 1
-dania_ego; Dania; dania_ego.png; 0; 0; 1
-dania_enfadada; Dania; dania_enfadada.png; 0; 0; 1
-tania_normal; Tania; tania_normal.png; 0; 0; 1
-tania_enfadada; Tania; tania_enfadada.png; 0; 0; 1
+dania_normal; Dania; dania_normal.png; 20; 10; 1.0
+dania_ego; Dania; dania_ego.png; 40; 10; 0.85
+dania_enfadada; Dania; dania_enfadada.png; 20; 20; 1.3
+tania_normal; Tania; tania_normal.png; 10; 20; 1.1
+tania_enfadada; Tania; tania_enfadada.png; 10; 20; 1.1
 encapuchado; ???? ; encapuchado.png; 0; 0; 1
 encapuchado2; Dios; encapuchado.png; 0; 0; 1
-rival_normal; Ric; rival_normal.png; 0; 0; 1
-rival_contento; Ric; rival_contento.png; 0; 0; 1
+rival_normal; Ric; rival_normal.png; 10; 20; 1.2
+rival_contento; Ric; rival_contento.png; 10; 20; 1.2
 jurado; Jurado; encapuchado.png; 0; 0; 1
 guardia; Guardia; guardia.png; 0; 0; 1
-mala_normal; Lázuli; mala_normal.png; 0; 0; 1
-mala_preparada; Lázuli; mala_preparada.png; 0; 0; 1
+mala_normal; Lázuli; mala_normal.png; 20; 20; 1.4
+mala_preparada; Lázuli; mala_preparada.png; 20; 20; 1.6
 
 
 

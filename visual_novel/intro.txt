@@ -8,6 +8,7 @@ show;D_Normal;2
 show;directortesis;1
 hide;1
 
+fade_in
 2; Buenas tardes, director.
 1; ¿Tenía tutoría contigo?
 2; Eh... no.\nPero le mandé unos correos y...
@@ -26,8 +27,12 @@ hide;1
 1; Bueno, bueno, arregla ese estropicio y preséntame tu informe.
 2; ¿...Informe?
 1; Sí, una memoria de prácticas que examinará un tribunal y de la cual dependerá toda tu nota.
-2; ¿Toda? ¿Incluso si arreglo todos los problemas de las prácticas, si no hago la memoria bien ¿suspendo?
-1; Sí, exactamente. Hala, buena suerte muchacho.
+2; ¿Toda? Incluso si arreglo todos los problemas de las prácticas, si no hago la memoria bien ¿suspendo?
+1; Sí, exactamente. Hala, buena suerte.
+2; Que tenga buen día.
+1; Adiós.
+2; (Hora de ir personalmente a Petra... Habrá que arreglar este estropicio).
+2; (Yo juraría que dejé este mundo bien atado, me pregunto cuál será el problema...).
 fade_out
 
 jump; res://visual_novel/dia1.txt

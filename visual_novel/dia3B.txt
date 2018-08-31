@@ -14,7 +14,7 @@ fade_in
 
 2; Buenos días...
 1; Madre mía, vaya cara de muerto tienes. ¿Saliste anoche?
-2; Sí... Estoy cansado... Pero conocí a alguien interesante.
+2; Sí... Estoy cansado... Pero conocí a un [color=red]encapuchado[/color] interesante.
 1; ¿Interesante? ¿Has ligado con alguien? ¡¿CON TU CARA?!
 2; (No sé cómo el padre lo aguanta).
 2; No, es un miembro de la [color=red]secta de los encapuchados[/color].
